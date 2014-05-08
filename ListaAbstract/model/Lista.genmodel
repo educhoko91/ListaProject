@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Lista/src" modelPluginID="Lista" modelName="Lista"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>Lista.ecore</foreignModel>
+  <genPackages prefix="Lista" disposableProviderFactory="true" ecorePackage="Lista.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Lista.ecore#//Operator">
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/PLUS"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/MINUS"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/TIMES"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/DIVIDE"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/CONCAT"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/SMALLERTHAN"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="Lista.ecore#//Operator/OR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Lista.ecore#//TermOperator"/>
+    <genClasses ecoreClass="Lista.ecore#//Program">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Program/functionDefinitions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Program/evaluation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Lista.ecore#//ProgramComponent"/>
+    <genClasses ecoreClass="Lista.ecore#//FunctionDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//FunctionDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//FunctionDefinition/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//FunctionDefinition/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//Evaluation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Evaluation/expression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Lista.ecore#//Expression"/>
+    <genClasses ecoreClass="Lista.ecore#//NegExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//NegExpr/subExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//CompositeExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//CompositeExpr/subExpressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//CompositeExpr/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//NumberExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//NumberExpression/number"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//StringExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//StringExpression/string"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//Identifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//Identifier/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//FunctionCall">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//FunctionCall/arguments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference Lista.ecore#//FunctionCall/function"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Lista.ecore#//Term"/>
+    <genClasses ecoreClass="Lista.ecore#//CompositeTerm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//CompositeTerm/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//CompositeTerm/subTerm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//CompositeTerm/subFactor"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//Factor"/>
+    <genClasses ecoreClass="Lista.ecore#//ParentesizedExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//ParentesizedExp/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//IfExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//IfExpression/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//IfExpression/consequent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//IfExpression/alternative"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//whileExpression"/>
+    <genClasses ecoreClass="Lista.ecore#//BooleanExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//BooleanExpression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//SeqExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//SeqExpression/subExpressions"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//InputExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//InputExpression/message"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//OutputExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//OutputExpression/parameter"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,80 @@
+grammar edu.upb.lp.Lista with org.eclipse.xtext.common.Terminals
+
+import "http://www.upb.edu/Lista" as ListaMM
+
+Program returns ListaMM::Program:
+	(functionDefinitions+=FunctionDefinition)*
+	evaluation=Evaluation;
+
+FunctionDefinition returns ListaMM::FunctionDefinition:
+	name=ID "(" parameters+=Identifier ("," parameters+=Identifier)* ")" "=" expression=Expression ";";
+
+Evaluation returns ListaMM::Evaluation:
+	"?" expression=Expression ";";
+
+Identifier returns ListaMM::Identifier:
+	name=ID;
+
+Expression returns ListaMM::Expression:
+	Level4Expression;
+
+Level4Expression returns ListaMM::Expression:
+	Level3Expression
+	({ListaMM::CompositeExpr.subExpressions+=current} operator=Level4Operator subExpressions+=Level4Expression)?;
+
+Level3Expression returns ListaMM::Expression:
+	Level2Expression
+	({ListaMM::CompositeExpr.subExpressions+=current} operator=Level3Operator subExpressions+=Level3Expression)?;
+
+Level2Expression returns ListaMM::Expression:
+	Level1Expression
+	({ListaMM::CompositeExpr.subExpressions+=current} operator=Level2Operator subExpressions+=Level2Expression)?;
+
+Level1Expression returns ListaMM::Expression:
+	SimpleExpression
+	({ListaMM::CompositeExpr.subExpressions+=current} operator=Level1Operator subExpressions+=Level1Expression)?;
+
+SimpleExpression returns ListaMM::Expression:
+	SeqExpression | BooleanExpression | NumberExpression | StringExpression | FunctionCall | Identifier | IfExpression |
+	NotExpression | InputExpression | OutputExpression | "(" Expression ")";
+
+InputExpression returns ListaMM::InputExpression: 
+	"input" "(" message=STRING ")";
+	
+OutputExpression returns ListaMM::OutputExpression: 
+	"output" "(" parameter=Expression ")";
+
+
+IfExpression returns ListaMM::IfExpression:
+	"if" "(" cond=Expression "," consequent=Expression "," alternative=Expression ")";
+
+FunctionCall returns ListaMM::FunctionCall:
+	function=[ListaMM::FunctionDefinition] "(" (arguments+=Expression ("," arguments+=Expression)*)? ")";
+
+StringExpression returns ListaMM::StringExpression:
+	string+=STRING;
+
+NotExpression returns ListaMM::NegExpr:
+	"!" subExpr=SimpleExpression;
+
+NumberExpression returns ListaMM::NumberExpression:
+	number=INT;
+
+BooleanExpression returns ListaMM::BooleanExpression:
+	{ListaMM::BooleanExpression} ((value?="TRUE") | "FALSE");
+
+SeqExpression returns ListaMM::SeqExpression:
+	"seq" "(" subExpressions+=Expression ("," subExpressions+=Expression)* ")";
+
+	//Priorities: mult divide concat > plus minus > smaller > equals
+enum Level1Operator returns ListaMM::Operator:
+	TIMES='*' | DIVIDE='/' | CONCAT='::' | AND='&'| OR='|';
+
+enum Level2Operator returns ListaMM::Operator:
+	MINUS='-' | PLUS='+';
+
+enum Level3Operator returns ListaMM::Operator:
+	SMALLERTHAN='<';
+
+enum Level4Operator returns ListaMM::Operator:
+	EQUALS='=';	
