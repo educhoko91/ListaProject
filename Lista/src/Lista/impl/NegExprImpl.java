@@ -37,7 +37,6 @@ public class NegExprImpl extends ExpressionImpl implements NegExpr {
 	 * @ordered
 	 */
 	protected Expression subExpr;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

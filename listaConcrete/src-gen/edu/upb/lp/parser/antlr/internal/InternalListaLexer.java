@@ -30,6 +30,7 @@ public class InternalListaLexer extends Lexer {
     public static final int T__19=19;
     public static final int T__30=30;
     public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
@@ -481,6 +482,27 @@ public class InternalListaLexer extends Lexer {
         }
     }
     // $ANTLR end "T__31"
+
+    // $ANTLR start "T__32"
+    public final void mT__32() throws RecognitionException {
+        try {
+            int _type = T__32;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:32:7: ( '==' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:32:9: '=='
+            {
+            match("=="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__32"
 
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
@@ -997,8 +1019,8 @@ public class InternalListaLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=28;
+        // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=29;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -1149,49 +1171,56 @@ public class InternalListaLexer extends Lexer {
                 }
                 break;
             case 22 :
-                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:136: RULE_ID
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:136: T__32
+                {
+                mT__32(); 
+
+                }
+                break;
+            case 23 :
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:142: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 23 :
-                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:144: RULE_INT
+            case 24 :
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:150: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 24 :
-                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:153: RULE_STRING
+            case 25 :
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:159: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 25 :
-                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:165: RULE_ML_COMMENT
+            case 26 :
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:171: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 26 :
-                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:181: RULE_SL_COMMENT
+            case 27 :
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:187: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 27 :
-                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:197: RULE_WS
+            case 28 :
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:203: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 28 :
-                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:205: RULE_ANY_OTHER
+            case 29 :
+                // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1:211: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1205,32 +1234,33 @@ public class InternalListaLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\7\uffff\2\44\1\uffff\3\44\1\uffff\1\55\1\33\5\uffff\1\33\2\uffff"+
-        "\2\33\10\uffff\1\44\1\70\1\uffff\1\44\1\uffff\3\44\15\uffff\1\44"+
-        "\1\uffff\3\44\1\101\2\44\1\104\1\44\1\uffff\1\106\1\44\1\uffff\1"+
-        "\110\1\uffff\1\111\2\uffff";
+        "\4\uffff\1\40\2\uffff\2\45\1\uffff\3\45\1\uffff\1\56\1\33\5\uffff"+
+        "\1\33\2\uffff\2\33\11\uffff\1\45\1\71\1\uffff\1\45\1\uffff\3\45"+
+        "\15\uffff\1\45\1\uffff\3\45\1\102\2\45\1\105\1\45\1\uffff\1\107"+
+        "\1\45\1\uffff\1\111\1\uffff\1\112\2\uffff";
     static final String DFA12_eofS =
-        "\112\uffff";
+        "\113\uffff";
     static final String DFA12_minS =
-        "\1\0\6\uffff\1\146\1\165\1\uffff\1\122\1\101\1\145\1\uffff\1\52"+
-        "\1\72\5\uffff\1\101\2\uffff\2\0\10\uffff\1\160\1\60\1\uffff\1\164"+
-        "\1\uffff\1\125\1\114\1\161\15\uffff\1\165\1\uffff\1\160\1\105\1"+
-        "\123\1\60\1\164\1\165\1\60\1\105\1\uffff\1\60\1\164\1\uffff\1\60"+
-        "\1\uffff\1\60\2\uffff";
+        "\1\0\3\uffff\1\75\2\uffff\1\146\1\165\1\uffff\1\122\1\101\1\145"+
+        "\1\uffff\1\52\1\72\5\uffff\1\101\2\uffff\2\0\11\uffff\1\160\1\60"+
+        "\1\uffff\1\164\1\uffff\1\125\1\114\1\161\15\uffff\1\165\1\uffff"+
+        "\1\160\1\105\1\123\1\60\1\164\1\165\1\60\1\105\1\uffff\1\60\1\164"+
+        "\1\uffff\1\60\1\uffff\1\60\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\6\uffff\1\156\1\165\1\uffff\1\122\1\101\1\145\1\uffff\1"+
-        "\57\1\72\5\uffff\1\172\2\uffff\2\uffff\10\uffff\1\160\1\172\1\uffff"+
-        "\1\164\1\uffff\1\125\1\114\1\161\15\uffff\1\165\1\uffff\1\160\1"+
-        "\105\1\123\1\172\1\164\1\165\1\172\1\105\1\uffff\1\172\1\164\1\uffff"+
-        "\1\172\1\uffff\1\172\2\uffff";
+        "\1\uffff\3\uffff\1\75\2\uffff\1\156\1\165\1\uffff\1\122\1\101\1"+
+        "\145\1\uffff\1\57\1\72\5\uffff\1\172\2\uffff\2\uffff\11\uffff\1"+
+        "\160\1\172\1\uffff\1\164\1\uffff\1\125\1\114\1\161\15\uffff\1\165"+
+        "\1\uffff\1\160\1\105\1\123\1\172\1\164\1\165\1\172\1\105\1\uffff"+
+        "\1\172\1\164\1\uffff\1\172\1\uffff\1\172\2\uffff";
     static final String DFA12_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\2\uffff\1\12\3\uffff\1\16\2\uffff"+
-        "\1\21\1\22\1\23\1\24\1\25\1\uffff\1\26\1\27\2\uffff\1\33\1\34\1"+
-        "\1\1\2\1\3\1\4\1\5\1\6\2\uffff\1\26\1\uffff\1\12\3\uffff\1\16\1"+
-        "\31\1\32\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\27\1\30\1\33\1\uffff"+
-        "\1\11\10\uffff\1\15\2\uffff\1\13\1\uffff\1\7\1\uffff\1\14\1\10";
+        "\1\uffff\1\1\1\2\1\3\1\uffff\1\5\1\6\2\uffff\1\12\3\uffff\1\16\2"+
+        "\uffff\1\21\1\22\1\23\1\24\1\25\1\uffff\1\27\1\30\2\uffff\1\34\1"+
+        "\35\1\1\1\2\1\3\1\26\1\4\1\5\1\6\2\uffff\1\27\1\uffff\1\12\3\uffff"+
+        "\1\16\1\32\1\33\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\30\1\31\1\34"+
+        "\1\uffff\1\11\10\uffff\1\15\2\uffff\1\13\1\uffff\1\7\1\uffff\1\14"+
+        "\1\10";
     static final String DFA12_specialS =
-        "\1\2\27\uffff\1\1\1\0\60\uffff}>";
+        "\1\0\27\uffff\1\2\1\1\61\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\33\2\32\2\33\1\32\22\33\1\32\1\11\1\30\3\33\1\20\1\31\1"+
             "\1\1\3\1\15\1\23\1\2\1\22\1\33\1\16\12\27\1\17\1\5\1\24\1\4"+
@@ -1239,74 +1269,75 @@ public class InternalListaLexer extends Lexer {
             "",
             "",
             "",
+            "\1\37",
             "",
             "",
+            "\1\44\7\uffff\1\43",
+            "\1\46",
             "",
-            "\1\43\7\uffff\1\42",
-            "\1\45",
-            "",
-            "\1\47",
             "\1\50",
             "\1\51",
+            "\1\52",
             "",
-            "\1\53\4\uffff\1\54",
-            "\1\56",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\32\44\4\uffff\1\44\1\uffff\32\44",
-            "",
-            "",
-            "\0\65",
-            "\0\65",
+            "\1\54\4\uffff\1\55",
+            "\1\57",
             "",
             "",
             "",
             "",
             "",
+            "\32\45\4\uffff\1\45\1\uffff\32\45",
+            "",
+            "",
+            "\0\66",
+            "\0\66",
             "",
             "",
             "",
-            "\1\67",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
             "",
-            "\1\71",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\70",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "\1\72",
+            "",
             "\1\73",
             "\1\74",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\75",
             "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\76",
+            "",
             "\1\77",
             "\1\100",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\102",
+            "\1\101",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\103",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\105",
+            "\1\104",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\106",
             "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
-            "\1\107",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\110",
             "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
-            "\12\44\7\uffff\32\44\4\uffff\1\44\1\uffff\32\44",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             ""
     };
@@ -1341,33 +1372,13 @@ public class InternalListaLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_25 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_25>='\u0000' && LA12_25<='\uFFFF')) ) {s = 53;}
-
-                        else s = 27;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA12_24 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_24>='\u0000' && LA12_24<='\uFFFF')) ) {s = 53;}
-
-                        else s = 27;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1424,6 +1435,26 @@ public class InternalListaLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 26;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||(LA12_0>='#' && LA12_0<='%')||LA12_0=='.'||LA12_0=='>'||LA12_0=='@'||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||LA12_0=='{'||(LA12_0>='}' && LA12_0<='\uFFFF')) ) {s = 27;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA12_25 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_25>='\u0000' && LA12_25<='\uFFFF')) ) {s = 54;}
+
+                        else s = 27;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_24 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_24>='\u0000' && LA12_24<='\uFFFF')) ) {s = 54;}
+
+                        else s = 27;
 
                         if ( s>=0 ) return s;
                         break;

@@ -3,6 +3,7 @@
  */
 package edu.upb.lp.generator
 
+import edu.upb.lp.type.TypeIdentifier
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
@@ -30,7 +31,12 @@ class ListaGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
+		
 		val p = resource.contents.get(0) as Program
+		
+		val ti = TypeIdentifier.getInstance(p);
+		println(ti.hashMap);
+		
 		var f = resource.URI.trimFileExtension
 		fsa.generateFile(f.segment(f.segmentCount-1)+".java",generateCode(p));
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 

@@ -6,20 +6,14 @@ import Lista.Evaluation;
 import Lista.FunctionDefinition;
 import Lista.ListaPackage;
 import Lista.Program;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -47,7 +41,6 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 	 * @ordered
 	 */
 	protected EList<FunctionDefinition> functionDefinitions;
-
 	/**
 	 * The cached value of the '{@link #getEvaluation() <em>Evaluation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -57,7 +50,6 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 	 * @ordered
 	 */
 	protected Evaluation evaluation;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

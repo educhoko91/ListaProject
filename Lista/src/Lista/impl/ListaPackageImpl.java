@@ -27,13 +27,11 @@ import Lista.StringExpression;
 import Lista.Term;
 import Lista.TermOperator;
 import Lista.whileExpression;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -477,8 +475,8 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionCall_Arguments() {
-		return (EReference)functionCallEClass.getEStructuralFeatures().get(0);
+	public EReference getFunctionCall_Function() {
+		return (EReference)functionCallEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -486,8 +484,8 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionCall_Function() {
-		return (EReference)functionCallEClass.getEStructuralFeatures().get(1);
+	public EReference getFunctionCall_Arguments() {
+		return (EReference)functionCallEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**

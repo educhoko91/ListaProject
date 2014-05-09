@@ -77,4 +77,4 @@ enum Level3Operator returns ListaMM::Operator:
 	SMALLERTHAN='<';
 
 enum Level4Operator returns ListaMM::Operator:
-	EQUALS='=';	
+	EQUALS='==';	

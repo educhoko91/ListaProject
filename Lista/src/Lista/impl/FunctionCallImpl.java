@@ -81,18 +81,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Expression> getArguments() {
-		if (arguments == null) {
-			arguments = new EObjectContainmentEList<Expression>(Expression.class, this, ListaPackage.FUNCTION_CALL__ARGUMENTS);
-		}
-		return arguments;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public FunctionDefinition getFunction() {
 		if (function != null && function.eIsProxy()) {
 			InternalEObject oldFunction = (InternalEObject)function;
@@ -124,6 +112,18 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall {
 		function = newFunction;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ListaPackage.FUNCTION_CALL__FUNCTION, oldFunction, function));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Expression> getArguments() {
+		if (arguments == null) {
+			arguments = new EObjectContainmentEList<Expression>(Expression.class, this, ListaPackage.FUNCTION_CALL__ARGUMENTS);
+		}
+		return arguments;
 	}
 
 	/**

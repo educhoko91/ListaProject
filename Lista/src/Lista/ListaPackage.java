@@ -409,6 +409,86 @@ public interface ListaPackage extends EPackage {
 	int STRING_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link Lista.impl.TermImpl <em>Term</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.TermImpl
+	 * @see Lista.impl.ListaPackageImpl#getTerm()
+	 * @generated
+	 */
+	int TERM = 11;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.FactorImpl <em>Factor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.FactorImpl
+	 * @see Lista.impl.ListaPackageImpl#getFactor()
+	 * @generated
+	 */
+	int FACTOR = 13;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.ParentesizedExpImpl <em>Parentesized Exp</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.ParentesizedExpImpl
+	 * @see Lista.impl.ListaPackageImpl#getParentesizedExp()
+	 * @generated
+	 */
+	int PARENTESIZED_EXP = 14;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.IfExpressionImpl <em>If Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.IfExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getIfExpression()
+	 * @generated
+	 */
+	int IF_EXPRESSION = 15;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.whileExpressionImpl <em>while Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.whileExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getwhileExpression()
+	 * @generated
+	 */
+	int WHILE_EXPRESSION = 16;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.BooleanExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getBooleanExpression()
+	 * @generated
+	 */
+	int BOOLEAN_EXPRESSION = 17;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.SeqExpressionImpl <em>Seq Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.SeqExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getSeqExpression()
+	 * @generated
+	 */
+	int SEQ_EXPRESSION = 18;
+
+	/**
+	 * The meta object id for the '{@link Lista.Operator <em>Operator</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.Operator
+	 * @see Lista.impl.ListaPackageImpl#getOperator()
+	 * @generated
+	 */
+	int OPERATOR = 21;
+
+	/**
 	 * The meta object id for the '{@link Lista.impl.IdentifierImpl <em>Identifier</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -492,16 +572,6 @@ public interface ListaPackage extends EPackage {
 	int FUNCTION_CALL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link Lista.impl.TermImpl <em>Term</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.impl.TermImpl
-	 * @see Lista.impl.ListaPackageImpl#getTerm()
-	 * @generated
-	 */
-	int TERM = 11;
-
-	/**
 	 * The number of structural features of the '<em>Term</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -575,16 +645,6 @@ public interface ListaPackage extends EPackage {
 	int COMPOSITE_TERM_OPERATION_COUNT = TERM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link Lista.impl.FactorImpl <em>Factor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.impl.FactorImpl
-	 * @see Lista.impl.ListaPackageImpl#getFactor()
-	 * @generated
-	 */
-	int FACTOR = 13;
-
-	/**
 	 * The number of structural features of the '<em>Factor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -601,16 +661,6 @@ public interface ListaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FACTOR_OPERATION_COUNT = TERM_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link Lista.impl.ParentesizedExpImpl <em>Parentesized Exp</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.impl.ParentesizedExpImpl
-	 * @see Lista.impl.ListaPackageImpl#getParentesizedExp()
-	 * @generated
-	 */
-	int PARENTESIZED_EXP = 14;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -638,16 +688,6 @@ public interface ListaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARENTESIZED_EXP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link Lista.impl.IfExpressionImpl <em>If Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.impl.IfExpressionImpl
-	 * @see Lista.impl.ListaPackageImpl#getIfExpression()
-	 * @generated
-	 */
-	int IF_EXPRESSION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Cond</b></em>' containment reference.
@@ -695,16 +735,6 @@ public interface ListaPackage extends EPackage {
 	int IF_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link Lista.impl.whileExpressionImpl <em>while Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.impl.whileExpressionImpl
-	 * @see Lista.impl.ListaPackageImpl#getwhileExpression()
-	 * @generated
-	 */
-	int WHILE_EXPRESSION = 16;
-
-	/**
 	 * The number of structural features of the '<em>while Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -721,16 +751,6 @@ public interface ListaPackage extends EPackage {
 	 * @ordered
 	 */
 	int WHILE_EXPRESSION_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link Lista.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.impl.BooleanExpressionImpl
-	 * @see Lista.impl.ListaPackageImpl#getBooleanExpression()
-	 * @generated
-	 */
-	int BOOLEAN_EXPRESSION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -758,16 +778,6 @@ public interface ListaPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link Lista.impl.SeqExpressionImpl <em>Seq Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.impl.SeqExpressionImpl
-	 * @see Lista.impl.ListaPackageImpl#getSeqExpression()
-	 * @generated
-	 */
-	int SEQ_EXPRESSION = 18;
 
 	/**
 	 * The feature id for the '<em><b>Sub Expressions</b></em>' containment reference list.
@@ -869,16 +879,6 @@ public interface ListaPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link Lista.Operator <em>Operator</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see Lista.Operator
-	 * @see Lista.impl.ListaPackageImpl#getOperator()
-	 * @generated
-	 */
-	int OPERATOR = 21;
 
 	/**
 	 * The meta object id for the '{@link Lista.TermOperator <em>Term Operator</em>}' enum.
@@ -1134,17 +1134,6 @@ public interface ListaPackage extends EPackage {
 	EClass getFunctionCall();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link Lista.FunctionCall#getArguments <em>Arguments</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Arguments</em>'.
-	 * @see Lista.FunctionCall#getArguments()
-	 * @see #getFunctionCall()
-	 * @generated
-	 */
-	EReference getFunctionCall_Arguments();
-
-	/**
 	 * Returns the meta object for the reference '{@link Lista.FunctionCall#getFunction <em>Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1154,6 +1143,17 @@ public interface ListaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctionCall_Function();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link Lista.FunctionCall#getArguments <em>Arguments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Arguments</em>'.
+	 * @see Lista.FunctionCall#getArguments()
+	 * @see #getFunctionCall()
+	 * @generated
+	 */
+	EReference getFunctionCall_Arguments();
 
 	/**
 	 * Returns the meta object for class '{@link Lista.Term <em>Term</em>}'.
@@ -1626,20 +1626,20 @@ public interface ListaPackage extends EPackage {
 		EClass FUNCTION_CALL = eINSTANCE.getFunctionCall();
 
 		/**
-		 * The meta object literal for the '<em><b>Arguments</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FUNCTION_CALL__ARGUMENTS = eINSTANCE.getFunctionCall_Arguments();
-
-		/**
 		 * The meta object literal for the '<em><b>Function</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference FUNCTION_CALL__FUNCTION = eINSTANCE.getFunctionCall_Function();
+
+		/**
+		 * The meta object literal for the '<em><b>Arguments</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTION_CALL__ARGUMENTS = eINSTANCE.getFunctionCall_Arguments();
 
 		/**
 		 * The meta object literal for the '{@link Lista.impl.TermImpl <em>Term</em>}' class.

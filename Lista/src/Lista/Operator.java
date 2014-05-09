@@ -86,9 +86,7 @@ public enum Operator implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	EQUALS(6, "EQUALS", "EQUALS"),
-
-	/**
+	EQUALS(6, "EQUALS", "EQUALS"), /**
 	 * The '<em><b>AND</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,9 +94,7 @@ public enum Operator implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	AND(7, "AND", "AND"),
-
-	/**
+	AND(7, "AND", "AND"), /**
 	 * The '<em><b>OR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -2,17 +2,15 @@
  */
 package Lista.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import Lista.Evaluation;
 import Lista.Expression;
 import Lista.ListaPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +35,6 @@ public class EvaluationImpl extends ProgramComponentImpl implements Evaluation {
 	 * @ordered
 	 */
 	protected Expression expression;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -30,6 +30,7 @@ public class InternalListaLexer extends Lexer {
     public static final int T__19=19;
     public static final int T__30=30;
     public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
@@ -80,10 +81,11 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:12:7: ( '=' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:12:9: '='
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:12:7: ( '==' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:12:9: '=='
             {
-            match('='); 
+            match("=="); 
+
 
             }
 
@@ -302,10 +304,10 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:23:7: ( ';' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:23:9: ';'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:23:7: ( '=' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:23:9: '='
             {
-            match(';'); 
+            match('='); 
 
             }
 
@@ -322,10 +324,10 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:24:7: ( ',' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:24:9: ','
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:24:7: ( ';' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:24:9: ';'
             {
-            match(','); 
+            match(';'); 
 
             }
 
@@ -342,10 +344,10 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:25:7: ( '?' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:25:9: '?'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:25:7: ( ',' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:25:9: ','
             {
-            match('?'); 
+            match(','); 
 
             }
 
@@ -362,11 +364,10 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:26:7: ( 'input' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:26:9: 'input'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:26:7: ( '?' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:26:9: '?'
             {
-            match("input"); 
-
+            match('?'); 
 
             }
 
@@ -383,10 +384,10 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:27:7: ( 'output' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:27:9: 'output'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:27:7: ( 'input' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:27:9: 'input'
             {
-            match("output"); 
+            match("input"); 
 
 
             }
@@ -404,10 +405,10 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:28:7: ( 'if' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:28:9: 'if'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:28:7: ( 'output' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:28:9: 'output'
             {
-            match("if"); 
+            match("output"); 
 
 
             }
@@ -425,10 +426,11 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:29:7: ( '!' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:29:9: '!'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:29:7: ( 'if' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:29:9: 'if'
             {
-            match('!'); 
+            match("if"); 
+
 
             }
 
@@ -445,11 +447,10 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:30:7: ( 'seq' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:30:9: 'seq'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:30:7: ( '!' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:30:9: '!'
             {
-            match("seq"); 
-
+            match('!'); 
 
             }
 
@@ -466,8 +467,29 @@ public class InternalListaLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:31:7: ( 'TRUE' )
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:31:9: 'TRUE'
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:31:7: ( 'seq' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:31:9: 'seq'
+            {
+            match("seq"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__31"
+
+    // $ANTLR start "T__32"
+    public final void mT__32() throws RecognitionException {
+        try {
+            int _type = T__32;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:32:7: ( 'TRUE' )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:32:9: 'TRUE'
             {
             match("TRUE"); 
 
@@ -480,7 +502,7 @@ public class InternalListaLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__31"
+    // $ANTLR end "T__32"
 
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
@@ -997,8 +1019,8 @@ public class InternalListaLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=28;
+        // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=29;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -1149,49 +1171,56 @@ public class InternalListaLexer extends Lexer {
                 }
                 break;
             case 22 :
-                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:136: RULE_ID
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:136: T__32
+                {
+                mT__32(); 
+
+                }
+                break;
+            case 23 :
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:142: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 23 :
-                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:144: RULE_INT
+            case 24 :
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:150: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 24 :
-                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:153: RULE_STRING
+            case 25 :
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:159: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 25 :
-                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:165: RULE_ML_COMMENT
+            case 26 :
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:171: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 26 :
-                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:181: RULE_SL_COMMENT
+            case 27 :
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:187: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 27 :
-                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:197: RULE_WS
+            case 28 :
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:203: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 28 :
-                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:205: RULE_ANY_OTHER
+            case 29 :
+                // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:1:211: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1205,44 +1234,42 @@ public class InternalListaLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\3\uffff\1\37\1\uffff\1\43\1\33\11\uffff\2\37\1\uffff\2\37\1\33"+
-        "\2\uffff\2\33\4\uffff\1\37\17\uffff\1\37\1\71\1\37\1\uffff\2\37"+
-        "\3\uffff\2\37\1\uffff\1\37\1\100\4\37\1\uffff\1\105\1\106\1\107"+
-        "\1\37\3\uffff\1\111\1\uffff";
+        "\2\uffff\1\36\1\40\1\uffff\1\44\1\33\11\uffff\2\40\1\uffff\2\40"+
+        "\1\33\2\uffff\2\33\5\uffff\1\40\17\uffff\1\40\1\72\1\40\1\uffff"+
+        "\2\40\3\uffff\2\40\1\uffff\1\40\1\101\4\40\1\uffff\1\106\1\107\1"+
+        "\110\1\40\3\uffff\1\112\1\uffff";
     static final String DFA12_eofS =
-        "\112\uffff";
+        "\113\uffff";
     static final String DFA12_minS =
-        "\1\0\2\uffff\1\101\1\uffff\1\52\1\72\11\uffff\1\146\1\165\1\uffff"+
-        "\1\145\1\122\1\101\2\uffff\2\0\4\uffff\1\114\17\uffff\1\160\1\60"+
-        "\1\164\1\uffff\1\161\1\125\3\uffff\1\123\1\165\1\uffff\1\160\1\60"+
-        "\2\105\1\164\1\165\1\uffff\3\60\1\164\3\uffff\1\60\1\uffff";
+        "\1\0\1\uffff\1\75\1\101\1\uffff\1\52\1\72\11\uffff\1\146\1\165\1"+
+        "\uffff\1\145\1\122\1\101\2\uffff\2\0\5\uffff\1\114\17\uffff\1\160"+
+        "\1\60\1\164\1\uffff\1\161\1\125\3\uffff\1\123\1\165\1\uffff\1\160"+
+        "\1\60\2\105\1\164\1\165\1\uffff\3\60\1\164\3\uffff\1\60\1\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\2\uffff\1\101\1\uffff\1\57\1\72\11\uffff\1\156\1\165\1"+
-        "\uffff\1\145\1\122\1\172\2\uffff\2\uffff\4\uffff\1\114\17\uffff"+
+        "\1\uffff\1\uffff\1\75\1\101\1\uffff\1\57\1\72\11\uffff\1\156\1\165"+
+        "\1\uffff\1\145\1\122\1\172\2\uffff\2\uffff\5\uffff\1\114\17\uffff"+
         "\1\160\1\172\1\164\1\uffff\1\161\1\125\3\uffff\1\123\1\165\1\uffff"+
         "\1\160\1\172\2\105\1\164\1\165\1\uffff\3\172\1\164\3\uffff\1\172"+
         "\1\uffff";
     static final String DFA12_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\2\uffff\1\7\1\10\1\11\1\12\1\13\1\14"+
-        "\1\15\1\16\1\17\2\uffff\1\23\3\uffff\1\26\1\27\2\uffff\1\33\1\34"+
-        "\1\1\1\2\1\uffff\1\26\1\4\1\31\1\32\1\5\1\6\1\7\1\10\1\11\1\12\1"+
-        "\13\1\14\1\15\1\16\1\17\3\uffff\1\23\2\uffff\1\27\1\30\1\33\2\uffff"+
-        "\1\22\6\uffff\1\24\4\uffff\1\25\1\3\1\20\1\uffff\1\21";
+        "\1\uffff\1\1\2\uffff\1\4\2\uffff\1\7\1\10\1\11\1\12\1\13\1\14\1"+
+        "\16\1\17\1\20\2\uffff\1\24\3\uffff\1\27\1\30\2\uffff\1\34\1\35\1"+
+        "\1\1\2\1\15\1\uffff\1\27\1\4\1\32\1\33\1\5\1\6\1\7\1\10\1\11\1\12"+
+        "\1\13\1\14\1\16\1\17\1\20\3\uffff\1\24\2\uffff\1\30\1\31\1\34\2"+
+        "\uffff\1\23\6\uffff\1\25\4\uffff\1\26\1\3\1\21\1\uffff\1\22";
     static final String DFA12_specialS =
-        "\1\0\27\uffff\1\2\1\1\60\uffff}>";
+        "\1\1\27\uffff\1\2\1\0\61\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\33\2\32\2\33\1\32\22\33\1\32\1\22\1\30\3\33\1\7\1\31\1\13"+
             "\1\14\1\4\1\12\1\16\1\11\1\33\1\5\12\27\1\6\1\15\1\1\1\2\1\33"+
             "\1\17\1\33\5\26\1\3\15\26\1\24\6\26\3\33\1\25\1\26\1\33\10\26"+
             "\1\20\5\26\1\21\3\26\1\23\7\26\1\33\1\10\uff83\33",
             "",
+            "\1\35",
+            "\1\37",
             "",
-            "\1\36",
-            "",
-            "\1\41\4\uffff\1\42",
-            "\1\44",
-            "",
-            "",
+            "\1\42\4\uffff\1\43",
+            "\1\45",
             "",
             "",
             "",
@@ -1250,63 +1277,66 @@ public class InternalListaLexer extends Lexer {
             "",
             "",
             "",
-            "\1\57\7\uffff\1\56",
-            "\1\60",
             "",
-            "\1\62",
+            "",
+            "\1\60\7\uffff\1\57",
+            "\1\61",
+            "",
             "\1\63",
-            "\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\64",
+            "\32\40\4\uffff\1\40\1\uffff\32\40",
             "",
             "",
-            "\0\65",
-            "\0\65",
-            "",
-            "",
-            "",
-            "",
-            "\1\67",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\0\66",
+            "\0\66",
             "",
             "",
             "",
             "",
             "",
             "\1\70",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\72",
             "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\71",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\73",
+            "",
             "\1\74",
-            "",
-            "",
-            "",
             "\1\75",
-            "\1\76",
             "",
+            "",
+            "",
+            "\1\76",
             "\1\77",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\101",
+            "",
+            "\1\100",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\102",
             "\1\103",
             "\1\104",
+            "\1\105",
             "",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\110",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\111",
             "",
             "",
             "",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             ""
     };
 
@@ -1340,13 +1370,23 @@ public class InternalListaLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA12_25 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_25>='\u0000' && LA12_25<='\uFFFF')) ) {s = 54;}
+
+                        else s = 27;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1406,21 +1446,11 @@ public class InternalListaLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
-                        int LA12_25 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_25>='\u0000' && LA12_25<='\uFFFF')) ) {s = 53;}
-
-                        else s = 27;
-
-                        if ( s>=0 ) return s;
-                        break;
                     case 2 : 
                         int LA12_24 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_24>='\u0000' && LA12_24<='\uFFFF')) ) {s = 53;}
+                        if ( ((LA12_24>='\u0000' && LA12_24<='\uFFFF')) ) {s = 54;}
 
                         else s = 27;
 

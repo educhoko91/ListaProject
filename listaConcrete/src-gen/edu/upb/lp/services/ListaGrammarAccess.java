@@ -825,17 +825,17 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 	public class Level4OperatorElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "Level4Operator");
 		private final EnumLiteralDeclaration cEQUALSEnumLiteralDeclaration = (EnumLiteralDeclaration)rule.eContents().get(1);
-		private final Keyword cEQUALSEqualsSignKeyword_0 = (Keyword)cEQUALSEnumLiteralDeclaration.eContents().get(0);
+		private final Keyword cEQUALSEqualsSignEqualsSignKeyword_0 = (Keyword)cEQUALSEnumLiteralDeclaration.eContents().get(0);
 		
 		//enum Level4Operator returns ListaMM::Operator:
-		//	EQUALS="=";
+		//	EQUALS="==";
 		public EnumRule getRule() { return rule; }
 
-		//EQUALS="="
+		//EQUALS="=="
 		public EnumLiteralDeclaration getEQUALSEnumLiteralDeclaration() { return cEQUALSEnumLiteralDeclaration; }
 
-		//"="
-		public Keyword getEQUALSEqualsSignKeyword_0() { return cEQUALSEqualsSignKeyword_0; }
+		//"=="
+		public Keyword getEQUALSEqualsSignEqualsSignKeyword_0() { return cEQUALSEqualsSignEqualsSignKeyword_0; }
 	}
 	
 	private ProgramElements pProgram;
@@ -1127,7 +1127,7 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum Level4Operator returns ListaMM::Operator:
-	//	EQUALS="=";
+	//	EQUALS="==";
 	public Level4OperatorElements getLevel4OperatorAccess() {
 		return (unknownRuleLevel4Operator != null) ? unknownRuleLevel4Operator : (unknownRuleLevel4Operator = new Level4OperatorElements());
 	}

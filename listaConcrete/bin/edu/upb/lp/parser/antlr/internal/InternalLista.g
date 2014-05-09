@@ -1369,7 +1369,7 @@ ruleLevel3Operator returns [Enumerator current=null]
 ruleLevel4Operator returns [Enumerator current=null] 
     @init { enterRule(); }
     @after { leaveRule(); }:
-(	enumLiteral_0='=' 
+(	enumLiteral_0='==' 
 	{
         $current = grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_0, grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration()); 

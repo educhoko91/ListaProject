@@ -655,7 +655,7 @@ ruleLevel4Operator
 :
 (
 { before(grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration()); }
-(	'=' 
+(	'==' 
 )
 { after(grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration()); }
 )

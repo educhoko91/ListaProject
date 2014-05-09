@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "','", "')'", "'='", "';'", "'?'", "'input'", "'output'", "'if'", "'!'", "'TRUE'", "'FALSE'", "'seq'", "'*'", "'/'", "'::'", "'&'", "'|'", "'-'", "'+'", "'<'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "','", "')'", "'='", "';'", "'?'", "'input'", "'output'", "'if'", "'!'", "'TRUE'", "'FALSE'", "'seq'", "'*'", "'/'", "'::'", "'&'", "'|'", "'-'", "'+'", "'<'", "'=='"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -43,6 +43,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final int T__19=19;
     public static final int T__31=31;
     public static final int RULE_STRING=5;
+    public static final int T__32=32;
     public static final int T__16=16;
     public static final int T__15=15;
     public static final int T__18=18;
@@ -851,7 +852,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==14) ) {
+            if ( (LA3_0==32) ) {
                 alt3=1;
             }
             switch (alt3) {
@@ -3342,7 +3343,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLevel4Operator"
-    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1369:1: ruleLevel4Operator returns [Enumerator current=null] : (enumLiteral_0= '=' ) ;
+    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1369:1: ruleLevel4Operator returns [Enumerator current=null] : (enumLiteral_0= '==' ) ;
     public final Enumerator ruleLevel4Operator() throws RecognitionException {
         Enumerator current = null;
 
@@ -3350,13 +3351,13 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1371:28: ( (enumLiteral_0= '=' ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:1: (enumLiteral_0= '=' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1371:28: ( (enumLiteral_0= '==' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:1: (enumLiteral_0= '==' )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:1: (enumLiteral_0= '=' )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:3: enumLiteral_0= '='
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:1: (enumLiteral_0= '==' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:3: enumLiteral_0= '=='
             {
-            enumLiteral_0=(Token)match(input,14,FOLLOW_14_in_ruleLevel4Operator3115); 
+            enumLiteral_0=(Token)match(input,32,FOLLOW_32_in_ruleLevel4Operator3115); 
 
                     current = grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration().getEnumLiteral().getInstance();
                     newLeafNode(enumLiteral_0, grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration()); 
@@ -3391,7 +3392,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     static final String DFA7_minS =
         "\1\4\4\uffff\1\13\7\uffff";
     static final String DFA7_maxS =
-        "\1\27\4\uffff\1\37\7\uffff";
+        "\1\27\4\uffff\1\40\7\uffff";
     static final String DFA7_acceptS =
         "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\7\1\10\1\11\1\12\1\13\1\5\1\6";
     static final String DFA7_specialS =
@@ -3402,7 +3403,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\1\13\4\14\10\uffff\10\14",
+            "\1\13\2\14\1\uffff\1\14\10\uffff\11\14",
             "",
             "",
             "",
@@ -3475,7 +3476,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleLevel4Expression_in_ruleExpression671 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLevel4Expression_in_entryRuleLevel4Expression705 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleLevel4Expression715 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLevel3Expression_in_ruleLevel4Expression762 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_ruleLevel3Expression_in_ruleLevel4Expression762 = new BitSet(new long[]{0x0000000100000002L});
     public static final BitSet FOLLOW_ruleLevel4Operator_in_ruleLevel4Expression792 = new BitSet(new long[]{0x0000000000FE0870L});
     public static final BitSet FOLLOW_ruleLevel4Expression_in_ruleLevel4Expression813 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLevel3Expression_in_entryRuleLevel3Expression851 = new BitSet(new long[]{0x0000000000000000L});
@@ -3568,6 +3569,6 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_29_in_ruleLevel2Operator3011 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_30_in_ruleLevel2Operator3028 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_31_in_ruleLevel3Operator3072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleLevel4Operator3115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleLevel4Operator3115 = new BitSet(new long[]{0x0000000000000002L});
 
 }

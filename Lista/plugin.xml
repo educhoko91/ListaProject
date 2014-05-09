@@ -10,7 +10,8 @@
       <!-- @generated Lista -->
       <package
             uri="http://www.upb.edu/Lista"
-            class="Lista.ListaPackage"/>
+            class="Lista.ListaPackage"
+            genModel="model/Lista.genmodel"/>
    </extension>
 
 </plugin>
