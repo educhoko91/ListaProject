@@ -237,7 +237,7 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (boolean?='TRUE'?)
+	 *     (value?='TRUE'?)
 	 */
 	protected void sequence_BooleanExpression(EObject context, BooleanExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

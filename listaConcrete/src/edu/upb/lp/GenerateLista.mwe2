@@ -17,7 +17,7 @@ Workflow {
     	platformUri = "${runtimeProject}/.."
     	// The following two lines can be removed, if Xbase is not used.
     	registerGeneratedEPackage = "Lista.ListaPackage"
-    	registerGenModelFile = "platform:/resource/Lista/model/Lista.genmodel"
+    	registerGenModelFile = "platform:/resource/ListaAbstract/model/Lista.genmodel"
     }
     
     component = DirectoryCleaner {

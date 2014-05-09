@@ -649,28 +649,28 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cBooleanExpressionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cBooleanAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final Keyword cBooleanTRUEKeyword_1_0_0 = (Keyword)cBooleanAssignment_1_0.eContents().get(0);
+		private final Assignment cValueAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final Keyword cValueTRUEKeyword_1_0_0 = (Keyword)cValueAssignment_1_0.eContents().get(0);
 		private final Keyword cFALSEKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
 		
 		//BooleanExpression returns ListaMM::BooleanExpression:
-		//	{ListaMM::BooleanExpression} (boolean?="TRUE" | "FALSE");
+		//	{ListaMM::BooleanExpression} (value?="TRUE" | "FALSE");
 		public ParserRule getRule() { return rule; }
 
-		//{ListaMM::BooleanExpression} (boolean?="TRUE" | "FALSE")
+		//{ListaMM::BooleanExpression} (value?="TRUE" | "FALSE")
 		public Group getGroup() { return cGroup; }
 
 		//{ListaMM::BooleanExpression}
 		public Action getBooleanExpressionAction_0() { return cBooleanExpressionAction_0; }
 
-		//boolean?="TRUE" | "FALSE"
+		//value?="TRUE" | "FALSE"
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
-		//boolean?="TRUE"
-		public Assignment getBooleanAssignment_1_0() { return cBooleanAssignment_1_0; }
+		//value?="TRUE"
+		public Assignment getValueAssignment_1_0() { return cValueAssignment_1_0; }
 
 		//"TRUE"
-		public Keyword getBooleanTRUEKeyword_1_0_0() { return cBooleanTRUEKeyword_1_0_0; }
+		public Keyword getValueTRUEKeyword_1_0_0() { return cValueTRUEKeyword_1_0_0; }
 
 		//"FALSE"
 		public Keyword getFALSEKeyword_1_1() { return cFALSEKeyword_1_1; }
@@ -734,13 +734,17 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDIVIDESolidusKeyword_1_0 = (Keyword)cDIVIDEEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cCONCATEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cCONCATColonColonKeyword_2_0 = (Keyword)cCONCATEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cANDEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cANDAmpersandKeyword_3_0 = (Keyword)cANDEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cOREnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cORVerticalLineKeyword_4_0 = (Keyword)cOREnumLiteralDeclaration_4.eContents().get(0);
 		
 		////Priorities: mult divide concat > plus minus > smaller > equals
-		// enum Level1Operator returns ListaMM::Operator:
-		//	TIMES="*" | DIVIDE="/" | CONCAT="::";
+		//enum Level1Operator returns ListaMM::Operator:
+		//	TIMES="*" | DIVIDE="/" | CONCAT="::" | AND="&" | OR="|";
 		public EnumRule getRule() { return rule; }
 
-		//TIMES="*" | DIVIDE="/" | CONCAT="::"
+		//TIMES="*" | DIVIDE="/" | CONCAT="::" | AND="&" | OR="|"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//TIMES="*"
@@ -760,6 +764,18 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"::"
 		public Keyword getCONCATColonColonKeyword_2_0() { return cCONCATColonColonKeyword_2_0; }
+
+		//AND="&"
+		public EnumLiteralDeclaration getANDEnumLiteralDeclaration_3() { return cANDEnumLiteralDeclaration_3; }
+
+		//"&"
+		public Keyword getANDAmpersandKeyword_3_0() { return cANDAmpersandKeyword_3_0; }
+
+		//OR="|"
+		public EnumLiteralDeclaration getOREnumLiteralDeclaration_4() { return cOREnumLiteralDeclaration_4; }
+
+		//"|"
+		public Keyword getORVerticalLineKeyword_4_0() { return cORVerticalLineKeyword_4_0; }
 	}
 
 	public class Level2OperatorElements extends AbstractEnumRuleElementFinder {
@@ -1060,7 +1076,7 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BooleanExpression returns ListaMM::BooleanExpression:
-	//	{ListaMM::BooleanExpression} (boolean?="TRUE" | "FALSE");
+	//	{ListaMM::BooleanExpression} (value?="TRUE" | "FALSE");
 	public BooleanExpressionElements getBooleanExpressionAccess() {
 		return (pBooleanExpression != null) ? pBooleanExpression : (pBooleanExpression = new BooleanExpressionElements());
 	}
@@ -1080,8 +1096,8 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////Priorities: mult divide concat > plus minus > smaller > equals
-	// enum Level1Operator returns ListaMM::Operator:
-	//	TIMES="*" | DIVIDE="/" | CONCAT="::";
+	//enum Level1Operator returns ListaMM::Operator:
+	//	TIMES="*" | DIVIDE="/" | CONCAT="::" | AND="&" | OR="|";
 	public Level1OperatorElements getLevel1OperatorAccess() {
 		return (unknownRuleLevel1Operator != null) ? unknownRuleLevel1Operator : (unknownRuleLevel1Operator = new Level1OperatorElements());
 	}

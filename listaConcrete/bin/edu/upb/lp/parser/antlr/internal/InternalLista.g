@@ -1198,16 +1198,16 @@ ruleBooleanExpression returns [EObject current=null]
     }
 )((
 (
-		lv_boolean_1_0=	'TRUE' 
+		lv_value_1_0=	'TRUE' 
     {
-        newLeafNode(lv_boolean_1_0, grammarAccess.getBooleanExpressionAccess().getBooleanTRUEKeyword_1_0_0());
+        newLeafNode(lv_value_1_0, grammarAccess.getBooleanExpressionAccess().getValueTRUEKeyword_1_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getBooleanExpressionRule());
 	        }
-       		setWithLastConsumed($current, "boolean", true, "TRUE");
+       		setWithLastConsumed($current, "value", true, "TRUE");
 	    }
 
 )
@@ -1316,6 +1316,18 @@ ruleLevel1Operator returns [Enumerator current=null]
 	{
         $current = grammarAccess.getLevel1OperatorAccess().getCONCATEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_2, grammarAccess.getLevel1OperatorAccess().getCONCATEnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='&' 
+	{
+        $current = grammarAccess.getLevel1OperatorAccess().getANDEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getLevel1OperatorAccess().getANDEnumLiteralDeclaration_3()); 
+    }
+)
+    |(	enumLiteral_4='|' 
+	{
+        $current = grammarAccess.getLevel1OperatorAccess().getOREnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_4, grammarAccess.getLevel1OperatorAccess().getOREnumLiteralDeclaration_4()); 
     }
 ));
 

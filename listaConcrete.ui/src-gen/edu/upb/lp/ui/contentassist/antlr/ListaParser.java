@@ -91,7 +91,7 @@ public class ListaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringExpressionAccess().getStringAssignment(), "rule__StringExpression__StringAssignment");
 					put(grammarAccess.getNotExpressionAccess().getSubExprAssignment_1(), "rule__NotExpression__SubExprAssignment_1");
 					put(grammarAccess.getNumberExpressionAccess().getNumberAssignment(), "rule__NumberExpression__NumberAssignment");
-					put(grammarAccess.getBooleanExpressionAccess().getBooleanAssignment_1_0(), "rule__BooleanExpression__BooleanAssignment_1_0");
+					put(grammarAccess.getBooleanExpressionAccess().getValueAssignment_1_0(), "rule__BooleanExpression__ValueAssignment_1_0");
 					put(grammarAccess.getSeqExpressionAccess().getSubExpressionsAssignment_2(), "rule__SeqExpression__SubExpressionsAssignment_2");
 					put(grammarAccess.getSeqExpressionAccess().getSubExpressionsAssignment_3_1(), "rule__SeqExpression__SubExpressionsAssignment_3_1");
 				}

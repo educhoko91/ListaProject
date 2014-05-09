@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "','", "')'", "'='", "';'", "'?'", "'input'", "'output'", "'if'", "'!'", "'TRUE'", "'FALSE'", "'seq'", "'*'", "'/'", "'::'", "'-'", "'+'", "'<'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "','", "')'", "'='", "';'", "'?'", "'input'", "'output'", "'if'", "'!'", "'TRUE'", "'FALSE'", "'seq'", "'*'", "'/'", "'::'", "'&'", "'|'", "'-'", "'+'", "'<'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -39,7 +39,9 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
     public static final int RULE_ML_COMMENT=7;
+    public static final int T__30=30;
     public static final int T__19=19;
+    public static final int T__31=31;
     public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
@@ -1028,7 +1030,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==29) ) {
+            if ( (LA4_0==31) ) {
                 alt4=1;
             }
             switch (alt4) {
@@ -1207,7 +1209,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( ((LA5_0>=27 && LA5_0<=28)) ) {
+            if ( ((LA5_0>=29 && LA5_0<=30)) ) {
                 alt5=1;
             }
             switch (alt5) {
@@ -1386,7 +1388,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( ((LA6_0>=24 && LA6_0<=26)) ) {
+            if ( ((LA6_0>=24 && LA6_0<=28)) ) {
                 alt6=1;
             }
             switch (alt6) {
@@ -2772,21 +2774,21 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanExpression"
-    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1189:1: ruleBooleanExpression returns [EObject current=null] : ( () ( ( (lv_boolean_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) ) ;
+    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1189:1: ruleBooleanExpression returns [EObject current=null] : ( () ( ( (lv_value_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) ) ;
     public final EObject ruleBooleanExpression() throws RecognitionException {
         EObject current = null;
 
-        Token lv_boolean_1_0=null;
+        Token lv_value_1_0=null;
         Token otherlv_2=null;
 
          enterRule(); 
             
         try {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1192:28: ( ( () ( ( (lv_boolean_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1193:1: ( () ( ( (lv_boolean_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1192:28: ( ( () ( ( (lv_value_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1193:1: ( () ( ( (lv_value_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1193:1: ( () ( ( (lv_boolean_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1193:2: () ( ( (lv_boolean_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1193:1: ( () ( ( (lv_value_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1193:2: () ( ( (lv_value_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' )
             {
             // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1193:2: ()
             // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1194:5: 
@@ -2799,7 +2801,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1199:2: ( ( (lv_boolean_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1199:2: ( ( (lv_value_1_0= 'TRUE' ) ) | otherlv_2= 'FALSE' )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2817,23 +2819,23 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             }
             switch (alt10) {
                 case 1 :
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1199:3: ( (lv_boolean_1_0= 'TRUE' ) )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1199:3: ( (lv_value_1_0= 'TRUE' ) )
                     {
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1199:3: ( (lv_boolean_1_0= 'TRUE' ) )
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1200:1: (lv_boolean_1_0= 'TRUE' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1199:3: ( (lv_value_1_0= 'TRUE' ) )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1200:1: (lv_value_1_0= 'TRUE' )
                     {
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1200:1: (lv_boolean_1_0= 'TRUE' )
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1201:3: lv_boolean_1_0= 'TRUE'
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1200:1: (lv_value_1_0= 'TRUE' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1201:3: lv_value_1_0= 'TRUE'
                     {
-                    lv_boolean_1_0=(Token)match(input,21,FOLLOW_21_in_ruleBooleanExpression2652); 
+                    lv_value_1_0=(Token)match(input,21,FOLLOW_21_in_ruleBooleanExpression2652); 
 
-                            newLeafNode(lv_boolean_1_0, grammarAccess.getBooleanExpressionAccess().getBooleanTRUEKeyword_1_0_0());
+                            newLeafNode(lv_value_1_0, grammarAccess.getBooleanExpressionAccess().getValueTRUEKeyword_1_0_0());
                         
 
                     	        if (current==null) {
                     	            current = createModelElement(grammarAccess.getBooleanExpressionRule());
                     	        }
-                           		setWithLastConsumed(current, "boolean", true, "TRUE");
+                           		setWithLastConsumed(current, "value", true, "TRUE");
                     	    
 
                     }
@@ -3059,21 +3061,23 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLevel1Operator"
-    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1300:1: ruleLevel1Operator returns [Enumerator current=null] : ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) ) ;
+    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1300:1: ruleLevel1Operator returns [Enumerator current=null] : ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) | (enumLiteral_3= '&' ) | (enumLiteral_4= '|' ) ) ;
     public final Enumerator ruleLevel1Operator() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
         Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
+        Token enumLiteral_4=null;
 
          enterRule(); 
         try {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1302:28: ( ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1303:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1302:28: ( ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) | (enumLiteral_3= '&' ) | (enumLiteral_4= '|' ) ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1303:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) | (enumLiteral_3= '&' ) | (enumLiteral_4= '|' ) )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1303:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) )
-            int alt12=3;
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1303:1: ( (enumLiteral_0= '*' ) | (enumLiteral_1= '/' ) | (enumLiteral_2= '::' ) | (enumLiteral_3= '&' ) | (enumLiteral_4= '|' ) )
+            int alt12=5;
             switch ( input.LA(1) ) {
             case 24:
                 {
@@ -3088,6 +3092,16 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             case 26:
                 {
                 alt12=3;
+                }
+                break;
+            case 27:
+                {
+                alt12=4;
+                }
+                break;
+            case 28:
+                {
+                alt12=5;
                 }
                 break;
             default:
@@ -3149,6 +3163,40 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 4 :
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1321:6: (enumLiteral_3= '&' )
+                    {
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1321:6: (enumLiteral_3= '&' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1321:8: enumLiteral_3= '&'
+                    {
+                    enumLiteral_3=(Token)match(input,27,FOLLOW_27_in_ruleLevel1Operator2949); 
+
+                            current = grammarAccess.getLevel1OperatorAccess().getANDEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_3, grammarAccess.getLevel1OperatorAccess().getANDEnumLiteralDeclaration_3()); 
+                        
+
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1327:6: (enumLiteral_4= '|' )
+                    {
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1327:6: (enumLiteral_4= '|' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1327:8: enumLiteral_4= '|'
+                    {
+                    enumLiteral_4=(Token)match(input,28,FOLLOW_28_in_ruleLevel1Operator2966); 
+
+                            current = grammarAccess.getLevel1OperatorAccess().getOREnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_4, grammarAccess.getLevel1OperatorAccess().getOREnumLiteralDeclaration_4()); 
+                        
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -3170,7 +3218,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLevel2Operator"
-    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1325:1: ruleLevel2Operator returns [Enumerator current=null] : ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) ) ;
+    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1337:1: ruleLevel2Operator returns [Enumerator current=null] : ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) ) ;
     public final Enumerator ruleLevel2Operator() throws RecognitionException {
         Enumerator current = null;
 
@@ -3179,17 +3227,17 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1327:28: ( ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1328:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1339:28: ( ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1340:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1328:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1340:1: ( (enumLiteral_0= '-' ) | (enumLiteral_1= '+' ) )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==27) ) {
+            if ( (LA13_0==29) ) {
                 alt13=1;
             }
-            else if ( (LA13_0==28) ) {
+            else if ( (LA13_0==30) ) {
                 alt13=2;
             }
             else {
@@ -3200,12 +3248,12 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             }
             switch (alt13) {
                 case 1 :
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1328:2: (enumLiteral_0= '-' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1340:2: (enumLiteral_0= '-' )
                     {
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1328:2: (enumLiteral_0= '-' )
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1328:4: enumLiteral_0= '-'
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1340:2: (enumLiteral_0= '-' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1340:4: enumLiteral_0= '-'
                     {
-                    enumLiteral_0=(Token)match(input,27,FOLLOW_27_in_ruleLevel2Operator2977); 
+                    enumLiteral_0=(Token)match(input,29,FOLLOW_29_in_ruleLevel2Operator3011); 
 
                             current = grammarAccess.getLevel2OperatorAccess().getMINUSEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getLevel2OperatorAccess().getMINUSEnumLiteralDeclaration_0()); 
@@ -3217,12 +3265,12 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1334:6: (enumLiteral_1= '+' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1346:6: (enumLiteral_1= '+' )
                     {
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1334:6: (enumLiteral_1= '+' )
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1334:8: enumLiteral_1= '+'
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1346:6: (enumLiteral_1= '+' )
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1346:8: enumLiteral_1= '+'
                     {
-                    enumLiteral_1=(Token)match(input,28,FOLLOW_28_in_ruleLevel2Operator2994); 
+                    enumLiteral_1=(Token)match(input,30,FOLLOW_30_in_ruleLevel2Operator3028); 
 
                             current = grammarAccess.getLevel2OperatorAccess().getPLUSEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getLevel2OperatorAccess().getPLUSEnumLiteralDeclaration_1()); 
@@ -3254,7 +3302,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLevel3Operator"
-    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1344:1: ruleLevel3Operator returns [Enumerator current=null] : (enumLiteral_0= '<' ) ;
+    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1356:1: ruleLevel3Operator returns [Enumerator current=null] : (enumLiteral_0= '<' ) ;
     public final Enumerator ruleLevel3Operator() throws RecognitionException {
         Enumerator current = null;
 
@@ -3262,13 +3310,13 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1346:28: ( (enumLiteral_0= '<' ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1347:1: (enumLiteral_0= '<' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1358:28: ( (enumLiteral_0= '<' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1359:1: (enumLiteral_0= '<' )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1347:1: (enumLiteral_0= '<' )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1347:3: enumLiteral_0= '<'
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1359:1: (enumLiteral_0= '<' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1359:3: enumLiteral_0= '<'
             {
-            enumLiteral_0=(Token)match(input,29,FOLLOW_29_in_ruleLevel3Operator3038); 
+            enumLiteral_0=(Token)match(input,31,FOLLOW_31_in_ruleLevel3Operator3072); 
 
                     current = grammarAccess.getLevel3OperatorAccess().getSMALLERTHANEnumLiteralDeclaration().getEnumLiteral().getInstance();
                     newLeafNode(enumLiteral_0, grammarAccess.getLevel3OperatorAccess().getSMALLERTHANEnumLiteralDeclaration()); 
@@ -3294,7 +3342,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLevel4Operator"
-    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1357:1: ruleLevel4Operator returns [Enumerator current=null] : (enumLiteral_0= '=' ) ;
+    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1369:1: ruleLevel4Operator returns [Enumerator current=null] : (enumLiteral_0= '=' ) ;
     public final Enumerator ruleLevel4Operator() throws RecognitionException {
         Enumerator current = null;
 
@@ -3302,13 +3350,13 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1359:28: ( (enumLiteral_0= '=' ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1360:1: (enumLiteral_0= '=' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1371:28: ( (enumLiteral_0= '=' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:1: (enumLiteral_0= '=' )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1360:1: (enumLiteral_0= '=' )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1360:3: enumLiteral_0= '='
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:1: (enumLiteral_0= '=' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1372:3: enumLiteral_0= '='
             {
-            enumLiteral_0=(Token)match(input,14,FOLLOW_14_in_ruleLevel4Operator3081); 
+            enumLiteral_0=(Token)match(input,14,FOLLOW_14_in_ruleLevel4Operator3115); 
 
                     current = grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration().getEnumLiteral().getInstance();
                     newLeafNode(enumLiteral_0, grammarAccess.getLevel4OperatorAccess().getEQUALSEnumLiteralDeclaration()); 
@@ -3343,10 +3391,9 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     static final String DFA7_minS =
         "\1\4\4\uffff\1\13\7\uffff";
     static final String DFA7_maxS =
-        "\1\27\4\uffff\1\35\7\uffff";
+        "\1\27\4\uffff\1\37\7\uffff";
     static final String DFA7_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\7\1\10\1\11\1\12\1\13\1\5\1"+
-        "\6";
+        "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\7\1\10\1\11\1\12\1\13\1\5\1\6";
     static final String DFA7_specialS =
         "\15\uffff}>";
     static final String[] DFA7_transitionS = {
@@ -3355,7 +3402,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\1\13\4\14\10\uffff\6\14",
+            "\1\13\4\14\10\uffff\10\14",
             "",
             "",
             "",
@@ -3433,17 +3480,17 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleLevel4Expression_in_ruleLevel4Expression813 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLevel3Expression_in_entryRuleLevel3Expression851 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleLevel3Expression861 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLevel2Expression_in_ruleLevel3Expression908 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_ruleLevel2Expression_in_ruleLevel3Expression908 = new BitSet(new long[]{0x0000000080000002L});
     public static final BitSet FOLLOW_ruleLevel3Operator_in_ruleLevel3Expression938 = new BitSet(new long[]{0x0000000000FE0870L});
     public static final BitSet FOLLOW_ruleLevel3Expression_in_ruleLevel3Expression959 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLevel2Expression_in_entryRuleLevel2Expression997 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleLevel2Expression1007 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLevel1Expression_in_ruleLevel2Expression1054 = new BitSet(new long[]{0x0000000018000002L});
+    public static final BitSet FOLLOW_ruleLevel1Expression_in_ruleLevel2Expression1054 = new BitSet(new long[]{0x0000000060000002L});
     public static final BitSet FOLLOW_ruleLevel2Operator_in_ruleLevel2Expression1084 = new BitSet(new long[]{0x0000000000FE0870L});
     public static final BitSet FOLLOW_ruleLevel2Expression_in_ruleLevel2Expression1105 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLevel1Expression_in_entryRuleLevel1Expression1143 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleLevel1Expression1153 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleExpression_in_ruleLevel1Expression1200 = new BitSet(new long[]{0x0000000007000002L});
+    public static final BitSet FOLLOW_ruleSimpleExpression_in_ruleLevel1Expression1200 = new BitSet(new long[]{0x000000001F000002L});
     public static final BitSet FOLLOW_ruleLevel1Operator_in_ruleLevel1Expression1230 = new BitSet(new long[]{0x0000000000FE0870L});
     public static final BitSet FOLLOW_ruleLevel1Expression_in_ruleLevel1Expression1251 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSimpleExpression_in_entryRuleSimpleExpression1289 = new BitSet(new long[]{0x0000000000000000L});
@@ -3516,9 +3563,11 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_24_in_ruleLevel1Operator2898 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_25_in_ruleLevel1Operator2915 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_26_in_ruleLevel1Operator2932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleLevel2Operator2977 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleLevel2Operator2994 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleLevel3Operator3038 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleLevel4Operator3081 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleLevel1Operator2949 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleLevel1Operator2966 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleLevel2Operator3011 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleLevel2Operator3028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_ruleLevel3Operator3072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_ruleLevel4Operator3115 = new BitSet(new long[]{0x0000000000000002L});
 
 }
