@@ -31,12 +31,9 @@ class ListaGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
-		
 		val p = resource.contents.get(0) as Program
-		
-		val ti = TypeIdentifier.getInstance(p);
-		println(ti.hashMap);
-		
+		val st = TypeIdentifier.getInstance(p)
+		print(st.hashMap)
 		var f = resource.URI.trimFileExtension
 		fsa.generateFile(f.segment(f.segmentCount-1)+".java",generateCode(p));
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
@@ -95,8 +92,7 @@ class ListaGenerator implements IGenerator {
 			«ENDFOR»
 		«ELSEIF e instanceof CompositeExpr»
 			«var ce = e as CompositeExpr»
-			«generateExpression(ce.subExpressions.get(0))» «generateOperator(ce.operator)» «generateExpression(ce.subExpressions.get(1))»
-		«ENDIF»'''
+			«generateExpression(ce.subExpressions.get(0))» «generateOperator(ce.operator)» «generateExpression(ce.subExpressions.get(1))»«ENDIF»'''
 		
 	def generateOperator(Operator o)'''
 		«var operator = o.getName»
