@@ -48,6 +48,7 @@ class ListaGenerator implements IGenerator {
 	}
 	
 	def generateCode(Program p)'''
+	import java.util.*;
 		public class Main{
 			public static void main(String[] args){
 				System.out.println(«generateExpression(p.evaluation.expression)»);
@@ -58,6 +59,19 @@ class ListaGenerator implements IGenerator {
 				return («generateExpression(f.expression)»);
 			}
 		«ENDFOR»
+		
+		public static String input(String s){
+			System.out.println(s);
+			Scanner in = new Scanner(System.in);
+			String aux = in.nextLine();
+			return aux;
+		}
+		
+		public static Object output(Object o){
+			System.out.println(o);
+			return o;
+		}
+		
 		}'''
 	def generateExpression(Expression e)'''
 		«IF e instanceof FunctionCall»
@@ -70,7 +84,7 @@ class ListaGenerator implements IGenerator {
 			«ne.number»
 		«ELSEIF e instanceof StringExpression»
 			«var se = e as StringExpression»
-			«se.string»
+			"«se.string.get(0)»"
 		«ELSEIF e instanceof BooleanExpression»
 			«var b =  e as BooleanExpression»
 			«b.value»
@@ -79,7 +93,7 @@ class ListaGenerator implements IGenerator {
 			«i.name»
 		«ELSEIF e instanceof InputExpression»
 			«var input = e as InputExpression»
-			input("«input.message»");
+			input("«input.message»")
 		«ELSEIF e instanceof IfExpression»
 			«var ife = e as IfExpression»
 			(«generateExpression(ife.cond)»? «generateExpression(ife.consequent)» : «generateExpression(ife.alternative)»)
@@ -88,7 +102,7 @@ class ListaGenerator implements IGenerator {
 			«generateExpression(neg.subExpr)»
 		«ELSEIF e instanceof OutputExpression»
 			«var out = e as OutputExpression»
-			output(«generateExpression(out.parameter)»);
+			output(«generateExpression(out.parameter)»)
 		«ELSEIF e instanceof SeqExpression»
 			«var se = e as SeqExpression»
 			«FOR sub:se.subExpressions»
@@ -96,7 +110,21 @@ class ListaGenerator implements IGenerator {
 			«ENDFOR»
 		«ELSEIF e instanceof CompositeExpr»
 			«var ce = e as CompositeExpr»
-			«generateExpression(ce.subExpressions.get(0))» «generateOperator(ce.operator)» «generateExpression(ce.subExpressions.get(1))»«ENDIF»'''
+			«var left = ce.subExpressions.get(0)»
+			«var right = ce.subExpressions.get(1)»
+			«var o = ce.operator»
+			«IF (left instanceof InputExpression || left instanceof OutputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
+				Integer.parseInt(«generateExpression(left)»)
+			«ELSE»
+				«generateExpression(left)»
+			«ENDIF»«generateOperator(o)»
+			«IF (right instanceof InputExpression || right instanceof OutputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
+				Integer.parseInt(«generateExpression(right)»)
+			«ELSE»
+				«generateExpression(right)»
+			«ENDIF»
+			
+			«ENDIF»'''
 		
 	def generateOperator(Operator o)'''
 		«var operator = o.getName»
