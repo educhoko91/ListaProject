@@ -14,12 +14,16 @@ import edu.upb.lp.type.TypeIdentifier
 import java.util.HashMap
 import java.util.HashSet
 import org.eclipse.xtext.validation.Check
-import java.awt.Composite
-import org.eclipse.emf.codegen.ecore.genmodel.impl.Literals
 import Lista.NumberExpression
 import Lista.StringExpression
 import Lista.BooleanExpression
 import org.eclipse.emf.ecore.EObject
+import Lista.Evaluation
+import Lista.IfExpression
+import Lista.SeqExpression
+import Lista.OutputExpression
+import Lista.NegExpr
+import Lista.InputExpression
 
 /**
  * Custom validation rules. 
@@ -28,20 +32,29 @@ import org.eclipse.emf.ecore.EObject
  */
 class ListaValidator extends AbstractListaValidator {
 
-	//  public static val INVALID_NAME = 'invalidName'
-	//
-	//	@Check
-	//	def checkGreetingStartsWithCapital(Greeting greeting) {
-	//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-	//			warning('Name should start with a capital', 
-	//					MyDslPackage.Literals.GREETING__NAME,
-	//					INVALID_NAME)
-	//		}
-	//	}
 	public HashMap<String, HashMap<String, String>> map;
 
 	def initMap(Program prog) {
 		this.map = TypeIdentifier.getInstance(prog).hashMap;
+	}
+	
+	@Check
+	def checkIdentifiersTypes(Identifier id) {
+		var prog = id as EObject;
+		while(!(prog instanceof Program)) {
+			prog = prog.eContainer;
+		}
+		initMap(prog as Program);
+		var eaux = id as EObject;
+		while(!(eaux instanceof FunctionDefinition)) {
+			eaux = eaux.eContainer;
+		}
+		var fd = eaux as FunctionDefinition
+		if(map.get(fd.name).get(id.name)==TypeIdentifier.NOTYPE) {
+			error("No se pudo determinar el tipo de "+id.name,
+				ListaPackage.Literals.IDENTIFIER__NAME
+			)
+		}
 	}
 
 	@Check
@@ -59,7 +72,7 @@ class ListaValidator extends AbstractListaValidator {
 
 			map.get(f.name).keySet.removeAll(setParams);
 			for (String s : map.get(f.name).keySet) {
-				error("El parametro \"" + s + "\" no esta declarado en la funcion.",
+				error("El parametro " + s + " no esta declarado en la funcion.",
 					ListaPackage.Literals.PROGRAM__FUNCTION_DEFINITIONS);
 			}
 		}
@@ -71,28 +84,117 @@ class ListaValidator extends AbstractListaValidator {
 		while(!(prog instanceof Program))
 			prog = prog.eContainer;
 		initMap(prog as Program);
-		recursiveCompisiteOperatorValuesCheck(expr);
+		recursiveCompisiteOperatorValuesCheck(expr,TypeIdentifier.NOTYPE);
 		
 	}
 	
-	def recursiveCompisiteOperatorValuesCheck(Expression expr) {
+	@Check
+	def checkIdentifiersInEvaluation(Evaluation eva) {
+		recursiveIdentifiersInEvaluation(eva.expression);
+		
+	}
+	
+	def recursiveIdentifiersInEvaluation(Expression expr) {
+		if(expr instanceof Identifier) {
+			var id = expr  as Identifier
+			error("No se pudo resolver el valor de " + id.name,
+				ListaPackage.Literals.EVALUATION__EXPRESSION
+			);
+		}else if(expr instanceof NumberExpression) {
+			return null;
+		}else if(expr instanceof StringExpression) {
+			return null;
+		}else if(expr instanceof BooleanExpression) {
+			return null;
+		}
+		else {
+			if(expr instanceof CompositeExpr) {
+				var ce = expr as CompositeExpr;
+				try  {
+					var left = ce.subExpressions.get(0);
+					recursiveIdentifiersInEvaluation(left);
+					var right = ce .subExpressions.get(1);
+					recursiveIdentifiersInEvaluation(right);
+				} catch (Exception e) {
+				}
+			}
+			if(expr instanceof IfExpression) {
+				var ifexpr = expr as IfExpression;
+				recursiveIdentifiersInEvaluation(ifexpr.cond);
+				recursiveIdentifiersInEvaluation(ifexpr.alternative);
+				recursiveIdentifiersInEvaluation(ifexpr.consequent);
+			}
+			if(expr instanceof SeqExpression) {
+				var secExp = expr as SeqExpression;
+				for(Expression e : secExp.subExpressions) {
+					recursiveIdentifiersInEvaluation(expr);
+				}
+			}
+			if(expr instanceof OutputExpression) {
+				var out = expr as OutputExpression
+				recursiveIdentifiersInEvaluation(out.parameter);
+			}
+			if(expr instanceof NegExpr) {
+				var ne = expr as NegExpr;
+				recursiveIdentifiersInEvaluation(ne.subExpr);
+			}
+		}
+		
+	}
+	
+	def recursiveCompisiteOperatorValuesCheck(Expression expr, String type) {
 		if (expr instanceof CompositeExpr) {
 			val ce = expr as CompositeExpr;
-			val left = ce.subExpressions.get(0);
-			val right = ce.subExpressions.get(1);
 			val o = ce.operator;
 	
 			if (o == Operator.PLUS || o == Operator.MINUS || o == Operator.DIVIDE || o == Operator.TIMES ||
 				o == Operator.SMALLERTHAN) {
-					val exprl = recursiveCompisiteOperatorValuesCheck(left);
-					val exprr = recursiveCompisiteOperatorValuesCheck(right);
-					if(!exprl.equals(TypeIdentifier.TYPEINT) || !exprr.equals(TypeIdentifier.TYPEINT)) {
-						error("No se puede se puede utilizar el operador "+o.name+" con "+exprl+", "+exprr+".", ListaPackage.Literals.COMPOSITE_EXPR__OPERATOR);
-						return null;
-					}else {
-						return TypeIdentifier.TYPEINT;
-					}
+					try {
+						val left = ce.subExpressions.get(0);
+						val right = ce.subExpressions.get(1);
+						val exprl = recursiveCompisiteOperatorValuesCheck(left,TypeIdentifier.TYPEINT);
+						val exprr = recursiveCompisiteOperatorValuesCheck(right,TypeIdentifier.TYPEINT);
+						if(!exprl.equals(TypeIdentifier.TYPEINT) || !exprr.equals(TypeIdentifier.TYPEINT)) {
+							error("No se puede utilizar el operador "+o.name+" con "+exprl+", "+exprr+".", ListaPackage.Literals.COMPOSITE_EXPR__OPERATOR);
+							return TypeIdentifier.NOTYPE;
+						}else {
+							return TypeIdentifier.TYPEINT;
+						}
 					
+					} catch (Exception e) {}
+					
+			}
+			
+			if(o==Operator.CONCAT) {
+				try {
+						val left = ce.subExpressions.get(0);
+						val right = ce.subExpressions.get(1);
+						val exprl = recursiveCompisiteOperatorValuesCheck(left,TypeIdentifier.TYPESTRING);
+						val exprr = recursiveCompisiteOperatorValuesCheck(right,TypeIdentifier.TYPESTRING);
+						if(!exprl.equals(TypeIdentifier.TYPESTRING) || !exprr.equals(TypeIdentifier.TYPESTRING)) {
+							error("No se puede utilizar el operador "+o.name+" con "+exprl+", "+exprr+".", ListaPackage.Literals.COMPOSITE_EXPR__OPERATOR);
+							return TypeIdentifier.NOTYPE;
+						}else {
+							return TypeIdentifier.TYPESTRING;
+						}
+					
+					} catch (Exception e) {}
+			}
+			
+			if(o == Operator.AND || o == Operator.OR) {
+				try {
+						val left = ce.subExpressions.get(0);
+						val right = ce.subExpressions.get(1);
+						val exprl = recursiveCompisiteOperatorValuesCheck(left,TypeIdentifier.TYPEBOOLEAN);
+						val exprr = recursiveCompisiteOperatorValuesCheck(right,TypeIdentifier.TYPEBOOLEAN);
+						if(!exprl.equals(TypeIdentifier.TYPEBOOLEAN) || !exprr.equals(TypeIdentifier.TYPEBOOLEAN)) {
+							error("No se puede utilizar el operador "+o.name+" con "+exprl+", "+exprr+".", ListaPackage.Literals.COMPOSITE_EXPR__OPERATOR);
+							return TypeIdentifier.NOTYPE;
+						}else {
+							return TypeIdentifier.TYPEBOOLEAN;
+						}
+					
+					} catch (Exception e) {}
 			}
 		}
 		if(expr instanceof NumberExpression) {
@@ -107,7 +209,40 @@ class ListaValidator extends AbstractListaValidator {
 			return TypeIdentifier.TYPEBOOLEAN;
 		}
 		
-		return null;
+		if(expr instanceof Identifier) {
+			var id = expr as Identifier;
+			var eaux = expr as EObject;
+			while(!(eaux instanceof FunctionDefinition)) {
+				eaux = eaux.eContainer;
+			}
+			if (map.get((eaux as FunctionDefinition).name).get(id.name)==TypeIdentifier.NOTYPE) {
+				return type;
+			} else {
+				return map.get((eaux as FunctionDefinition).name).get(id.name);
+			}
+		}
+		
+		if(expr  instanceof SeqExpression) {
+			var seq = expr as SeqExpression;
+			return recursiveCompisiteOperatorValuesCheck(seq.subExpressions.last, type);
+			
+		}
+		
+		if(expr instanceof IfExpression) {
+			var ife = expr as IfExpression
+			return recursiveCompisiteOperatorValuesCheck(ife.consequent, type);
+		}
+		
+		if (expr instanceof OutputExpression) {
+			var oexp = expr as OutputExpression;
+			return recursiveCompisiteOperatorValuesCheck(oexp.parameter, type);
+		}
+		
+		if(expr instanceof InputExpression) {
+			return type;
+		}
+		
+		return TypeIdentifier.NOTYPE;
 	}
 }
 
