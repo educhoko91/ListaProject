@@ -66,11 +66,11 @@ public class TypeIdentifier {
 					aux.put(((Identifier) right).getName(), TYPEINT);
 				}
 
-				if (left instanceof CompositeExpr) {
+				if (!(left instanceof Identifier)) {
 					recursiveInitMap(left, aux);
 				}
 
-				if (right instanceof CompositeExpr) {
+				if (!(right instanceof Identifier)) {
 					recursiveInitMap(right, aux);
 				}
 
@@ -88,11 +88,11 @@ public class TypeIdentifier {
 					aux.put(((Identifier) right).getName(), TYPESTRING);
 				}
 
-				if (left instanceof CompositeExpr) {
+				if (!(left instanceof Identifier)) {
 					recursiveInitMap(left, aux);
 				}
 
-				if (right instanceof CompositeExpr) {
+				if (!(right instanceof Identifier)) {
 					recursiveInitMap(right, aux);
 				}
 
@@ -105,11 +105,11 @@ public class TypeIdentifier {
 					aux.put(((Identifier) right).getName(), TYPEBOOLEAN);
 				}
 
-				if (left instanceof CompositeExpr) {
+				if (!(left instanceof Identifier)) {
 					recursiveInitMap(left, aux);
 				}
 
-				if (right instanceof CompositeExpr) {
+				if (!(right instanceof Identifier)) {
 					recursiveInitMap(right, aux);
 				}
 
@@ -145,20 +145,20 @@ public class TypeIdentifier {
 					aux.put(((Identifier) left).getName(), TYPEBOOLEAN);
 				}
 
-				if (left instanceof CompositeExpr
+				if (!(left instanceof Identifier)
 						&& right instanceof Identifier) {
 					aux.put(((Identifier) right).getName(),
 							recursiveInitMap(left, aux));
 				}
 
-				if (right instanceof CompositeExpr
+				if (!(right instanceof Identifier)
 						&& left instanceof Identifier) {
 					aux.put(((Identifier) left).getName(),
 							recursiveInitMap(right, aux));
 				}
 
-				if (right instanceof CompositeExpr
-						&& left instanceof CompositeExpr) {
+				if (!(right instanceof Identifier)
+						&& !(left instanceof Identifier)) {
 					recursiveInitMap(right, aux);
 					recursiveInitMap(left, aux);
 				}
