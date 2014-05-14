@@ -117,6 +117,24 @@ class ListaGenerator implements IGenerator {
 				«ENDIF»
 			«ELSEIF (alternative instanceof NumberExpression) && consequent instanceof InputExpression»
 				(«generateExpression(ife.cond)»? Integer.parseInt(«generateExpression(consequent)») : «generateExpression(alternative)»)
+			«ELSEIF (consequent instanceof NumberExpression) && alternative instanceof OutputExpression»
+				(«generateExpression(ife.cond)»? «generateExpression(consequent)» : (Integer)«generateExpression(alternative)»)
+			«ELSEIF (consequent instanceof CompositeExpr && alternative instanceof InputExpression)»
+				«var ce = consequent as CompositeExpr»
+				«IF ce.operator.name=="PLUS"||ce.operator.name=="MINUS"||ce.operator.name=="TIMES"||ce.operator.name=="DIVIDE"||ce.operator.name=="SMALLERTHAN"»
+					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : (Integer)«generateExpression(alternative)»)
+				«ELSE»
+					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
+				«ENDIF»
+			«ELSEIF alternative instanceof CompositeExpr && consequent instanceof OutputExpression»
+				«var ce = alternative as CompositeExpr»
+				«IF ce.operator.name=="PLUS"||ce.operator.name=="MINUS"||ce.operator.name=="TIMES"||ce.operator.name=="DIVIDE"||ce.operator.name=="SMALLERTHAN"»
+					(«generateExpression(ife.cond)»? (Integer)«generateExpression(consequent)» : «generateExpression(alternative)»)
+				«ELSE»
+					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
+				«ENDIF»
+			«ELSEIF (alternative instanceof NumberExpression) && consequent instanceof OutputExpression»
+				(«generateExpression(ife.cond)»? (Integer)«generateExpression(consequent)» : «generateExpression(alternative)»)
 			«ELSE»
 				(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
 			«ENDIF»
@@ -149,6 +167,21 @@ class ListaGenerator implements IGenerator {
 					«generateExpression(left)»
 					«ENDIF»
 				«ENDIF»	
+				
+			«ELSEIF (left instanceof OutputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
+				(Integer)«generateExpression(left)»
+			«ELSEIF left instanceof OutputExpression && o.getName=="EQUALS"»
+				«IF right instanceof NumberExpression»
+					(Integer)«generateExpression(left)»
+				«ELSEIF right instanceof CompositeExpr»
+					«IF (right as CompositeExpr).operator=="PLUS" || (right as CompositeExpr).operator=="MINUS"|| (right as CompositeExpr).operator=="TIMES"|| (right as CompositeExpr).operator=="DIVIDE"|| (right as CompositeExpr).operator=="SMALLERTHAN"»
+					(Integer)«generateExpression(left)»
+					«ELSE»
+					«generateExpression(left)»
+					«ENDIF»
+				«ENDIF»	
+				
+				
 			«ELSE»
 				«generateExpression(left)»
 			«ENDIF»«generateOperator(o)»
@@ -163,8 +196,20 @@ class ListaGenerator implements IGenerator {
 					«ELSE»
 					«generateExpression(right)»
 				«ENDIF»
-			«ENDIF»	
-			
+			«ENDIF»
+
+			«ELSEIF (right instanceof OutputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
+				(Integer)«generateExpression(right)»
+			«ELSEIF right instanceof OutputExpression && o.getName=="EQUALS"»
+				«IF left instanceof NumberExpression»
+					(Integer)«generateExpression(right)»
+				«ELSEIF left instanceof CompositeExpr»
+					«IF (left as CompositeExpr).operator=="PLUS" || (left as CompositeExpr).operator=="MINUS"|| (left as CompositeExpr).operator=="TIMES"|| (left as CompositeExpr).operator=="DIVIDE"|| (left as CompositeExpr).operator=="SMALLERTHAN"»
+					(Integer)«generateExpression(right)»
+					«ELSE»
+					«generateExpression(right)»
+				«ENDIF»
+			«ENDIF»
 			«ELSE»
 				«generateExpression(right)»
 			«ENDIF»
