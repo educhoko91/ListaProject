@@ -24,6 +24,8 @@ import Lista.SeqExpression
 import Lista.OutputExpression
 import Lista.NegExpr
 import Lista.InputExpression
+import com.google.common.base.Function
+import Lista.FunctionCall
 
 /**
  * Custom validation rules. 
@@ -36,6 +38,7 @@ class ListaValidator extends AbstractListaValidator {
 
 	def initMap(Program prog) {
 		this.map = TypeIdentifier.getInstance(prog).hashMap;
+		System.out.println(map);
 	}
 	
 	@Check
@@ -50,7 +53,8 @@ class ListaValidator extends AbstractListaValidator {
 			eaux = eaux.eContainer;
 		}
 		var fd = eaux as FunctionDefinition
-		if(map.get(fd.name).get(id.name)==TypeIdentifier.NOTYPE) {
+		if(map.get(fd.name).get(id.name)==TypeIdentifier.NOTYPE ||
+			map.get(fd.name).get(id.name)==null) {
 			error("No se pudo determinar el tipo de "+id.name,
 				ListaPackage.Literals.IDENTIFIER__NAME
 			)
@@ -58,23 +62,25 @@ class ListaValidator extends AbstractListaValidator {
 	}
 
 	@Check
-	def checkFunctionDefinitionParams(Program prog) {
-		initMap(prog);
+	def checkFunctionDefinitionParams(FunctionDefinition f) {
+		var prog = f as EObject;
+		while(!(prog instanceof Program)) {
+			prog = prog.eContainer;
+		}
+		initMap(prog as Program);
 		val setParams = new HashSet<String>;
-		for (FunctionDefinition f : prog.functionDefinitions) {
-			for (Identifier id : f.parameters) {
-				if (!map.get(f.name).containsKey(id.name)) {
-					error("El parametro \"" + id.name + "\" no esta siendo utilizado.",
-						ListaPackage.Literals.PROGRAM__FUNCTION_DEFINITIONS);
-				}
-				setParams.add(id.name);
+		for (Identifier id : f.parameters) {
+			if (!map.get(f.name).containsKey(id.name)) {
+				error("El parametro \"" + id.name + "\" no esta siendo utilizado.",
+					ListaPackage.Literals.FUNCTION_DEFINITION__PARAMETERS);
 			}
+			setParams.add(id.name);
+		}
 
-			map.get(f.name).keySet.removeAll(setParams);
-			for (String s : map.get(f.name).keySet) {
-				error("El parametro " + s + " no esta declarado en la funcion.",
-					ListaPackage.Literals.PROGRAM__FUNCTION_DEFINITIONS);
-			}
+		map.get(f.name).keySet.removeAll(setParams);
+		for (String s : map.get(f.name).keySet) {
+			error("El parametro " + s + " no esta declarado en la funcion.",
+				ListaPackage.Literals.FUNCTION_DEFINITION__PARAMETERS);
 		}
 	}
 
@@ -240,6 +246,14 @@ class ListaValidator extends AbstractListaValidator {
 		
 		if(expr instanceof InputExpression) {
 			return type;
+		}
+		
+		if(expr instanceof FunctionCall) {
+			var fc = expr as FunctionCall;
+			for(Expression e : fc.arguments) {
+				recursiveCompisiteOperatorValuesCheck(e, type);
+			}
+			return map.get("global").get(fc.function.name);
 		}
 		
 		return TypeIdentifier.NOTYPE;
