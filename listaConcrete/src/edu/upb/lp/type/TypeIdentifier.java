@@ -33,6 +33,8 @@ public class TypeIdentifier {
 	public static final String NOTYPE = "error";
 
 	private HashMap<String, HashMap<String, String>> map = new HashMap<>();
+	private HashMap<Expression, HashMap<String,String>> sequences = new HashMap<>();
+	private int sequenceNumber =0;
 
 	private TypeIdentifier(Program prog) {
 		initMap(prog);
@@ -214,10 +216,25 @@ public class TypeIdentifier {
 		if(exp instanceof SeqExpression) {
 			SeqExpression secExp = (SeqExpression) exp;
 			Iterator<Expression> iter = secExp.getSubExpressions().iterator();
+			
 			while (iter.hasNext()) {
 				Expression auxExp = iter.next();
 				if(!iter.hasNext()) {
-					return recursiveInitMap(auxExp, aux, type);
+					String tipoAux = recursiveInitMap(auxExp, aux, type);
+					if(sequences.containsKey(secExp)){
+						HashMap<String,String> seqAux = sequences.get(secExp);
+						for(String seq : seqAux.keySet()){
+							seqAux.put(seq, tipoAux);
+						}
+						sequences.put(secExp, seqAux);
+					}
+					else{
+						HashMap<String,String> seqAux = new HashMap<>();
+						seqAux.put("seq"+sequenceNumber, tipoAux);
+						sequences.put(secExp,seqAux);
+						sequenceNumber++;
+					}
+					return tipoAux;
 				} else
 					recursiveInitMap(auxExp, aux, type);
 				
@@ -428,10 +445,25 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 		if(exp instanceof SeqExpression) {
 			SeqExpression secExp = (SeqExpression) exp;
 			Iterator<Expression> iter = secExp.getSubExpressions().iterator();
+			
 			while (iter.hasNext()) {
 				Expression auxExp = iter.next();
 				if(!iter.hasNext()) {
-					return recursiveInitMapFunctionCall(auxExp, aux, type,f,p);
+					String tipoAux = recursiveInitMapFunctionCall(auxExp, aux, type,f,p);
+					if(sequences.containsKey(secExp)){
+						HashMap<String,String> seqAux = sequences.get(secExp);
+						for(String seq : seqAux.keySet()){
+							seqAux.put(seq, tipoAux);
+						}
+						sequences.put(secExp, seqAux);
+					}
+					else{
+						HashMap<String,String> seqAux = new HashMap<>();
+						seqAux.put("seq"+sequenceNumber, tipoAux);
+						sequences.put(secExp,seqAux);
+						sequenceNumber++;
+					}
+					return tipoAux;
 				} else
 					recursiveInitMapFunctionCall(auxExp, aux, type,f,p);
 				
@@ -509,6 +541,8 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 			return ti;
 		} else {
 			ti.map = new HashMap<>();
+			ti.sequences = new HashMap<>();
+			ti.sequenceNumber=0;
 			ti.initMap(prog);
 			return ti;
 		}
@@ -518,4 +552,7 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 		return map;
 	}
 
+	public HashMap<Expression,HashMap<String,String>> getSequences(){
+		return sequences;
+	}
 }

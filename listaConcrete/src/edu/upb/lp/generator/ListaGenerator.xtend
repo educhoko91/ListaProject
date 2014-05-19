@@ -22,7 +22,7 @@ import Lista.CompositeExpr
 import Lista.Operator
 import Lista.IfExpression
 import java.util.HashMap
-import java.awt.Composite
+
 
 /**
  * Generates code from your model files on save.
@@ -32,15 +32,20 @@ import java.awt.Composite
 class ListaGenerator implements IGenerator {
 	
 	var symbolTable = new HashMap<String,HashMap<String,String>>;
+	var seqTable = new HashMap<Expression,HashMap<String,String>>;
+	var sequences = 0;
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
 		val p = resource.contents.get(0) as Program
 		val st = TypeIdentifier.getInstance(p)
 		symbolTable=st.hashMap;
+		seqTable=st.sequences;
+		sequences = 0;
 		println(st.hashMap)
 		var f = resource.URI.trimFileExtension
 		fsa.generateFile(f.segment(f.segmentCount-1)+".java",generateCode(p));
+		println(seqTable);
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
 //				.filter(typeof(Greeting))
@@ -52,12 +57,12 @@ class ListaGenerator implements IGenerator {
 	import java.util.*;
 		public class Main{
 			public static void main(String[] args){
-				System.out.println(«generateExpression(p.evaluation.expression)»);
+				System.out.println(«generateExpression(p.evaluation.expression,"global")»);
 			}
 		«FOR f: p.functionDefinitions»
 		
-			public static «symbolTable.get("global").get(f.name)» «f.name»(«FOR param:f.parameters SEPARATOR ','» «symbolTable.get(f.name).get(param.name)» «generateExpression(param)» «ENDFOR»){
-				return («generateExpression(f.expression)»);
+			public static «symbolTable.get("global").get(f.name)» «f.name»(«FOR param:f.parameters SEPARATOR ','» «symbolTable.get(f.name).get(param.name)» «generateExpression(param,f.name)» «ENDFOR»){
+				return («generateExpression(f.expression,f.name)»);
 			}
 		«ENDFOR»
 		
@@ -90,13 +95,21 @@ class ListaGenerator implements IGenerator {
 		public static int parseInt(int a){
 			return a;
 		}
-		
-		}'''
-	def generateExpression(Expression e)'''
+
+		«generateSequences(seqTable)»
+		}
+		'''
+	def generateExpression(Expression e,String scope)'''
 		«IF e instanceof FunctionCall»
 			«var fc = e as FunctionCall»
+			«var i = 0»
 			«fc.function.name» («FOR a: fc.arguments SEPARATOR ','»
-									«generateExpression(a)»
+									«IF (a instanceof InputExpression || a instanceof OutputExpression) && symbolTable.get(fc.function.name).get(fc.function.parameters.get(i).name).equals("int")»
+										parseInt(«generateExpression(a,scope)»)
+									«ELSE»
+										«generateExpression(a,scope)»
+									«ENDIF»
+									«{i=i+1; null}»
 								«ENDFOR»)
 		«ELSEIF e instanceof NumberExpression»
 			«var ne = e as NumberExpression»
@@ -118,123 +131,149 @@ class ListaGenerator implements IGenerator {
 			«var consequent = ife.consequent»
 			«var alternative = ife.alternative»
 			«IF (consequent instanceof NumberExpression) && alternative instanceof InputExpression»
-				(«generateExpression(ife.cond)»? «generateExpression(consequent)» : parseInt(«generateExpression(alternative)»))
+				(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
 			«ELSEIF (consequent instanceof CompositeExpr && alternative instanceof InputExpression)»
 				«var ce = consequent as CompositeExpr»
 				«IF ce.operator.name=="PLUS"||ce.operator.name=="MINUS"||ce.operator.name=="TIMES"||ce.operator.name=="DIVIDE"||ce.operator.name=="SMALLERTHAN"»
-					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : parseInt(«generateExpression(alternative)»))
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
 				«ELSE»
-					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
 				«ENDIF»
 			«ELSEIF alternative instanceof CompositeExpr && consequent instanceof InputExpression»
 				«var ce = alternative as CompositeExpr»
 				«IF ce.operator.name=="PLUS"||ce.operator.name=="MINUS"||ce.operator.name=="TIMES"||ce.operator.name=="DIVIDE"||ce.operator.name=="SMALLERTHAN"»
-					(«generateExpression(ife.cond)»? parseInt(«generateExpression(consequent)») : «generateExpression(alternative)»)
+					(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
 				«ELSE»
-					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
 				«ENDIF»
 			«ELSEIF (alternative instanceof NumberExpression) && consequent instanceof InputExpression»
-				(«generateExpression(ife.cond)»? parseInt(«generateExpression(consequent)») : «generateExpression(alternative)»)
+				(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
 			«ELSEIF (consequent instanceof NumberExpression) && alternative instanceof OutputExpression»
-				(«generateExpression(ife.cond)»? «generateExpression(consequent)» : parseInt(«generateExpression(alternative)»))
+				(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
 			«ELSEIF (consequent instanceof CompositeExpr && alternative instanceof InputExpression)»
 				«var ce = consequent as CompositeExpr»
 				«IF ce.operator.name=="PLUS"||ce.operator.name=="MINUS"||ce.operator.name=="TIMES"||ce.operator.name=="DIVIDE"||ce.operator.name=="SMALLERTHAN"»
-					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : parseInt(«generateExpression(alternative)»))
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
 				«ELSE»
-					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
 				«ENDIF»
 			«ELSEIF alternative instanceof CompositeExpr && consequent instanceof OutputExpression»
 				«var ce = alternative as CompositeExpr»
 				«IF ce.operator.name=="PLUS"||ce.operator.name=="MINUS"||ce.operator.name=="TIMES"||ce.operator.name=="DIVIDE"||ce.operator.name=="SMALLERTHAN"»
-					(«generateExpression(ife.cond)»? parseInt(«generateExpression(consequent)») : «generateExpression(alternative)»)
+					(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
 				«ELSE»
-					(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
 				«ENDIF»
 			«ELSEIF (alternative instanceof NumberExpression) && consequent instanceof OutputExpression»
-				(«generateExpression(ife.cond)»? parseInt(«generateExpression(consequent)») : «generateExpression(alternative)»)
+				(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
 			«ELSE»
-				(«generateExpression(ife.cond)»? «generateExpression(consequent)» : «generateExpression(alternative)»)
+				(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
 			«ENDIF»
 			
 		«ELSEIF e instanceof NegExpr»
 			«var neg = e as NegExpr»
-			«generateExpression(neg.subExpr)»
+			!«generateExpression(neg.subExpr,scope)»
 		«ELSEIF e instanceof OutputExpression»
 			«var out = e as OutputExpression»
-			output(«generateExpression(out.parameter)»)
+			output(«generateExpression(out.parameter,scope)»)
 		«ELSEIF e instanceof SeqExpression»
 			«var se = e as SeqExpression»
-			«FOR sub:se.subExpressions»
-				«generateExpression(sub)»
-			«ENDFOR»
+			seq«sequences»(«FOR sub : se.subExpressions SEPARATOR ','»«generateExpression(sub,scope)»«ENDFOR» )
+			«{sequences=sequences+1;null}»
 		«ELSEIF e instanceof CompositeExpr»
 			«var ce = e as CompositeExpr»
 			«var left = ce.subExpressions.get(0)»
 			«var right = ce.subExpressions.get(1)»
 			«var o = ce.operator»
 			«IF (left instanceof InputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
-				parseInt(«generateExpression(left)»)
+				parseInt(«generateExpression(left,scope)»)
 			«ELSEIF left instanceof InputExpression && o.getName=="EQUALS"»
 				«IF right instanceof NumberExpression»
-					parseInt(«generateExpression(left)»)
+					parseInt(«generateExpression(left,scope)»)
 				«ELSEIF right instanceof CompositeExpr»
 					«IF (right as CompositeExpr).operator=="PLUS" || (right as CompositeExpr).operator=="MINUS"|| (right as CompositeExpr).operator=="TIMES"|| (right as CompositeExpr).operator=="DIVIDE"|| (right as CompositeExpr).operator=="SMALLERTHAN"»
-					parseInt(«generateExpression(left)»)
+					parseInt(«generateExpression(left,scope)»)
 					«ELSE»
-					«generateExpression(left)»
+					«generateExpression(left,scope)»
 					«ENDIF»
 				«ENDIF»	
 				
 			«ELSEIF (left instanceof OutputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
-				parseInt(«generateExpression(left)»)
+				parseInt(«generateExpression(left,scope)»)
 			«ELSEIF left instanceof OutputExpression && o.getName=="EQUALS"»
 				«IF right instanceof NumberExpression»
-					parseInt(«generateExpression(left)»)
+					parseInt(«generateExpression(left,scope)»)
 				«ELSEIF right instanceof CompositeExpr»
 					«IF (right as CompositeExpr).operator=="PLUS" || (right as CompositeExpr).operator=="MINUS"|| (right as CompositeExpr).operator=="TIMES"|| (right as CompositeExpr).operator=="DIVIDE"|| (right as CompositeExpr).operator=="SMALLERTHAN"»
-					parseInt(«generateExpression(left)»)
+					parseInt(«generateExpression(left,scope)»)
 					«ELSE»
-					«generateExpression(left)»
+					«generateExpression(left,scope)»
 					«ENDIF»
 				«ENDIF»	
 				
 				
 			«ELSE»
-				«generateExpression(left)»
-			«ENDIF»«generateOperator(o)»
+				«generateExpression(left,scope)»
+			«ENDIF»«generateOperator(o,left)»
 			«IF (right instanceof InputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
-				parseInt(«generateExpression(right)»)
+				parseInt(«generateExpression(right,scope)»)
 			«ELSEIF right instanceof InputExpression && o.getName=="EQUALS"»
 				«IF left instanceof NumberExpression»
-					parseInt(«generateExpression(right)»)
+					parseInt(«generateExpression(right,scope)»)
 				«ELSEIF left instanceof CompositeExpr»
 					«IF (left as CompositeExpr).operator=="PLUS" || (left as CompositeExpr).operator=="MINUS"|| (left as CompositeExpr).operator=="TIMES"|| (left as CompositeExpr).operator=="DIVIDE"|| (left as CompositeExpr).operator=="SMALLERTHAN"»
-					parseInt(«generateExpression(right)»)
+					parseInt(«generateExpression(right,scope)»)
 					«ELSE»
-					«generateExpression(right)»
+					«generateExpression(right,scope)»
 				«ENDIF»
 			«ENDIF»
 
 			«ELSEIF (right instanceof OutputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
-				parseInt(«generateExpression(right)»)
+				parseInt(«generateExpression(right,scope)»)
 			«ELSEIF right instanceof OutputExpression && o.getName=="EQUALS"»
 				«IF left instanceof NumberExpression»
-					parseInt(«generateExpression(right)»)
+					parseInt(«generateExpression(right,scope)»)
 				«ELSEIF left instanceof CompositeExpr»
 					«IF (left as CompositeExpr).operator=="PLUS" || (left as CompositeExpr).operator=="MINUS"|| (left as CompositeExpr).operator=="TIMES"|| (left as CompositeExpr).operator=="DIVIDE"|| (left as CompositeExpr).operator=="SMALLERTHAN"»
-					parseInt(«generateExpression(right)»)
+					parseInt(«generateExpression(right,scope)»)
 					«ELSE»
-					«generateExpression(right)»
+					«generateExpression(right,scope)»
 				«ENDIF»
 			«ENDIF»
 			«ELSE»
-				«generateExpression(right)»
+				«generateExpression(right,scope)»
 			«ENDIF»
 			
 			«ENDIF»'''
 		
-	def generateOperator(Operator o)'''
+	def generateOperator(Operator o,Expression left)'''
 		«var operator = o.getName»
-		«IF operator=="PLUS"»	+	«ELSEIF operator=="MINUS"»	-  «ELSEIF operator=="OR"»	||  «ELSEIF operator=="AND"»  &&  «ELSEIF operator=="TIMES"»  *  «ELSEIF operator=="DIVIDE"»  /  «ELSEIF operator=="CONCAT"»  +  «ELSEIF operator=="SMALLERTHAN"»  <  «ELSEIF operator=="EQUALS"»  ==  «ENDIF»	'''
+		«IF left instanceof Identifier»
+			«IF operator=="PLUS"»	+=	«ELSEIF operator=="MINUS"»	-=  «ELSEIF operator=="OR"»	||  «ELSEIF operator=="AND"»  &&  «ELSEIF operator=="TIMES"»  *=  «ELSEIF operator=="DIVIDE"»  /=  «ELSEIF operator=="CONCAT"»  +=  «ELSEIF operator=="SMALLERTHAN"»  <  «ELSEIF operator=="EQUALS"»  ==  «ENDIF»
+			«ELSE»
+			«IF operator=="PLUS"»	+	«ELSEIF operator=="MINUS"»	-  «ELSEIF operator=="OR"»	||  «ELSEIF operator=="AND"»  &&  «ELSEIF operator=="TIMES"»  *  «ELSEIF operator=="DIVIDE"»  /  «ELSEIF operator=="CONCAT"»  +  «ELSEIF operator=="SMALLERTHAN"»  <  «ELSEIF operator=="EQUALS"»  ==  «ENDIF»«ENDIF»'''
+		
+	def generateSequences(HashMap<Expression,HashMap<String,String>> h)'''
+	«FOR s : h.keySet»
+		«var map = h.get(s)»
+		«FOR k : map.keySet»
+			«var type= map.get(k)»
+			«{if(type.equals("int")){
+				type="Integer";
+				}
+				else if(type.equals("boolean")){
+					type="Boolean"	
+				};null}»
+			public static «type» «k»(Object... o){
+				Object r = new Object();
+				for(Object aux :o){
+					r=aux;
+				}
+				return («type»)r;
+			}
+		«ENDFOR»
+	«ENDFOR»
+	'''
+	
+	
 }
