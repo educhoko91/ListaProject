@@ -215,6 +215,15 @@ class ListaValidator extends AbstractListaValidator {
 			return INPUTTYPE;
 		}
 		
+		if(expr instanceof Identifier) {
+			var fdo = expr as EObject
+			while(!(fdo instanceof FunctionDefinition))
+				fdo = fdo.eContainer;
+			var id = expr  as Identifier;
+			var fd = fdo as FunctionDefinition;
+			return map.get(fd.name).get(id.name);
+		}
+		
 		if(expr instanceof FunctionCall) {
 			var fc= expr as FunctionCall;
 			return map.get("global").get(fc.function.name);

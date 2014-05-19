@@ -129,8 +129,14 @@ public class TypeIdentifier {
 					return TYPEBOOLEAN;
 				} else if (o == Operator.EQUALS) {
 					if (left instanceof Identifier && right instanceof Identifier) {
-						aux.put(((Identifier) left).getName(), NOTYPE);
-						aux.put(((Identifier) right).getName(), NOTYPE);
+						if(!aux.containsKey(((Identifier) left).getName()))
+							aux.put(((Identifier) left).getName(), NOTYPE);
+						else
+							return aux.get(((Identifier) left).getName());
+						if(!aux.containsKey(((Identifier) right).getName()))
+							aux.put(((Identifier) right).getName(), NOTYPE);
+						else
+							return aux.get(((Identifier) right).getName());
 						return NOTYPE;
 					} else if (left instanceof NumberExpression
 							&& right instanceof Identifier) {
@@ -199,7 +205,7 @@ public class TypeIdentifier {
 			}
 			
 			if(a!=NOTYPE && b==NOTYPE){
-				b = recursiveInitMap(ifexp.getConsequent(), aux, a);
+				b = recursiveInitMap(ifexp.getAlternative(), aux, a);
 			}
 			
 			if(a==NOTYPE || b==NOTYPE) {
@@ -236,7 +242,7 @@ public class TypeIdentifier {
 					}
 					return tipoAux;
 				} else
-					recursiveInitMap(auxExp, aux, type);
+					recursiveInitMap(auxExp, aux, NOTYPE);
 				
 			}
 		}
@@ -278,7 +284,10 @@ public class TypeIdentifier {
 				recursiveInitMapFunctionCall(e, aux, type,fd.getName(), fd.getParameters().get(i).getName());
 				i++;
 			}
-			return map.get("global").get(fd.getName());
+			if(map.get("global").get(fd.getName()).equals(NOTYPE))
+				return type;
+			else
+				return map.get("global").get(fd.getName());
 			
 		}
 		
@@ -358,8 +367,14 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 					return TYPEBOOLEAN;
 				} else if (o == Operator.EQUALS) {
 					if (left instanceof Identifier && right instanceof Identifier) {
-						aux.put(((Identifier) left).getName(), NOTYPE);
-						aux.put(((Identifier) right).getName(), NOTYPE);
+						if(!aux.containsKey(((Identifier) left).getName()))
+							aux.put(((Identifier) left).getName(), NOTYPE);
+						else
+							return aux.get(((Identifier) left).getName());
+						if(!aux.containsKey(((Identifier) right).getName()))
+							aux.put(((Identifier) right).getName(), NOTYPE);
+						else
+							return aux.get(((Identifier) right).getName());
 						return NOTYPE;
 					} else if (left instanceof NumberExpression
 							&& right instanceof Identifier) {
@@ -428,7 +443,7 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 			}
 			
 			if(a!=NOTYPE && b==NOTYPE){
-				b = recursiveInitMapFunctionCall(ifexp.getConsequent(), aux, a,f,p);
+				b = recursiveInitMapFunctionCall(ifexp.getAlternative(), aux, a,f,p);
 			}
 			
 			if(a==NOTYPE || b==NOTYPE) {
@@ -465,7 +480,7 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 					}
 					return tipoAux;
 				} else
-					recursiveInitMapFunctionCall(auxExp, aux, type,f,p);
+					recursiveInitMapFunctionCall(auxExp, aux, NOTYPE,f,p);
 				
 			}
 		}
