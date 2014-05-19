@@ -44,7 +44,8 @@ class ListaGenerator implements IGenerator {
 		sequences = 0;
 		println(st.hashMap)
 		var f = resource.URI.trimFileExtension
-		fsa.generateFile(f.segment(f.segmentCount-1)+".java",generateCode(p));
+		var name = f.segment(f.segmentCount-1)
+		fsa.generateFile(f.segment(f.segmentCount-1)+".java",generateCode(p,name));
 		println(seqTable);
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
@@ -53,9 +54,9 @@ class ListaGenerator implements IGenerator {
 //				.join(', '))
 	}
 	
-	def generateCode(Program p)'''
+	def generateCode(Program p,String name)'''
 	import java.util.*;
-		public class Main{
+		public class «name»{
 			public static void main(String[] args){
 				System.out.println(«generateExpression(p.evaluation.expression,"global")»);
 			}
