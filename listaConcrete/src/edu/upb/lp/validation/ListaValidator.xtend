@@ -116,7 +116,7 @@ class ListaValidator extends AbstractListaValidator {
 			var f = fc.function.name;
 			for(Expression e: fc.arguments) {
 				var p = fc.function.parameters.get(cnd).name;
-				var a = recursiveArgumentOnFunctionCall(e) as String;
+				var a = recursiveArgumentOnFunctionCall(e,f) as String;
 				var b = map.get(f).get(p);
 				functionCallTypeCheck(a,b,f,p);
 				cnd = 1+cnd;
@@ -178,8 +178,7 @@ class ListaValidator extends AbstractListaValidator {
 			val ce = expr as CompositeExpr;
 			val o = ce.operator;
 	
-			if (o == Operator.PLUS || o == Operator.MINUS || o == Operator.DIVIDE || o == Operator.TIMES ||
-				o == Operator.SMALLERTHAN) {
+			if (o == Operator.PLUS || o == Operator.MINUS || o == Operator.DIVIDE || o == Operator.TIMES) {
 					return TypeIdentifier.TYPEINT;
 					
 			}
@@ -188,7 +187,7 @@ class ListaValidator extends AbstractListaValidator {
 				return TypeIdentifier.TYPESTRING;
 			}
 			
-			if(o == Operator.AND || o == Operator.OR) {
+			if(o == Operator.AND || o == Operator.OR || o==Operator.EQUALS || o==Operator.SMALLERTHAN) {
 				return TypeIdentifier.TYPEBOOLEAN
 			}
 		}
@@ -225,7 +224,7 @@ class ListaValidator extends AbstractListaValidator {
 		
 	}
 	
-	def recursiveArgumentOnFunctionCall(Expression expr) {
+	def recursiveArgumentOnFunctionCall(Expression expr,String f) {
 		if(expr instanceof NumberExpression) {
 			return TypeIdentifier.TYPEINT;
 		}
@@ -240,8 +239,7 @@ class ListaValidator extends AbstractListaValidator {
 			val ce = expr as CompositeExpr;
 			val o = ce.operator;
 	
-			if (o == Operator.PLUS || o == Operator.MINUS || o == Operator.DIVIDE || o == Operator.TIMES ||
-				o == Operator.SMALLERTHAN) {
+			if (o == Operator.PLUS || o == Operator.MINUS || o == Operator.DIVIDE || o == Operator.TIMES) {
 					return TypeIdentifier.TYPEINT;
 					
 			}
@@ -250,20 +248,20 @@ class ListaValidator extends AbstractListaValidator {
 				return TypeIdentifier.TYPESTRING;
 			}
 			
-			if(o == Operator.AND || o == Operator.OR) {
+			if(o == Operator.AND || o == Operator.OR || o==Operator.EQUALS || o==Operator.SMALLERTHAN) {
 				return TypeIdentifier.TYPEBOOLEAN
 			}
 		}
 		
 		if(expr instanceof SeqExpression) {
 			var se = expr as SeqExpression;
-			return recursiveArgumentOnFunctionCall(se.subExpressions.last);
+			return recursiveArgumentOnFunctionCall(se.subExpressions.last,f);
 		}
 		
 		if (expr instanceof IfExpression) {
 			var ie = expr as IfExpression;
-			var a = recursiveArgumentOnFunctionCall(ie.consequent);
-			var b = recursiveArgumentOnFunctionCall(ie.alternative);
+			var a = recursiveArgumentOnFunctionCall(ie.consequent,f);
+			var b = recursiveArgumentOnFunctionCall(ie.alternative,f);
 			if(a.equals(b))
 				return a;
 			return TypeIdentifier.NOTYPE;
@@ -271,7 +269,7 @@ class ListaValidator extends AbstractListaValidator {
 		
 		if(expr instanceof OutputExpression) {
 			var oe = expr as OutputExpression;
-			return recursiveArgumentOnFunctionCall(oe.parameter);
+			return recursiveArgumentOnFunctionCall(oe.parameter,f);
 		}
 		
 		if(expr instanceof InputExpression) {
@@ -281,6 +279,15 @@ class ListaValidator extends AbstractListaValidator {
 		if(expr instanceof FunctionCall) {
 			var fc= expr as FunctionCall;
 			return map.get("global").get(fc.function.name);
+		}
+		
+		if(expr instanceof Identifier) {
+			var fdo = expr as EObject
+			while(!(fdo instanceof FunctionDefinition))
+				fdo = fdo.eContainer;
+			var id = expr  as Identifier;
+			var fd = fdo as FunctionDefinition;
+			return map.get(fd.name).get(id.name);
 		}
 		 
 		 return TypeIdentifier.NOTYPE;
