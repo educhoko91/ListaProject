@@ -26,6 +26,7 @@ import Lista.NegExpr
 import Lista.InputExpression
 import com.google.common.base.Function
 import Lista.FunctionCall
+import org.eclipse.emf.codegen.ecore.genmodel.impl.Literals
 
 /**
  * Custom validation rules. 
@@ -33,6 +34,8 @@ import Lista.FunctionCall
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 class ListaValidator extends AbstractListaValidator {
+	
+	public static final String INPUTTYPE="input";
 
 	public HashMap<String, HashMap<String, String>> map;
 
@@ -100,6 +103,199 @@ class ListaValidator extends AbstractListaValidator {
 		
 	}
 	
+	@Check
+	def checkArgumentsOnFunctionCall(FunctionCall fc) {
+		var prog = fc as EObject
+		while(!(prog instanceof Program))
+			prog = prog.eContainer;
+		initMap(prog as Program);
+		
+		if(fc.arguments.size==fc.function.parameters.size) {
+		
+			var cnd = 0;
+			var f = fc.function.name;
+			for(Expression e: fc.arguments) {
+				var p = fc.function.parameters.get(cnd).name;
+				var a = recursiveArgumentOnFunctionCall(e) as String;
+				var b = map.get(f).get(p);
+				functionCallTypeCheck(a,b,f,p);
+				cnd = 1+cnd;
+			}
+			
+		}
+		else {
+			error("Faltan Parametos!!!", ListaPackage.Literals.FUNCTION_CALL__FUNCTION);
+		}
+	}
+	
+	@Check
+	def checkIfExprReturnType(IfExpression iexpr) {
+		var cond = recursiveIfExprReturnType(iexpr.cond);
+		var consequent = recursiveIfExprReturnType(iexpr.consequent);
+		var alternative = recursiveIfExprReturnType(iexpr.alternative);
+		
+		if(!cond.equals(INPUTTYPE)) {
+			if (cond.equals(TypeIdentifier.TYPEBOOLEAN)) {
+				if(!consequent.equals(INPUTTYPE) && !alternative.equals(INPUTTYPE)) {
+					if(!consequent.equals(alternative)) {
+						error("Los valores de retorno deben ser iguales",
+							ListaPackage.Literals.IF_EXPRESSION__ALTERNATIVE
+						)
+					}
+				
+				}
+			}
+			else {
+				error("La consecuencia debe ser Boolean",
+						ListaPackage.Literals.IF_EXPRESSION__COND
+					)
+			}
+		}
+		else {
+			if(!consequent.equals(INPUTTYPE) && !alternative.equals(INPUTTYPE)) {
+					if(!consequent.equals(alternative)) {
+						error("Los valores de retorno deben ser iguales",
+							ListaPackage.Literals.IF_EXPRESSION__ALTERNATIVE
+						)
+					}
+				}
+		}
+		
+	}
+	
+	def recursiveIfExprReturnType(Expression expr) {
+		if(expr instanceof NumberExpression) {
+			return TypeIdentifier.TYPEINT;
+		}
+		if(expr instanceof StringExpression) {
+			return TypeIdentifier.TYPESTRING;
+		}
+		if(expr instanceof BooleanExpression) {
+			return TypeIdentifier.TYPEBOOLEAN;
+		}
+		
+		if (expr instanceof CompositeExpr) {
+			val ce = expr as CompositeExpr;
+			val o = ce.operator;
+	
+			if (o == Operator.PLUS || o == Operator.MINUS || o == Operator.DIVIDE || o == Operator.TIMES ||
+				o == Operator.SMALLERTHAN) {
+					return TypeIdentifier.TYPEINT;
+					
+			}
+			
+			if(o==Operator.CONCAT) {
+				return TypeIdentifier.TYPESTRING;
+			}
+			
+			if(o == Operator.AND || o == Operator.OR) {
+				return TypeIdentifier.TYPEBOOLEAN
+			}
+		}
+		
+		if(expr instanceof SeqExpression) {
+			var se = expr as SeqExpression;
+			return recursiveIfExprReturnType(se.subExpressions.last);
+		}
+		
+		if (expr instanceof IfExpression) {
+			var ie = expr as IfExpression;
+			var a = recursiveIfExprReturnType(ie.consequent);
+			var b = recursiveIfExprReturnType(ie.alternative);
+			if(a.equals(b))
+				return a;
+			return TypeIdentifier.NOTYPE;
+		}
+		
+		if(expr instanceof OutputExpression) {
+			var oe = expr as OutputExpression;
+			return recursiveIfExprReturnType(oe.parameter);
+		}
+		
+		if(expr instanceof InputExpression) {
+			return INPUTTYPE;
+		}
+		
+		if(expr instanceof FunctionCall) {
+			var fc= expr as FunctionCall;
+			return map.get("global").get(fc.function.name);
+		}
+		 
+		 return TypeIdentifier.NOTYPE;
+		
+	}
+	
+	def recursiveArgumentOnFunctionCall(Expression expr) {
+		if(expr instanceof NumberExpression) {
+			return TypeIdentifier.TYPEINT;
+		}
+		if(expr instanceof StringExpression) {
+			return TypeIdentifier.TYPESTRING;
+		}
+		if(expr instanceof BooleanExpression) {
+			return TypeIdentifier.TYPEBOOLEAN;
+		}
+		
+		if (expr instanceof CompositeExpr) {
+			val ce = expr as CompositeExpr;
+			val o = ce.operator;
+	
+			if (o == Operator.PLUS || o == Operator.MINUS || o == Operator.DIVIDE || o == Operator.TIMES ||
+				o == Operator.SMALLERTHAN) {
+					return TypeIdentifier.TYPEINT;
+					
+			}
+			
+			if(o==Operator.CONCAT) {
+				return TypeIdentifier.TYPESTRING;
+			}
+			
+			if(o == Operator.AND || o == Operator.OR) {
+				return TypeIdentifier.TYPEBOOLEAN
+			}
+		}
+		
+		if(expr instanceof SeqExpression) {
+			var se = expr as SeqExpression;
+			return recursiveArgumentOnFunctionCall(se.subExpressions.last);
+		}
+		
+		if (expr instanceof IfExpression) {
+			var ie = expr as IfExpression;
+			var a = recursiveArgumentOnFunctionCall(ie.consequent);
+			var b = recursiveArgumentOnFunctionCall(ie.alternative);
+			if(a.equals(b))
+				return a;
+			return TypeIdentifier.NOTYPE;
+		}
+		
+		if(expr instanceof OutputExpression) {
+			var oe = expr as OutputExpression;
+			return recursiveArgumentOnFunctionCall(oe.parameter);
+		}
+		
+		if(expr instanceof InputExpression) {
+			return INPUTTYPE;
+		}
+		
+		if(expr instanceof FunctionCall) {
+			var fc= expr as FunctionCall;
+			return map.get("global").get(fc.function.name);
+		}
+		 
+		 return TypeIdentifier.NOTYPE;
+		
+	}
+	
+	def functionCallTypeCheck(String a, String b, String f, String p) {
+		if(!a.equals(INPUTTYPE))
+			if(!a.equals(b)) {
+				error("La Funcion "+f+" en el parametro "+p+" resive un "+b+" y no un "+a,
+					ListaPackage.Literals.FUNCTION_CALL__FUNCTION
+				)
+			}
+	}
+	
 	def recursiveIdentifiersInEvaluation(Expression expr) {
 		if(expr instanceof Identifier) {
 			var id = expr  as Identifier
@@ -133,7 +329,7 @@ class ListaValidator extends AbstractListaValidator {
 			if(expr instanceof SeqExpression) {
 				var secExp = expr as SeqExpression;
 				for(Expression e : secExp.subExpressions) {
-					recursiveIdentifiersInEvaluation(expr);
+					recursiveIdentifiersInEvaluation(e);
 				}
 			}
 			if(expr instanceof OutputExpression) {
@@ -144,6 +340,14 @@ class ListaValidator extends AbstractListaValidator {
 				var ne = expr as NegExpr;
 				recursiveIdentifiersInEvaluation(ne.subExpr);
 			}
+			
+			if(expr instanceof FunctionCall) {
+				var fc = expr as FunctionCall;
+				for (Expression e : fc.arguments) {
+					recursiveIdentifiersInEvaluation(e);
+				}
+			}
+			
 		}
 		
 	}
