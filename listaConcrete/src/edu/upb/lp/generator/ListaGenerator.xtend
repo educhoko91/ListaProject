@@ -214,7 +214,7 @@ class ListaGenerator implements IGenerator {
 				
 			«ELSE»
 				«generateExpression(left,scope)»
-			«ENDIF»«generateOperator(o,left)»
+			«ENDIF»«generateOperator(o)»
 			«IF (right instanceof InputExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE") »
 				parseInt(«generateExpression(right,scope)»)
 			«ELSEIF right instanceof InputExpression && o.getName=="EQUALS"»
@@ -246,12 +246,9 @@ class ListaGenerator implements IGenerator {
 			
 			«ENDIF»'''
 		
-	def generateOperator(Operator o,Expression left)'''
+	def generateOperator(Operator o)'''
 		«var operator = o.getName»
-		«IF left instanceof Identifier»
-			«IF operator=="PLUS"»	+=	«ELSEIF operator=="MINUS"»	-=  «ELSEIF operator=="OR"»	||  «ELSEIF operator=="AND"»  &&  «ELSEIF operator=="TIMES"»  *=  «ELSEIF operator=="DIVIDE"»  /=  «ELSEIF operator=="CONCAT"»  +=  «ELSEIF operator=="SMALLERTHAN"»  <  «ELSEIF operator=="EQUALS"»  ==  «ENDIF»
-			«ELSE»
-			«IF operator=="PLUS"»	+	«ELSEIF operator=="MINUS"»	-  «ELSEIF operator=="OR"»	||  «ELSEIF operator=="AND"»  &&  «ELSEIF operator=="TIMES"»  *  «ELSEIF operator=="DIVIDE"»  /  «ELSEIF operator=="CONCAT"»  +  «ELSEIF operator=="SMALLERTHAN"»  <  «ELSEIF operator=="EQUALS"»  ==  «ENDIF»«ENDIF»'''
+			«IF operator=="PLUS"»	+	«ELSEIF operator=="MINUS"»	-  «ELSEIF operator=="OR"»	||  «ELSEIF operator=="AND"»  &&  «ELSEIF operator=="TIMES"»  *  «ELSEIF operator=="DIVIDE"»  /  «ELSEIF operator=="CONCAT"»  +  «ELSEIF operator=="SMALLERTHAN"»  <  «ELSEIF operator=="EQUALS"»  ==  «ENDIF»'''
 		
 	def generateSequences(HashMap<Expression,HashMap<String,String>> h)'''
 	«FOR s : h.keySet»
