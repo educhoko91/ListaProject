@@ -75,6 +75,8 @@ public class ListaFactoryImpl extends EFactoryImpl implements ListaFactory {
 			case ListaPackage.SEQ_EXPRESSION: return createSeqExpression();
 			case ListaPackage.INPUT_EXPRESSION: return createInputExpression();
 			case ListaPackage.OUTPUT_EXPRESSION: return createOutputExpression();
+			case ListaPackage.MAP_EXPRESSION: return createMapExpression();
+			case ListaPackage.PAIR: return createPair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -292,6 +294,26 @@ public class ListaFactoryImpl extends EFactoryImpl implements ListaFactory {
 	public OutputExpression createOutputExpression() {
 		OutputExpressionImpl outputExpression = new OutputExpressionImpl();
 		return outputExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapExpression createMapExpression() {
+		MapExpressionImpl mapExpression = new MapExpressionImpl();
+		return mapExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pair createPair() {
+		PairImpl pair = new PairImpl();
+		return pair;
 	}
 
 	/**

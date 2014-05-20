@@ -15,10 +15,12 @@ import Lista.IfExpression;
 import Lista.InputExpression;
 import Lista.ListaFactory;
 import Lista.ListaPackage;
+import Lista.MapExpression;
 import Lista.NegExpr;
 import Lista.NumberExpression;
 import Lista.Operator;
 import Lista.OutputExpression;
+import Lista.Pair;
 import Lista.ParentesizedExp;
 import Lista.Program;
 import Lista.ProgramComponent;
@@ -187,6 +189,20 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * @generated
 	 */
 	private EClass outputExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pairEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -682,6 +698,78 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMapExpression() {
+		return mapExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapExpression_Name() {
+		return (EAttribute)mapExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapExpression_KeyType() {
+		return (EAttribute)mapExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapExpression_ValueType() {
+		return (EAttribute)mapExpressionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMapExpression_Values() {
+		return (EReference)mapExpressionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPair() {
+		return pairEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPair_Key() {
+		return (EReference)pairEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPair_Value() {
+		return (EReference)pairEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getOperator() {
 		return operatorEEnum;
 	}
@@ -790,6 +878,16 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 		outputExpressionEClass = createEClass(OUTPUT_EXPRESSION);
 		createEReference(outputExpressionEClass, OUTPUT_EXPRESSION__PARAMETER);
 
+		mapExpressionEClass = createEClass(MAP_EXPRESSION);
+		createEAttribute(mapExpressionEClass, MAP_EXPRESSION__NAME);
+		createEAttribute(mapExpressionEClass, MAP_EXPRESSION__KEY_TYPE);
+		createEAttribute(mapExpressionEClass, MAP_EXPRESSION__VALUE_TYPE);
+		createEReference(mapExpressionEClass, MAP_EXPRESSION__VALUES);
+
+		pairEClass = createEClass(PAIR);
+		createEReference(pairEClass, PAIR__KEY);
+		createEReference(pairEClass, PAIR__VALUE);
+
 		// Create enums
 		operatorEEnum = createEEnum(OPERATOR);
 		termOperatorEEnum = createEEnum(TERM_OPERATOR);
@@ -840,6 +938,7 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 		seqExpressionEClass.getESuperTypes().add(this.getExpression());
 		inputExpressionEClass.getESuperTypes().add(this.getExpression());
 		outputExpressionEClass.getESuperTypes().add(this.getExpression());
+		mapExpressionEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -908,6 +1007,16 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 
 		initEClass(outputExpressionEClass, OutputExpression.class, "OutputExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutputExpression_Parameter(), this.getExpression(), null, "parameter", null, 1, 1, OutputExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mapExpressionEClass, MapExpression.class, "MapExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapExpression_Name(), ecorePackage.getEString(), "name", null, 1, 1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapExpression_KeyType(), ecorePackage.getEString(), "keyType", null, 1, 1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapExpression_ValueType(), ecorePackage.getEString(), "valueType", null, 1, 1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMapExpression_Values(), this.getPair(), null, "values", null, 0, -1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pairEClass, Pair.class, "Pair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPair_Key(), this.getExpression(), null, "key", null, 1, 1, Pair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPair_Value(), this.getExpression(), null, "value", null, 1, 1, Pair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(operatorEEnum, Operator.class, "Operator");

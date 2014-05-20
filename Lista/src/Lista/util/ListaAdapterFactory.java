@@ -152,6 +152,14 @@ public class ListaAdapterFactory extends AdapterFactoryImpl {
 				return createOutputExpressionAdapter();
 			}
 			@Override
+			public Adapter caseMapExpression(MapExpression object) {
+				return createMapExpressionAdapter();
+			}
+			@Override
+			public Adapter casePair(Pair object) {
+				return createPairAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -462,6 +470,34 @@ public class ListaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOutputExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link Lista.MapExpression <em>Map Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see Lista.MapExpression
+	 * @generated
+	 */
+	public Adapter createMapExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link Lista.Pair <em>Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see Lista.Pair
+	 * @generated
+	 */
+	public Adapter createPairAdapter() {
 		return null;
 	}
 

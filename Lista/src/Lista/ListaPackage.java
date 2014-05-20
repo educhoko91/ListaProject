@@ -486,7 +486,7 @@ public interface ListaPackage extends EPackage {
 	 * @see Lista.impl.ListaPackageImpl#getOperator()
 	 * @generated
 	 */
-	int OPERATOR = 21;
+	int OPERATOR = 23;
 
 	/**
 	 * The meta object id for the '{@link Lista.impl.IdentifierImpl <em>Identifier</em>}' class.
@@ -881,6 +881,116 @@ public interface ListaPackage extends EPackage {
 	int OUTPUT_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link Lista.impl.MapExpressionImpl <em>Map Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.MapExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getMapExpression()
+	 * @generated
+	 */
+	int MAP_EXPRESSION = 21;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_EXPRESSION__NAME = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Key Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_EXPRESSION__KEY_TYPE = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_EXPRESSION__VALUE_TYPE = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_EXPRESSION__VALUES = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Map Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Map Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.PairImpl <em>Pair</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.PairImpl
+	 * @see Lista.impl.ListaPackageImpl#getPair()
+	 * @generated
+	 */
+	int PAIR = 22;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIR__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIR__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIR_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIR_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link Lista.TermOperator <em>Term Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -888,7 +998,7 @@ public interface ListaPackage extends EPackage {
 	 * @see Lista.impl.ListaPackageImpl#getTermOperator()
 	 * @generated
 	 */
-	int TERM_OPERATOR = 22;
+	int TERM_OPERATOR = 24;
 
 
 	/**
@@ -1377,6 +1487,92 @@ public interface ListaPackage extends EPackage {
 	EReference getOutputExpression_Parameter();
 
 	/**
+	 * Returns the meta object for class '{@link Lista.MapExpression <em>Map Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Expression</em>'.
+	 * @see Lista.MapExpression
+	 * @generated
+	 */
+	EClass getMapExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link Lista.MapExpression#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see Lista.MapExpression#getName()
+	 * @see #getMapExpression()
+	 * @generated
+	 */
+	EAttribute getMapExpression_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link Lista.MapExpression#getKeyType <em>Key Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key Type</em>'.
+	 * @see Lista.MapExpression#getKeyType()
+	 * @see #getMapExpression()
+	 * @generated
+	 */
+	EAttribute getMapExpression_KeyType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link Lista.MapExpression#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value Type</em>'.
+	 * @see Lista.MapExpression#getValueType()
+	 * @see #getMapExpression()
+	 * @generated
+	 */
+	EAttribute getMapExpression_ValueType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link Lista.MapExpression#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Values</em>'.
+	 * @see Lista.MapExpression#getValues()
+	 * @see #getMapExpression()
+	 * @generated
+	 */
+	EReference getMapExpression_Values();
+
+	/**
+	 * Returns the meta object for class '{@link Lista.Pair <em>Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pair</em>'.
+	 * @see Lista.Pair
+	 * @generated
+	 */
+	EClass getPair();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link Lista.Pair#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see Lista.Pair#getKey()
+	 * @see #getPair()
+	 * @generated
+	 */
+	EReference getPair_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link Lista.Pair#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see Lista.Pair#getValue()
+	 * @see #getPair()
+	 * @generated
+	 */
+	EReference getPair_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link Lista.Operator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1828,6 +2024,74 @@ public interface ListaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OUTPUT_EXPRESSION__PARAMETER = eINSTANCE.getOutputExpression_Parameter();
+
+		/**
+		 * The meta object literal for the '{@link Lista.impl.MapExpressionImpl <em>Map Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see Lista.impl.MapExpressionImpl
+		 * @see Lista.impl.ListaPackageImpl#getMapExpression()
+		 * @generated
+		 */
+		EClass MAP_EXPRESSION = eINSTANCE.getMapExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_EXPRESSION__NAME = eINSTANCE.getMapExpression_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Key Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_EXPRESSION__KEY_TYPE = eINSTANCE.getMapExpression_KeyType();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_EXPRESSION__VALUE_TYPE = eINSTANCE.getMapExpression_ValueType();
+
+		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAP_EXPRESSION__VALUES = eINSTANCE.getMapExpression_Values();
+
+		/**
+		 * The meta object literal for the '{@link Lista.impl.PairImpl <em>Pair</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see Lista.impl.PairImpl
+		 * @see Lista.impl.ListaPackageImpl#getPair()
+		 * @generated
+		 */
+		EClass PAIR = eINSTANCE.getPair();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAIR__KEY = eINSTANCE.getPair_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAIR__VALUE = eINSTANCE.getPair_Value();
 
 		/**
 		 * The meta object literal for the '{@link Lista.Operator <em>Operator</em>}' enum.

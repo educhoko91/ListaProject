@@ -79,5 +79,15 @@
     <genClasses ecoreClass="Lista.ecore#//OutputExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//OutputExpression/parameter"/>
     </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//MapExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//MapExpression/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//MapExpression/keyType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//MapExpression/valueType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//MapExpression/values"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//Pair">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Pair/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Pair/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

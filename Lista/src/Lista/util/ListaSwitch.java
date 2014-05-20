@@ -211,6 +211,19 @@ public class ListaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ListaPackage.MAP_EXPRESSION: {
+				MapExpression mapExpression = (MapExpression)theEObject;
+				T result = caseMapExpression(mapExpression);
+				if (result == null) result = caseExpression(mapExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ListaPackage.PAIR: {
+				Pair pair = (Pair)theEObject;
+				T result = casePair(pair);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -527,6 +540,36 @@ public class ListaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOutputExpression(OutputExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapExpression(MapExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pair</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pair</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePair(Pair object) {
 		return null;
 	}
 
