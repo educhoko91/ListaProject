@@ -301,10 +301,14 @@ public class TypeIdentifier {
 				recursiveInitMapFunctionCall(e, aux, type,fd.getName(), fd.getParameters().get(i).getName());
 				i++;
 			}
-			if(map.get("global").get(fd.getName()).equals(NOTYPE))
-				return type;
+			if((map.get("global").containsKey(fd.getName()))) {
+				if(map.get("global").get(fd.getName()).equals(NOTYPE))
+					return type;
+				else
+					return map.get("global").get(fd.getName());
+			}
 			else
-				return map.get("global").get(fd.getName());
+				return type;
 			
 		}
 		if(exp instanceof NegExpr) {
