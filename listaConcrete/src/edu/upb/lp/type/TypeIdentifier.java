@@ -403,13 +403,14 @@ public class TypeIdentifier {
 			GetExpression ge = (GetExpression) exp;
 			
 			Expression m = ge.getMap();
-			recursiveInitMap(ge.getMap(), aux, TYPEMAP);
+			
 			if(m instanceof MapExpression){
 				
 				recursiveInitMap(ge.getKeyExpr(), aux, ((MapExpression)ge.getMap()).getKeyType());
 				return ((MapExpression)ge.getMap()).getValueType();
 			}
 			else{
+				recursiveInitMap(ge.getMap(), aux, TYPEMAP);
 				return NOTYPE;
 				
 			}
@@ -418,12 +419,12 @@ public class TypeIdentifier {
 		if(exp instanceof RemoveExpression) {
 			RemoveExpression re = (RemoveExpression) exp;
 			Expression m = re.getMap();
-			recursiveInitMap(re.getMap(), aux, TYPEMAP);
 			if(m instanceof MapExpression){
 				recursiveInitMap(re.getKeyExpr(), aux, ((MapExpression)re.getMap()).getKeyType());
 				return TYPEMAP;
 			}
 			else{
+				recursiveInitMap(re.getMap(), aux, TYPEMAP);
 				EObject fdo = (EObject)m;
 				while(true){
 					fdo = fdo.eContainer();
@@ -783,13 +784,14 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 			GetExpression ge = (GetExpression) exp;
 			
 			Expression m = ge.getMap();
-			recursiveInitMapFunctionCall(ge.getMap(), aux, TYPEMAP,f,p);
+			
 			if(m instanceof MapExpression){
 				
 				recursiveInitMapFunctionCall(ge.getKeyExpr(), aux, ((MapExpression)ge.getMap()).getKeyType(),f,p);
 				return ((MapExpression)ge.getMap()).getValueType();
 			}
 			else{
+				recursiveInitMapFunctionCall(ge.getMap(), aux, TYPEMAP,f,p);
 				return NOTYPE;
 				
 			}
@@ -798,12 +800,13 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 		if(exp instanceof RemoveExpression) {
 			RemoveExpression re = (RemoveExpression) exp;
 			Expression m = re.getMap();
-			recursiveInitMapFunctionCall(re.getMap(), aux, TYPEMAP,f,p);
+			
 			if(m instanceof MapExpression){
 				recursiveInitMapFunctionCall(re.getKeyExpr(), aux, ((MapExpression)re.getMap()).getKeyType(),f,p);
 				return TYPEMAP;
 			}
 			else{
+				recursiveInitMapFunctionCall(re.getMap(), aux, TYPEMAP,f,p);
 				EObject fdo = (EObject)m;
 				while(true){
 					fdo = fdo.eContainer();
