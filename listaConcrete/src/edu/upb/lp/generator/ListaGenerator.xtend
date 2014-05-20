@@ -22,7 +22,10 @@ import Lista.CompositeExpr
 import Lista.Operator
 import Lista.IfExpression
 import java.util.HashMap
-
+import Lista.MapExpression
+import Lista.PutExpression
+import Lista.GetExpression
+import Lista.RemoveExpression
 
 /**
  * Generates code from your model files on save.
@@ -34,6 +37,7 @@ class ListaGenerator implements IGenerator {
 	var symbolTable = new HashMap<String,HashMap<String,String>>;
 	var seqTable = new HashMap<Expression,HashMap<String,String>>;
 	var sequences = 0;
+	var mapMaps = new HashMap<String,HashMap<String,MapExpression>>();
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
@@ -41,8 +45,10 @@ class ListaGenerator implements IGenerator {
 		val st = TypeIdentifier.getInstance(p)
 		symbolTable=st.hashMap;
 		seqTable=st.sequences;
+		mapMaps=st.mapMaps;
 		sequences = 0;
 		println(st.hashMap)
+		println(mapMaps);
 		var f = resource.URI.trimFileExtension
 		var name = f.segment(f.segmentCount-1)
 		fsa.generateFile(f.segment(f.segmentCount-1)+".java",generateCode(p,name));
@@ -61,11 +67,13 @@ class ListaGenerator implements IGenerator {
 		«FOR f: p.functionDefinitions»
 		
 			public static «symbolTable.get("global").get(f.name)» «f.name»(«FOR param:f.parameters SEPARATOR ','» «symbolTable.get(f.name).get(param.name)» «generateExpression(param,f.name)» «ENDFOR»){
+				«generateMaps(f.name)»
 				return («generateExpression(f.expression,f.name)»);
 			}
 		«ENDFOR»
 		
 		public static void main(String[] args){
+			«generateMaps("query")»
 				System.out.println(«generateExpression(p.evaluation.expression,"global")»);
 			}
 		
@@ -91,6 +99,11 @@ class ListaGenerator implements IGenerator {
 			return a;
 		}
 		
+		public static HashMap<?,?> output(HashMap<?,?> m){
+			System.out.println(m);
+			return m;
+		}
+		
 		public static int parseInt(String s){
 			return Integer.parseInt(s);
 		}
@@ -98,6 +111,49 @@ class ListaGenerator implements IGenerator {
 		public static int parseInt(int a){
 			return a;
 		}
+		
+		public static HashMap<String,String> put(HashMap<String,String> m,String k,String v){
+			m.put(k,v);
+			return m;
+		}
+		public static HashMap<String,Integer> put(HashMap<String,Integer> m,String k,Integer v){
+			m.put(k,v);
+			return m;
+		}
+		public static HashMap<String,Boolean> put(HashMap<String,Boolean> m,String k,Boolean v){
+			m.put(k,v);
+			return m;
+		}
+		public static HashMap<Integer,String> put(HashMap<Integer,String> m,Integer k,String v){
+			m.put(k,v);
+			return m;
+		}
+		public static HashMap<Integer,Integer> put(HashMap<Integer,Integer> m,Integer k,Integer v){
+			m.put(k,v);
+			return m;
+		}
+		public static HashMap<Integer,Boolean> put(HashMap<Integer,Boolean> m,Integer k,Boolean v){
+			m.put(k,v);
+			return m;
+		}
+		
+		public static String get(HashMap<Integer,?> m,Integer k){
+			return ""+m.get(k);
+		}
+		public static String get(HashMap<String,?> m,String k){
+			return ""+m.get(k);
+		}
+		
+		
+		public static HashMap<Integer,?> remove(HashMap<Integer,?> m,Integer k){
+			m.remove(k);
+			return m;
+		}
+		public static HashMap<String,?> remove(HashMap<String,?> m,String k){
+			m.remove(k);
+			return m;
+		}
+		
 
 		«generateSequences(seqTable)»
 		}
@@ -153,7 +209,7 @@ class ListaGenerator implements IGenerator {
 				(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
 			«ELSEIF (consequent instanceof NumberExpression) && alternative instanceof OutputExpression»
 				(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
-			«ELSEIF (consequent instanceof CompositeExpr && alternative instanceof InputExpression)»
+			«ELSEIF (consequent instanceof CompositeExpr && alternative instanceof OutputExpression)»
 				«var ce = consequent as CompositeExpr»
 				«IF ce.operator.name=="PLUS"||ce.operator.name=="MINUS"||ce.operator.name=="TIMES"||ce.operator.name=="DIVIDE"||ce.operator.name=="SMALLERTHAN"»
 					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
@@ -169,6 +225,26 @@ class ListaGenerator implements IGenerator {
 				«ENDIF»
 			«ELSEIF (alternative instanceof NumberExpression) && consequent instanceof OutputExpression»
 				(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
+
+			«ELSEIF consequent instanceof NumberExpression && alternative instanceof GetExpression»
+				(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
+			«ELSEIF consequent instanceof CompositeExpr && alternative instanceof GetExpression»
+				«var ce = consequent as CompositeExpr»
+				«IF ce.operator.name=="PLUS" || ce.operator.name=="MINUS" || ce.operator.name=="TIMES" || ce.operator.name=="DIVIDE" || ce.operator.name=="SMALLERTHAN"»
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : parseInt(«generateExpression(alternative,scope)»))
+				«ELSE»
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
+				«ENDIF»
+			«ELSEIF alternative instanceof NumberExpression && consequent instanceof GetExpression»
+				(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
+			«ELSEIF alternative instanceof CompositeExpr && consequent instanceof GetExpression»
+				«var ce = alternative as CompositeExpr»
+				«IF ce.operator.name=="PLUS" || ce.operator.name=="MINUS" || ce.operator.name=="TIMES" || ce.operator.name=="DIVIDE" || ce.operator.name=="SMALLERTHAN"»
+					(«generateExpression(ife.cond,scope)»? parseInt(«generateExpression(consequent,scope)») : «generateExpression(alternative,scope)»)
+				«ELSE»
+					(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
+				«ENDIF»
+				
 			«ELSE»
 				(«generateExpression(ife.cond,scope)»? «generateExpression(consequent,scope)» : «generateExpression(alternative,scope)»)
 			«ENDIF»
@@ -213,6 +289,18 @@ class ListaGenerator implements IGenerator {
 					«generateExpression(left,scope)»
 					«ENDIF»
 				«ENDIF»	
+			«ELSEIF (left instanceof GetExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE")»
+				parseInt(«generateExpression(left,scope)»)
+			«ELSEIF left instanceof GetExpression && o.getName=="EQUALS"»
+				«IF right instanceof NumberExpression»
+					parseInt(«generateExpression(left,scope)»)
+				«ELSEIF right instanceof CompositeExpr»
+					«IF (right as CompositeExpr).operator=="PLUS" || (right as CompositeExpr).operator=="MINUS"|| (right as CompositeExpr).operator=="TIMES"|| (right as CompositeExpr).operator=="DIVIDE"|| (right as CompositeExpr).operator=="SMALLERTHAN"»
+					parseInt(«generateExpression(left,scope)»)
+					«ELSE»
+					«generateExpression(left,scope)»
+					«ENDIF»
+				«ENDIF»	
 				
 				
 			«ELSE»
@@ -243,11 +331,37 @@ class ListaGenerator implements IGenerator {
 					«generateExpression(right,scope)»
 				«ENDIF»
 			«ENDIF»
+			«ELSEIF (right instanceof GetExpression) && (o.getName=="PLUS" || o.getName=="SMALLERTHAN" || o.getName=="MINUS" || o.getName=="TIMES" || o.getName=="DIVIDE")»
+				parseInt(«generateExpression(right,scope)»)
+			«ELSEIF right instanceof GetExpression && o.getName=="EQUALS"»
+				«IF left instanceof NumberExpression»
+					parseInt(«generateExpression(right,scope)»)
+				«ELSEIF left instanceof CompositeExpr»
+					«IF (left as CompositeExpr).operator=="PLUS" || (left as CompositeExpr).operator=="MINUS"|| (left as CompositeExpr).operator=="TIMES"|| (left as CompositeExpr).operator=="DIVIDE"|| (left as CompositeExpr).operator=="SMALLERTHAN"»
+					parseInt(«generateExpression(right,scope)»)
+					«ELSE»
+					«generateExpression(right,scope)»
+					«ENDIF»
+				«ENDIF»
+
 			«ELSE»
 				«generateExpression(right,scope)»
 			«ENDIF»
+		«ELSEIF e instanceof MapExpression»
+			«var me = e as MapExpression»
+			«me.name»
+		«ELSEIF e instanceof PutExpression»
+			«var pe = e as PutExpression»
+			«var m = pe.map»
+			put(«generateExpression(m,scope)»,«generateExpression(pe.keyExpr,scope)»,«generateExpression(pe.valExpr,scope)»)
+		«ELSEIF e instanceof GetExpression»
+			«var ge = e as GetExpression»
 			
-			«ENDIF»'''
+			get(«generateExpression(ge.map,scope)»,«generateExpression(ge.keyExpr,scope)»)
+		«ELSEIF e instanceof RemoveExpression»
+			«var re = e as RemoveExpression»
+			remove(«generateExpression(re.map,scope)»,«generateExpression(re.keyExpr,scope)»)
+		«ENDIF»'''
 		
 	def generateOperator(Operator o)'''
 		«var operator = o.getName»
@@ -274,6 +388,26 @@ class ListaGenerator implements IGenerator {
 		«ENDFOR»
 	«ENDFOR»
 	'''
-	
+	def generateMaps(String scope)'''
+	«var localMaps = mapMaps.get(scope)»
+	«IF localMaps != null»
+		«FOR k : localMaps.keySet »
+			«var m = localMaps.get(k)»
+			«var keyType = m.keyType»
+			«var valType = m.valueType»
+			«{if(keyType.equals("int")){
+				keyType = "Integer"
+				};null}»
+			«{if(valType.equals("int")){
+				valType = "Integer"
+				};null}»
+			HashMap<«keyType»,«valType»> «k» = new HashMap<>();
+			«FOR p : m.values»
+				put(«k»,«generateExpression(p.key,scope)»,«generateExpression(p.value,scope)»);
+			«ENDFOR»
+			
+		«ENDFOR»
+	«ENDIF»
+	'''
 	
 }
