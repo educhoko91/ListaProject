@@ -44,7 +44,7 @@ class ListaValidator extends AbstractListaValidator {
 		this.map = TypeIdentifier.getInstance(prog).hashMap;
 		System.out.println(map);
 	}
-	
+	/*
 	@Check
 	def checkIdentifiersTypes(Identifier id) {
 		var prog = id as EObject;
@@ -88,7 +88,6 @@ class ListaValidator extends AbstractListaValidator {
 		}
 	}
 
-	/*START Recursive CHECKS */
 
 	@Check
 	def checkCompisiteOperatorValues(CompositeExpr expr) {
@@ -566,6 +565,7 @@ class ListaValidator extends AbstractListaValidator {
 		}
 		return TypeIdentifier.NOTYPE;
 	}
+	*/
 
 }
 

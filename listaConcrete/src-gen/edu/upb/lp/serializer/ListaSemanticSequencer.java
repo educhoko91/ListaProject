@@ -442,7 +442,7 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (keyType='String' | keyType='Int') (valueType='String' | valueType='Int') (values+=PairExpr values+=PairExpr*)?)
+	 *     (name=ID (keyType='String' | keyType='int') (valueType='String' | valueType='int') (values+=PairExpr values+=PairExpr*)?)
 	 */
 	protected void sequence_MapExpression(EObject context, MapExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

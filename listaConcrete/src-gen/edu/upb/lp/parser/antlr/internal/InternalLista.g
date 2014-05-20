@@ -1387,7 +1387,7 @@ ruleMapExpression returns [EObject current=null]
        		setWithLastConsumed($current, "keyType", lv_keyType_2_1, null);
 	    }
 
-    |		lv_keyType_2_2=	'Int' 
+    |		lv_keyType_2_2=	'int' 
     {
         newLeafNode(lv_keyType_2_2, grammarAccess.getMapExpressionAccess().getKeyTypeIntKeyword_2_0_1());
     }
@@ -1421,7 +1421,7 @@ ruleMapExpression returns [EObject current=null]
        		setWithLastConsumed($current, "valueType", lv_valueType_4_1, null);
 	    }
 
-    |		lv_valueType_4_2=	'Int' 
+    |		lv_valueType_4_2=	'int' 
     {
         newLeafNode(lv_valueType_4_2, grammarAccess.getMapExpressionAccess().getValueTypeIntKeyword_4_0_1());
     }

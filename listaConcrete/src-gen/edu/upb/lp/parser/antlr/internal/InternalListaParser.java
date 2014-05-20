@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalListaParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "','", "')'", "'='", "';'", "'?'", "'input'", "'output'", "'if'", "'!'", "'TRUE'", "'FALSE'", "'seq'", "'['", "'String'", "'Int'", "']'", "'{'", "'}'", "'->'", "'put'", "'get'", "'remove'", "'*'", "'/'", "'::'", "'&'", "'|'", "'-'", "'+'", "'<'", "'=='"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "','", "')'", "'='", "';'", "'?'", "'input'", "'output'", "'if'", "'!'", "'TRUE'", "'FALSE'", "'seq'", "'['", "'String'", "'int'", "']'", "'{'", "'}'", "'->'", "'put'", "'get'", "'remove'", "'*'", "'/'", "'::'", "'&'", "'|'", "'-'", "'+'", "'<'", "'=='"
     };
     public static final int T__42=42;
     public static final int RULE_ID=4;
@@ -3188,7 +3188,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMapExpression"
-    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1349:1: ruleMapExpression returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' ) ;
+    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1349:1: ruleMapExpression returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' ) ;
     public final EObject ruleMapExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3212,11 +3212,11 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1352:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1353:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1352:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1353:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1353:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1353:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}'
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1353:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1353:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '[' ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) ) ) otherlv_3= ',' ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) ) ) otherlv_5= ']' otherlv_6= '=' otherlv_7= '{' ( ( (lv_values_8_0= rulePairExpr ) ) (otherlv_9= ',' ( (lv_values_10_0= rulePairExpr ) ) )* )? otherlv_11= '}'
             {
             // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1353:2: ( (lv_name_0_0= RULE_ID ) )
             // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1354:1: (lv_name_0_0= RULE_ID )
@@ -3248,13 +3248,13 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_1, grammarAccess.getMapExpressionAccess().getLeftSquareBracketKeyword_1());
                 
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1375:1: ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1376:1: ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1375:1: ( ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1376:1: ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1376:1: ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1377:1: (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1376:1: ( (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1377:1: (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1377:1: (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'Int' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1377:1: (lv_keyType_2_1= 'String' | lv_keyType_2_2= 'int' )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -3288,7 +3288,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1390:8: lv_keyType_2_2= 'Int'
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1390:8: lv_keyType_2_2= 'int'
                     {
                     lv_keyType_2_2=(Token)match(input,26,FOLLOW_26_in_ruleMapExpression3110); 
 
@@ -3316,13 +3316,13 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_3, grammarAccess.getMapExpressionAccess().getCommaKeyword_3());
                 
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1409:1: ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1410:1: ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1409:1: ( ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1410:1: ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1410:1: ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' ) )
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1411:1: (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1410:1: ( (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' ) )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1411:1: (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' )
             {
-            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1411:1: (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'Int' )
+            // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1411:1: (lv_valueType_4_1= 'String' | lv_valueType_4_2= 'int' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -3356,7 +3356,7 @@ public class InternalListaParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1424:8: lv_valueType_4_2= 'Int'
+                    // ../listaConcrete/src-gen/edu/upb/lp/parser/antlr/internal/InternalLista.g:1424:8: lv_valueType_4_2= 'int'
                     {
                     lv_valueType_4_2=(Token)match(input,26,FOLLOW_26_in_ruleMapExpression3187); 
 

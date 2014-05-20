@@ -765,7 +765,7 @@
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2sS_oN_HEeO0T5IMZCPvxA" id="(0.19696969696969696,0.6976744186046512)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2sS_od_HEeO0T5IMZCPvxA" id="(0.5546666666666666,0.9523809523809523)"/>
   </edges>
-  <edges xmi:type="notation:Edge" xmi:id="_7XPEwN_HEeO0T5IMZCPvxA" type="3002" source="_MVnt8N_HEeO0T5IMZCPvxA" target="_qMktYN-4EeO0T5IMZCPvxA">
+  <edges xmi:type="notation:Edge" xmi:id="_7XPEwN_HEeO0T5IMZCPvxA" type="3002" source="_MVnt8N_HEeO0T5IMZCPvxA" target="_rpWDcLD_EeOTq_YvkYzlhg">
     <children xmi:type="notation:Node" xmi:id="_7XPExN_HEeO0T5IMZCPvxA" type="4011">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_7XPExd_HEeO0T5IMZCPvxA" x="-10" y="-10"/>
     </children>
@@ -777,7 +777,7 @@
     <element xmi:type="ecore:EReference" href="Lista.ecore#//PutExpression/Map"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7XPEw9_HEeO0T5IMZCPvxA" points="[-8, 13, 876, -196]$[-896, 13, -12, -196]$[-896, 193, -12, -16]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7XPEyN_HEeO0T5IMZCPvxA" id="(0.08737864077669903,0.5813953488372093)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7XPEyd_HEeO0T5IMZCPvxA" id="(0.6950354609929078,0.2)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7XPEyd_HEeO0T5IMZCPvxA" id="(0.15466666666666667,0.9302325581395349)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_-buJcN_HEeO0T5IMZCPvxA" type="3002" source="_MVnt8N_HEeO0T5IMZCPvxA" target="_rpWDcLD_EeOTq_YvkYzlhg">
     <children xmi:type="notation:Node" xmi:id="_-buJdN_HEeO0T5IMZCPvxA" type="4011">
@@ -806,7 +806,7 @@
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BwOnIN_IEeO0T5IMZCPvxA" id="(0.7961165048543689,0.7906976744186046)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BwOnId_IEeO0T5IMZCPvxA" id="(0.22933333333333333,0.38095238095238093)"/>
   </edges>
-  <edges xmi:type="notation:Edge" xmi:id="_FrMn4N_IEeO0T5IMZCPvxA" type="3002" source="_OgaKgN_HEeO0T5IMZCPvxA" target="_qMktYN-4EeO0T5IMZCPvxA">
+  <edges xmi:type="notation:Edge" xmi:id="_FrMn4N_IEeO0T5IMZCPvxA" type="3002" source="_OgaKgN_HEeO0T5IMZCPvxA" target="_rpWDcLD_EeOTq_YvkYzlhg">
     <children xmi:type="notation:Node" xmi:id="_FrMn5N_IEeO0T5IMZCPvxA" type="4011">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_FrMn5d_IEeO0T5IMZCPvxA" x="-10" y="-10"/>
     </children>
@@ -818,7 +818,7 @@
     <element xmi:type="ecore:EReference" href="Lista.ecore#//GetExpression/Map"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FrMn49_IEeO0T5IMZCPvxA" points="[-12, 1, 1022, -240]$[-1034, 81, 0, -160]$[-1034, 189, 0, -52]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FrSugN_IEeO0T5IMZCPvxA" id="(0.12380952380952381,0.6744186046511628)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FrSugd_IEeO0T5IMZCPvxA" id="(0.851063829787234,0.6352941176470588)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FrSugd_IEeO0T5IMZCPvxA" id="(0.124,0.6976744186046512)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_JMAcMN_IEeO0T5IMZCPvxA" type="3002" source="_OgaKgN_HEeO0T5IMZCPvxA" target="_rpWDcLD_EeOTq_YvkYzlhg">
     <children xmi:type="notation:Node" xmi:id="_JMAcNN_IEeO0T5IMZCPvxA" type="4011">
@@ -833,7 +833,7 @@
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JMAcM9_IEeO0T5IMZCPvxA" points="[2, 15, 1, -135]$[2, 147, 1, -3]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JMAcON_IEeO0T5IMZCPvxA" id="(0.4066666666666667,0.11904761904761904)"/>
   </edges>
-  <edges xmi:type="notation:Edge" xmi:id="_MmJAwN_IEeO0T5IMZCPvxA" type="3002" source="_PFso4N_HEeO0T5IMZCPvxA" target="_qMktYN-4EeO0T5IMZCPvxA">
+  <edges xmi:type="notation:Edge" xmi:id="_MmJAwN_IEeO0T5IMZCPvxA" type="3002" source="_PFso4N_HEeO0T5IMZCPvxA" target="_rpWDcLD_EeOTq_YvkYzlhg">
     <children xmi:type="notation:Node" xmi:id="_MmJAxN_IEeO0T5IMZCPvxA" type="4011">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_MmJAxd_IEeO0T5IMZCPvxA" x="-10" y="-10"/>
     </children>
@@ -845,6 +845,7 @@
     <element xmi:type="ecore:EReference" href="Lista.ecore#//RemoveExpression/Map"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MmJAw9_IEeO0T5IMZCPvxA" points="[-23, 1, 1215, -236]$[-1247, 52, -9, -185]$[-1247, 196, -9, -41]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MmJAyN_IEeO0T5IMZCPvxA" id="(0.18181818181818182,0.4883720930232558)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_YzcXMN_gEeO4c9CEkbW-fg" id="(0.006666666666666667,0.5116279069767442)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_PpSosN_IEeO0T5IMZCPvxA" type="3002" source="_PFso4N_HEeO0T5IMZCPvxA" target="_rpWDcLD_EeOTq_YvkYzlhg">
     <children xmi:type="notation:Node" xmi:id="_PpSotN_IEeO0T5IMZCPvxA" type="4011">

@@ -83,7 +83,7 @@ enum Level4Operator returns ListaMM::Operator:
 	
 	
 MapExpression returns ListaMM::MapExpression:
-	name=ID "["keyType=("String"|"Int")"," valueType=("String"|"Int")"]" "=" "{" (values+=PairExpr ("," values+=PairExpr)*)? "}"
+	name=ID "["keyType=("String"|"int")"," valueType=("String"|"int")"]" "=" "{" (values+=PairExpr ("," values+=PairExpr)*)? "}"
 	
 ;
 

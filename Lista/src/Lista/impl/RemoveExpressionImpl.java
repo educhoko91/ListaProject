@@ -4,15 +4,11 @@ package Lista.impl;
 
 import Lista.Expression;
 import Lista.ListaPackage;
-import Lista.MapExpression;
 import Lista.RemoveExpression;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -38,7 +34,7 @@ public class RemoveExpressionImpl extends ExpressionImpl implements RemoveExpres
 	 * @generated
 	 * @ordered
 	 */
-	protected MapExpression map;
+	protected Expression map;
 
 	/**
 	 * The cached value of the '{@link #getKeyExpr() <em>Key Expr</em>}' containment reference.
@@ -74,10 +70,10 @@ public class RemoveExpressionImpl extends ExpressionImpl implements RemoveExpres
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MapExpression getMap() {
+	public Expression getMap() {
 		if (map != null && map.eIsProxy()) {
 			InternalEObject oldMap = (InternalEObject)map;
-			map = (MapExpression)eResolveProxy(oldMap);
+			map = (Expression)eResolveProxy(oldMap);
 			if (map != oldMap) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ListaPackage.REMOVE_EXPRESSION__MAP, oldMap, map));
@@ -91,7 +87,7 @@ public class RemoveExpressionImpl extends ExpressionImpl implements RemoveExpres
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MapExpression basicGetMap() {
+	public Expression basicGetMap() {
 		return map;
 	}
 
@@ -100,8 +96,8 @@ public class RemoveExpressionImpl extends ExpressionImpl implements RemoveExpres
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMap(MapExpression newMap) {
-		MapExpression oldMap = map;
+	public void setMap(Expression newMap) {
+		Expression oldMap = map;
 		map = newMap;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ListaPackage.REMOVE_EXPRESSION__MAP, oldMap, map));
@@ -190,7 +186,7 @@ public class RemoveExpressionImpl extends ExpressionImpl implements RemoveExpres
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ListaPackage.REMOVE_EXPRESSION__MAP:
-				setMap((MapExpression)newValue);
+				setMap((Expression)newValue);
 				return;
 			case ListaPackage.REMOVE_EXPRESSION__KEY_EXPR:
 				setKeyExpr((Expression)newValue);
@@ -208,7 +204,7 @@ public class RemoveExpressionImpl extends ExpressionImpl implements RemoveExpres
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ListaPackage.REMOVE_EXPRESSION__MAP:
-				setMap((MapExpression)null);
+				setMap((Expression)null);
 				return;
 			case ListaPackage.REMOVE_EXPRESSION__KEY_EXPR:
 				setKeyExpr((Expression)null);

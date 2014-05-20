@@ -6,21 +6,28 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 import com.google.inject.util.Types;
 
 import Lista.BooleanExpression;
 import Lista.CompositeExpr;
+import Lista.Evaluation;
 import Lista.Expression;
 import Lista.FunctionCall;
 import Lista.FunctionDefinition;
+import Lista.GetExpression;
 import Lista.Identifier;
 import Lista.IfExpression;
+import Lista.MapExpression;
 import Lista.NegExpr;
 import Lista.NumberExpression;
 import Lista.Operator;
 import Lista.OutputExpression;
+import Lista.Pair;
 import Lista.Program;
+import Lista.PutExpression;
+import Lista.RemoveExpression;
 import Lista.SeqExpression;
 import Lista.StringExpression;
 
@@ -32,10 +39,13 @@ public class TypeIdentifier {
 	public static final String TYPESTRING = "String";
 	public static final String TYPEBOOLEAN = "boolean";
 	public static final String NOTYPE = "error";
+	public static final String TYPEMAP = "HashMap";
 
 	private HashMap<String, HashMap<String, String>> map = new HashMap<>();
 	private HashMap<Expression, HashMap<String,String>> sequences = new HashMap<>();
 	private int sequenceNumber =0;
+	
+	private HashMap<String, HashMap<String, MapExpression>> mapMaps = new HashMap<>();
 
 	private TypeIdentifier(Program prog) {
 		initMap(prog);
@@ -56,6 +66,7 @@ public class TypeIdentifier {
 				String fType = recursiveInitMap(fd.getExpression(), aux, NOTYPE);
 				global.put(fd.getName(), fType);
 				map.put(fd.getName(), aux);
+				
 			}
 			System.out.println(++cnd);
 		}
@@ -190,6 +201,8 @@ public class TypeIdentifier {
 							recursiveInitMap(left, aux, recursiveInitMap(right, aux, type));
 						}
 					}
+					
+					
 	
 					return TYPEBOOLEAN;
 				}
@@ -297,6 +310,137 @@ public class TypeIdentifier {
 			NegExpr ne = (NegExpr)exp;
 			recursiveInitMap(ne.getSubExpr(), aux, TYPEBOOLEAN);
 			return TYPEBOOLEAN;
+		}
+		
+		if(exp instanceof MapExpression) {
+			MapExpression me = (MapExpression) exp;
+			for(Pair e : me.getValues()) {
+				recursiveInitMap(e.getKey(), aux, me.getKeyType());
+				recursiveInitMap(e.getValue(), aux, me.getValueType());
+			}
+			aux.put(me.getName(), TYPEMAP);
+			
+			EObject fdo = (EObject) me;
+			while(true) {
+				fdo = fdo.eContainer();
+				if(fdo instanceof FunctionDefinition)
+					break;
+				if(fdo instanceof Evaluation)
+					break;
+				
+			}
+			if(fdo instanceof FunctionDefinition) {
+				FunctionDefinition fd = (FunctionDefinition) fdo;
+				if(!mapMaps.containsKey(fd.getName())) {
+					HashMap<String, MapExpression> aux2 = new HashMap<>();
+					aux2.put(me.getName(), me);
+					mapMaps.put(fd.getName(),aux2);
+				}
+				else {
+					HashMap<String, MapExpression> aux2 = mapMaps.get(fd.getName());
+					aux2.put(me.getName(), me);
+				}
+			}
+			
+			if(fdo instanceof Evaluation) {
+				if(!mapMaps.containsKey("query")) {
+					HashMap<String, MapExpression> aux2 = new HashMap<>();
+					aux2.put(me.getName(), me);
+					mapMaps.put("query",aux2);
+				}
+				else {
+					HashMap<String, MapExpression> aux2 = mapMaps.get("query");
+					aux2.put(me.getName(), me);
+				}
+			}
+			
+			return TYPEMAP;
+		}
+		
+		if(exp instanceof PutExpression) {
+			PutExpression pe = (PutExpression) exp;
+			EObject fdo = (EObject)pe;
+			MapExpression me = null;
+			while(true) {
+				fdo = fdo.eContainer();
+				if(fdo instanceof FunctionDefinition)
+					break;
+				if(fdo instanceof Evaluation)
+					break;
+				
+			}
+			if(fdo instanceof FunctionDefinition) {
+				FunctionDefinition fd = (FunctionDefinition) fdo;
+				if(!mapMaps.containsKey(fd.getName())) {
+					recursiveInitMap(pe.getMap(), aux, TYPEMAP);
+					System.out.println(pe.getMap());
+					return TYPEMAP;
+				}
+				else {
+					me = mapMaps.get(fd.getName()).get(((MapExpression)pe.getMap()).getName());
+				}
+			}
+			
+			if(fdo instanceof Evaluation) {
+				if(!mapMaps.containsKey("query")) {
+					recursiveInitMap(pe.getMap(), aux, TYPEMAP);
+					System.out.println(pe.getMap());
+					return TYPEMAP;
+				}
+				else {
+					me = mapMaps.get("query").get(((MapExpression)pe.getMap()).getName());
+				}
+			}
+			
+			
+			recursiveInitMap(pe.getKeyExpr(), aux, me.getKeyType());
+			recursiveInitMap(pe.getValExpr(), aux, me.getValueType());
+			return TYPEMAP;
+		}
+		
+		if(exp instanceof GetExpression) {
+			GetExpression ge = (GetExpression) exp;
+			
+			Expression m = ge.getMap();
+			recursiveInitMap(ge.getMap(), aux, TYPEMAP);
+			if(m instanceof MapExpression){
+				
+				recursiveInitMap(ge.getKeyExpr(), aux, ((MapExpression)ge.getMap()).getKeyType());
+				return ((MapExpression)ge.getMap()).getValueType();
+			}
+			else{
+				return NOTYPE;
+				
+			}
+		}
+		
+		if(exp instanceof RemoveExpression) {
+			RemoveExpression re = (RemoveExpression) exp;
+			Expression m = re.getMap();
+			recursiveInitMap(re.getMap(), aux, TYPEMAP);
+			if(m instanceof MapExpression){
+				recursiveInitMap(re.getKeyExpr(), aux, ((MapExpression)re.getMap()).getKeyType());
+				return TYPEMAP;
+			}
+			else{
+				EObject fdo = (EObject)m;
+				while(true){
+					fdo = fdo.eContainer();
+					if(fdo instanceof FunctionDefinition || fdo instanceof Evaluation)
+						break;
+				}
+				if(fdo instanceof FunctionDefinition){
+					
+					recursiveInitMap(re.getKeyExpr(), aux, NOTYPE);
+					return TYPEMAP;
+				}
+				if(fdo instanceof Evaluation){
+					
+					recursiveInitMap(re.getKeyExpr(), aux, NOTYPE);
+					return TYPEMAP;
+				}
+				
+			}
 		}
 		
 		return NOTYPE;
@@ -543,9 +687,142 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 		
 		if(exp instanceof NegExpr) {
 			NegExpr ne = (NegExpr)exp;
-			recursiveInitMap(ne.getSubExpr(), aux, TYPEBOOLEAN);
+			recursiveInitMapFunctionCall(ne.getSubExpr(), aux, TYPEBOOLEAN,f,p);
 			return TYPEBOOLEAN;
 		}
+		
+
+		if(exp instanceof MapExpression) {
+			MapExpression me = (MapExpression) exp;
+			for(Pair e : me.getValues()) {
+				recursiveInitMapFunctionCall(e.getKey(), aux, me.getKeyType(),f,p);
+				recursiveInitMapFunctionCall(e.getValue(), aux, me.getValueType(),f,p);
+			}
+			aux.put(me.getName(), TYPEMAP);
+			
+			EObject fdo = (EObject) me;
+			while(true) {
+				fdo = fdo.eContainer();
+				if(fdo instanceof FunctionDefinition)
+					break;
+				if(fdo instanceof Evaluation)
+					break;
+				
+			}
+			if(fdo instanceof FunctionDefinition) {
+				FunctionDefinition fd = (FunctionDefinition) fdo;
+				if(!mapMaps.containsKey(fd.getName())) {
+					HashMap<String, MapExpression> aux2 = new HashMap<>();
+					aux2.put(me.getName(), me);
+					mapMaps.put(fd.getName(),aux2);
+				}
+				else {
+					HashMap<String, MapExpression> aux2 = mapMaps.get(fd.getName());
+					aux2.put(me.getName(), me);
+				}
+			}
+			
+			if(fdo instanceof Evaluation) {
+				if(!mapMaps.containsKey("query")) {
+					HashMap<String, MapExpression> aux2 = new HashMap<>();
+					aux2.put(me.getName(), me);
+					mapMaps.put("query",aux2);
+				}
+				else {
+					HashMap<String, MapExpression> aux2 = mapMaps.get("query");
+					aux2.put(me.getName(), me);
+				}
+			}
+			
+			return TYPEMAP;
+		}
+		
+		if(exp instanceof PutExpression) {
+			PutExpression pe = (PutExpression) exp;
+			EObject fdo = (EObject)pe;
+			MapExpression me = null;
+			while(true) {
+				fdo = fdo.eContainer();
+				if(fdo instanceof FunctionDefinition)
+					break;
+				if(fdo instanceof Evaluation)
+					break;
+				
+			}
+			if(fdo instanceof FunctionDefinition) {
+				FunctionDefinition fd = (FunctionDefinition) fdo;
+				if(!mapMaps.containsKey(fd.getName())) {
+					recursiveInitMapFunctionCall(pe.getMap(), aux, TYPEMAP,f,p);
+					System.out.println(pe.getMap());
+					return TYPEMAP;
+				}
+				else {
+					me = mapMaps.get(fd.getName()).get(((MapExpression)pe.getMap()).getName());
+				}
+			}
+			
+			if(fdo instanceof Evaluation) {
+				if(!mapMaps.containsKey("query")) {
+					recursiveInitMapFunctionCall(pe.getMap(), aux, TYPEMAP,f,p);
+					System.out.println(pe.getMap());
+					return TYPEMAP;
+				}
+				else {
+					me = mapMaps.get("query").get(((MapExpression)pe.getMap()).getName());
+				}
+			}
+			
+			
+			recursiveInitMapFunctionCall(pe.getKeyExpr(), aux, me.getKeyType(),f,p);
+			recursiveInitMapFunctionCall(pe.getValExpr(), aux, me.getValueType(),f,p);
+			return TYPEMAP;
+		}
+		
+		if(exp instanceof GetExpression) {
+			GetExpression ge = (GetExpression) exp;
+			
+			Expression m = ge.getMap();
+			recursiveInitMapFunctionCall(ge.getMap(), aux, TYPEMAP,f,p);
+			if(m instanceof MapExpression){
+				
+				recursiveInitMapFunctionCall(ge.getKeyExpr(), aux, ((MapExpression)ge.getMap()).getKeyType(),f,p);
+				return ((MapExpression)ge.getMap()).getValueType();
+			}
+			else{
+				return NOTYPE;
+				
+			}
+		}
+		
+		if(exp instanceof RemoveExpression) {
+			RemoveExpression re = (RemoveExpression) exp;
+			Expression m = re.getMap();
+			recursiveInitMapFunctionCall(re.getMap(), aux, TYPEMAP,f,p);
+			if(m instanceof MapExpression){
+				recursiveInitMapFunctionCall(re.getKeyExpr(), aux, ((MapExpression)re.getMap()).getKeyType(),f,p);
+				return TYPEMAP;
+			}
+			else{
+				EObject fdo = (EObject)m;
+				while(true){
+					fdo = fdo.eContainer();
+					if(fdo instanceof FunctionDefinition || fdo instanceof Evaluation)
+						break;
+				}
+				if(fdo instanceof FunctionDefinition){
+					
+					recursiveInitMapFunctionCall(re.getKeyExpr(), aux, NOTYPE,f,p);
+					return TYPEMAP;
+				}
+				if(fdo instanceof Evaluation){
+					
+					recursiveInitMapFunctionCall(re.getKeyExpr(), aux, NOTYPE,f,p);
+					return TYPEMAP;
+				}
+				
+			}
+		}
+		
 		
 		return NOTYPE;
 	}
@@ -572,6 +849,7 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 			ti.map = new HashMap<>();
 			ti.sequences = new HashMap<>();
 			ti.sequenceNumber=0;
+			ti.mapMaps = new HashMap<>();
 			ti.initMap(prog);
 			return ti;
 		}

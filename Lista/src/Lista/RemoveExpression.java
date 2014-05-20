@@ -30,12 +30,12 @@ public interface RemoveExpression extends Expression {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Map</em>' reference.
-	 * @see #setMap(MapExpression)
+	 * @see #setMap(Expression)
 	 * @see Lista.ListaPackage#getRemoveExpression_Map()
 	 * @model required="true"
 	 * @generated
 	 */
-	MapExpression getMap();
+	Expression getMap();
 
 	/**
 	 * Sets the value of the '{@link Lista.RemoveExpression#getMap <em>Map</em>}' reference.
@@ -45,7 +45,7 @@ public interface RemoveExpression extends Expression {
 	 * @see #getMap()
 	 * @generated
 	 */
-	void setMap(MapExpression value);
+	void setMap(Expression value);
 
 	/**
 	 * Returns the value of the '<em><b>Key Expr</b></em>' containment reference.

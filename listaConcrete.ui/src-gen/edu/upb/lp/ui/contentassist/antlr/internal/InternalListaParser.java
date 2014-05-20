@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalListaParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'<'", "'=='", "'FALSE'", "'String'", "'Int'", "'*'", "'/'", "'::'", "'&'", "'|'", "'-'", "'+'", "'('", "')'", "'='", "';'", "','", "'?'", "'input'", "'output'", "'if'", "'!'", "'seq'", "'['", "']'", "'{'", "'}'", "'->'", "'put'", "'get'", "'remove'", "'TRUE'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'<'", "'=='", "'FALSE'", "'String'", "'int'", "'*'", "'/'", "'::'", "'&'", "'|'", "'-'", "'+'", "'('", "')'", "'='", "';'", "','", "'?'", "'input'", "'output'", "'if'", "'!'", "'seq'", "'['", "']'", "'{'", "'}'", "'->'", "'put'", "'get'", "'remove'", "'TRUE'"
     };
     public static final int T__42=42;
     public static final int RULE_ID=4;
@@ -2525,13 +2525,13 @@ public class InternalListaParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MapExpression__KeyTypeAlternatives_2_0"
-    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:934:1: rule__MapExpression__KeyTypeAlternatives_2_0 : ( ( 'String' ) | ( 'Int' ) );
+    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:934:1: rule__MapExpression__KeyTypeAlternatives_2_0 : ( ( 'String' ) | ( 'int' ) );
     public final void rule__MapExpression__KeyTypeAlternatives_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:938:1: ( ( 'String' ) | ( 'Int' ) )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:938:1: ( ( 'String' ) | ( 'int' ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -2564,10 +2564,10 @@ public class InternalListaParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:947:6: ( 'Int' )
+                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:947:6: ( 'int' )
                     {
-                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:947:6: ( 'Int' )
-                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:948:1: 'Int'
+                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:947:6: ( 'int' )
+                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:948:1: 'int'
                     {
                      before(grammarAccess.getMapExpressionAccess().getKeyTypeIntKeyword_2_0_1()); 
                     match(input,15,FOLLOW_15_in_rule__MapExpression__KeyTypeAlternatives_2_02004); 
@@ -2596,13 +2596,13 @@ public class InternalListaParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MapExpression__ValueTypeAlternatives_4_0"
-    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:960:1: rule__MapExpression__ValueTypeAlternatives_4_0 : ( ( 'String' ) | ( 'Int' ) );
+    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:960:1: rule__MapExpression__ValueTypeAlternatives_4_0 : ( ( 'String' ) | ( 'int' ) );
     public final void rule__MapExpression__ValueTypeAlternatives_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:964:1: ( ( 'String' ) | ( 'Int' ) )
+            // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:964:1: ( ( 'String' ) | ( 'int' ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2635,10 +2635,10 @@ public class InternalListaParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:973:6: ( 'Int' )
+                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:973:6: ( 'int' )
                     {
-                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:973:6: ( 'Int' )
-                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:974:1: 'Int'
+                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:973:6: ( 'int' )
+                    // ../listaConcrete.ui/src-gen/edu/upb/lp/ui/contentassist/antlr/internal/InternalLista.g:974:1: 'int'
                     {
                      before(grammarAccess.getMapExpressionAccess().getValueTypeIntKeyword_4_0_1()); 
                     match(input,15,FOLLOW_15_in_rule__MapExpression__ValueTypeAlternatives_4_02059); 
@@ -13529,8 +13529,8 @@ public class InternalListaParser extends AbstractInternalContentAssistParser {
     static final String DFA1_specialS =
         "\21\uffff}>";
     static final String[] DFA1_transitionS = {
-            "\1\5\1\4\1\3\6\uffff\1\2\11\uffff\1\12\5\uffff\1\10\1\11\1"+
-            "\6\1\7\1\1\5\uffff\1\13\1\15\1\14\1\2",
+            "\1\5\1\4\1\3\6\uffff\1\2\11\uffff\1\12\5\uffff\1\10\1\11\1\6"+
+            "\1\7\1\1\5\uffff\1\13\1\15\1\14\1\2",
             "",
             "",
             "",

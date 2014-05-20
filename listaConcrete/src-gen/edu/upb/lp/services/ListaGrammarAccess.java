@@ -770,11 +770,11 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		//MapExpression returns ListaMM::MapExpression:
-		//	name=ID "[" keyType=("String" | "Int") "," valueType=("String" | "Int") "]" "=" "{" (values+=PairExpr (","
+		//	name=ID "[" keyType=("String" | "int") "," valueType=("String" | "int") "]" "=" "{" (values+=PairExpr (","
 		//	values+=PairExpr)*)? "}";
 		public ParserRule getRule() { return rule; }
 
-		//name=ID "[" keyType=("String" | "Int") "," valueType=("String" | "Int") "]" "=" "{" (values+=PairExpr (","
+		//name=ID "[" keyType=("String" | "int") "," valueType=("String" | "int") "]" "=" "{" (values+=PairExpr (","
 		//values+=PairExpr)*)? "}"
 		public Group getGroup() { return cGroup; }
 
@@ -787,31 +787,31 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		//"["
 		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 
-		//keyType=("String" | "Int")
+		//keyType=("String" | "int")
 		public Assignment getKeyTypeAssignment_2() { return cKeyTypeAssignment_2; }
 
-		//"String" | "Int"
+		//"String" | "int"
 		public Alternatives getKeyTypeAlternatives_2_0() { return cKeyTypeAlternatives_2_0; }
 
 		//"String"
 		public Keyword getKeyTypeStringKeyword_2_0_0() { return cKeyTypeStringKeyword_2_0_0; }
 
-		//"Int"
+		//"int"
 		public Keyword getKeyTypeIntKeyword_2_0_1() { return cKeyTypeIntKeyword_2_0_1; }
 
 		//","
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
-		//valueType=("String" | "Int")
+		//valueType=("String" | "int")
 		public Assignment getValueTypeAssignment_4() { return cValueTypeAssignment_4; }
 
-		//"String" | "Int"
+		//"String" | "int"
 		public Alternatives getValueTypeAlternatives_4_0() { return cValueTypeAlternatives_4_0; }
 
 		//"String"
 		public Keyword getValueTypeStringKeyword_4_0_0() { return cValueTypeStringKeyword_4_0_0; }
 
-		//"Int"
+		//"int"
 		public Keyword getValueTypeIntKeyword_4_0_1() { return cValueTypeIntKeyword_4_0_1; }
 
 		//"]"
@@ -1455,7 +1455,7 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MapExpression returns ListaMM::MapExpression:
-	//	name=ID "[" keyType=("String" | "Int") "," valueType=("String" | "Int") "]" "=" "{" (values+=PairExpr (","
+	//	name=ID "[" keyType=("String" | "int") "," valueType=("String" | "int") "]" "=" "{" (values+=PairExpr (","
 	//	values+=PairExpr)*)? "}";
 	public MapExpressionElements getMapExpressionAccess() {
 		return (pMapExpression != null) ? pMapExpression : (pMapExpression = new MapExpressionElements());

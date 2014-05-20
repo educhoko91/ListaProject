@@ -947,7 +947,7 @@ rule__MapExpression__KeyTypeAlternatives_2_0
     |(
 { before(grammarAccess.getMapExpressionAccess().getKeyTypeIntKeyword_2_0_1()); }
 
-	'Int' 
+	'int' 
 
 { after(grammarAccess.getMapExpressionAccess().getKeyTypeIntKeyword_2_0_1()); }
 )
@@ -973,7 +973,7 @@ rule__MapExpression__ValueTypeAlternatives_4_0
     |(
 { before(grammarAccess.getMapExpressionAccess().getValueTypeIntKeyword_4_0_1()); }
 
-	'Int' 
+	'int' 
 
 { after(grammarAccess.getMapExpressionAccess().getValueTypeIntKeyword_4_0_1()); }
 )
