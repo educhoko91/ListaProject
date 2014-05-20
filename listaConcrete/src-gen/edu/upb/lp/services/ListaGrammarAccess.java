@@ -857,7 +857,7 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueExpressionParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
-		//PairExpr returns ListaMM::Pair:
+		//PairExpr returns ListaMM::PairExpr:
 		//	key=Expression "->" value=Expression;
 		public ParserRule getRule() { return rule; }
 
@@ -1465,7 +1465,7 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		return getMapExpressionAccess().getRule();
 	}
 
-	//PairExpr returns ListaMM::Pair:
+	//PairExpr returns ListaMM::PairExpr:
 	//	key=Expression "->" value=Expression;
 	public PairExprElements getPairExprAccess() {
 		return (pPairExpr != null) ? pPairExpr : (pPairExpr = new PairExprElements());

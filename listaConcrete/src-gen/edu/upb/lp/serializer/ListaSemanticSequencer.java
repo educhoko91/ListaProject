@@ -14,7 +14,7 @@ import Lista.MapExpression;
 import Lista.NegExpr;
 import Lista.NumberExpression;
 import Lista.OutputExpression;
-import Lista.Pair;
+import Lista.PairExpr;
 import Lista.Program;
 import Lista.PutExpression;
 import Lista.RemoveExpression;
@@ -230,9 +230,9 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 					return; 
 				}
 				else break;
-			case ListaPackage.PAIR:
+			case ListaPackage.PAIR_EXPR:
 				if(context == grammarAccess.getPairExprRule()) {
-					sequence_PairExpr(context, (Pair) semanticObject); 
+					sequence_PairExpr(context, (PairExpr) semanticObject); 
 					return; 
 				}
 				else break;
@@ -501,12 +501,12 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Constraint:
 	 *     (key=Expression value=Expression)
 	 */
-	protected void sequence_PairExpr(EObject context, Pair semanticObject) {
+	protected void sequence_PairExpr(EObject context, PairExpr semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PAIR__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PAIR__KEY));
-			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PAIR__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PAIR__VALUE));
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PAIR_EXPR__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PAIR_EXPR__KEY));
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PAIR_EXPR__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PAIR_EXPR__VALUE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);

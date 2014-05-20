@@ -87,7 +87,7 @@ MapExpression returns ListaMM::MapExpression:
 	
 ;
 
-PairExpr returns ListaMM::Pair:
+PairExpr returns ListaMM::PairExpr:
 	key=Expression "->" value=Expression
 ;
 
