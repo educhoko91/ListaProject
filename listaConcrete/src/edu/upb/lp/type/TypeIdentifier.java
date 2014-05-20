@@ -16,6 +16,7 @@ import Lista.FunctionCall;
 import Lista.FunctionDefinition;
 import Lista.Identifier;
 import Lista.IfExpression;
+import Lista.NegExpr;
 import Lista.NumberExpression;
 import Lista.Operator;
 import Lista.OutputExpression;
@@ -292,6 +293,11 @@ public class TypeIdentifier {
 				return map.get("global").get(fd.getName());
 			
 		}
+		if(exp instanceof NegExpr) {
+			NegExpr ne = (NegExpr)exp;
+			recursiveInitMap(ne.getSubExpr(), aux, TYPEBOOLEAN);
+			return TYPEBOOLEAN;
+		}
 		
 		return NOTYPE;
 	}
@@ -533,6 +539,12 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 			else
 				return map.get("global").get(fd.getName());
 			
+		}
+		
+		if(exp instanceof NegExpr) {
+			NegExpr ne = (NegExpr)exp;
+			recursiveInitMap(ne.getSubExpr(), aux, TYPEBOOLEAN);
+			return TYPEBOOLEAN;
 		}
 		
 		return NOTYPE;

@@ -175,7 +175,7 @@ class ListaGenerator implements IGenerator {
 			
 		«ELSEIF e instanceof NegExpr»
 			«var neg = e as NegExpr»
-			!«generateExpression(neg.subExpr,scope)»
+			!(«generateExpression(neg.subExpr,scope)»)
 		«ELSEIF e instanceof OutputExpression»
 			«var out = e as OutputExpression»
 			output(«generateExpression(out.parameter,scope)»)
