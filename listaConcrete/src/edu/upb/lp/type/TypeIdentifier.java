@@ -862,4 +862,8 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 	public HashMap<Expression,HashMap<String,String>> getSequences(){
 		return sequences;
 	}
+	
+	public HashMap<String, HashMap<String, MapExpression>> getMapMaps() {
+		return mapMaps;
+	}
 }
