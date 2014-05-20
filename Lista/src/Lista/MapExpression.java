@@ -104,7 +104,7 @@ public interface MapExpression extends Expression {
 
 	/**
 	 * Returns the value of the '<em><b>Values</b></em>' containment reference list.
-	 * The list contents are of type {@link Lista.Pair}.
+	 * The list contents are of type {@link Lista.PairExpr}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Values</em>' containment reference list isn't clear,
@@ -116,6 +116,6 @@ public interface MapExpression extends Expression {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Pair> getValues();
+	EList<PairExpr> getValues();
 
 } // MapExpression

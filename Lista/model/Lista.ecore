@@ -104,9 +104,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
-        eType="#//Pair" containment="true"/>
+        eType="#//PairExpr" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pair">
+  <eClassifiers xsi:type="ecore:EClass" name="PairExpr">
     <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"

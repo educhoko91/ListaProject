@@ -193,13 +193,13 @@ public interface ListaFactory extends EFactory {
 	MapExpression createMapExpression();
 
 	/**
-	 * Returns a new object of class '<em>Pair</em>'.
+	 * Returns a new object of class '<em>Pair Expr</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pair</em>'.
+	 * @return a new object of class '<em>Pair Expr</em>'.
 	 * @generated
 	 */
-	Pair createPair();
+	PairExpr createPairExpr();
 
 	/**
 	 * Returns a new object of class '<em>Put Expression</em>'.

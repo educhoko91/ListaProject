@@ -4,7 +4,7 @@ package Lista.impl;
 
 import Lista.Expression;
 import Lista.ListaPackage;
-import Lista.Pair;
+import Lista.PairExpr;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,19 +17,19 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Pair</b></em>'.
+ * An implementation of the model object '<em><b>Pair Expr</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link Lista.impl.PairImpl#getKey <em>Key</em>}</li>
- *   <li>{@link Lista.impl.PairImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link Lista.impl.PairExprImpl#getKey <em>Key</em>}</li>
+ *   <li>{@link Lista.impl.PairExprImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
+public class PairExprImpl extends MinimalEObjectImpl.Container implements PairExpr {
 	/**
 	 * The cached value of the '{@link #getKey() <em>Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -55,7 +55,7 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PairImpl() {
+	protected PairExprImpl() {
 		super();
 	}
 
@@ -66,7 +66,7 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ListaPackage.Literals.PAIR;
+		return ListaPackage.Literals.PAIR_EXPR;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 		Expression oldKey = key;
 		key = newKey;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR__KEY, oldKey, newKey);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR_EXPR__KEY, oldKey, newKey);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -102,14 +102,14 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 		if (newKey != key) {
 			NotificationChain msgs = null;
 			if (key != null)
-				msgs = ((InternalEObject)key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR__KEY, null, msgs);
+				msgs = ((InternalEObject)key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR_EXPR__KEY, null, msgs);
 			if (newKey != null)
-				msgs = ((InternalEObject)newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR__KEY, null, msgs);
+				msgs = ((InternalEObject)newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR_EXPR__KEY, null, msgs);
 			msgs = basicSetKey(newKey, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR__KEY, newKey, newKey));
+			eNotify(new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR_EXPR__KEY, newKey, newKey));
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 		Expression oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR__VALUE, oldValue, newValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR_EXPR__VALUE, oldValue, newValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -145,14 +145,14 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR__VALUE, null, msgs);
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR_EXPR__VALUE, null, msgs);
 			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR__VALUE, null, msgs);
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ListaPackage.PAIR_EXPR__VALUE, null, msgs);
 			msgs = basicSetValue(newValue, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR__VALUE, newValue, newValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, ListaPackage.PAIR_EXPR__VALUE, newValue, newValue));
 	}
 
 	/**
@@ -163,9 +163,9 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ListaPackage.PAIR__KEY:
+			case ListaPackage.PAIR_EXPR__KEY:
 				return basicSetKey(null, msgs);
-			case ListaPackage.PAIR__VALUE:
+			case ListaPackage.PAIR_EXPR__VALUE:
 				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -179,9 +179,9 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ListaPackage.PAIR__KEY:
+			case ListaPackage.PAIR_EXPR__KEY:
 				return getKey();
-			case ListaPackage.PAIR__VALUE:
+			case ListaPackage.PAIR_EXPR__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -195,10 +195,10 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ListaPackage.PAIR__KEY:
+			case ListaPackage.PAIR_EXPR__KEY:
 				setKey((Expression)newValue);
 				return;
-			case ListaPackage.PAIR__VALUE:
+			case ListaPackage.PAIR_EXPR__VALUE:
 				setValue((Expression)newValue);
 				return;
 		}
@@ -213,10 +213,10 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ListaPackage.PAIR__KEY:
+			case ListaPackage.PAIR_EXPR__KEY:
 				setKey((Expression)null);
 				return;
-			case ListaPackage.PAIR__VALUE:
+			case ListaPackage.PAIR_EXPR__VALUE:
 				setValue((Expression)null);
 				return;
 		}
@@ -231,12 +231,12 @@ public class PairImpl extends MinimalEObjectImpl.Container implements Pair {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ListaPackage.PAIR__KEY:
+			case ListaPackage.PAIR_EXPR__KEY:
 				return key != null;
-			case ListaPackage.PAIR__VALUE:
+			case ListaPackage.PAIR_EXPR__VALUE:
 				return value != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //PairImpl
+} //PairExprImpl

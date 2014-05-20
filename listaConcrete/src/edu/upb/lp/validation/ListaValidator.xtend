@@ -24,10 +24,9 @@ import Lista.SeqExpression
 import Lista.OutputExpression
 import Lista.NegExpr
 import Lista.InputExpression
-import com.google.common.base.Function
 import Lista.FunctionCall
-import org.eclipse.emf.codegen.ecore.genmodel.impl.Literals
-import java.awt.Composite
+import Lista.MapExpression
+import Lista.PairExpr
 
 /**
  * Custom validation rules. 
@@ -44,7 +43,7 @@ class ListaValidator extends AbstractListaValidator {
 		this.map = TypeIdentifier.getInstance(prog).hashMap;
 		System.out.println(map);
 	}
-	/*
+	
 	@Check
 	def checkIdentifiersTypes(Identifier id) {
 		var prog = id as EObject;
@@ -213,9 +212,17 @@ class ListaValidator extends AbstractListaValidator {
 			return TypeIdentifier.TYPEBOOLEAN;
 		}
 		
+		if(expr instanceof MapExpression) {
+			var me = expr as MapExpression;
+			for(PairExpr p: me.values) {
+				
+				
+			}
+		}
+		
 		return TypeIdentifier.NOTYPE;
 	}
-	
+	/*
 	@Check
 	def checkIdentifiersInEvaluation(Evaluation eva) {
 		recursiveIdentifiersInEvaluation(eva.expression);

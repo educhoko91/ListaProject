@@ -76,7 +76,7 @@ public class ListaFactoryImpl extends EFactoryImpl implements ListaFactory {
 			case ListaPackage.INPUT_EXPRESSION: return createInputExpression();
 			case ListaPackage.OUTPUT_EXPRESSION: return createOutputExpression();
 			case ListaPackage.MAP_EXPRESSION: return createMapExpression();
-			case ListaPackage.PAIR: return createPair();
+			case ListaPackage.PAIR_EXPR: return createPairExpr();
 			case ListaPackage.PUT_EXPRESSION: return createPutExpression();
 			case ListaPackage.GET_EXPRESSION: return createGetExpression();
 			case ListaPackage.REMOVE_EXPRESSION: return createRemoveExpression();
@@ -314,9 +314,9 @@ public class ListaFactoryImpl extends EFactoryImpl implements ListaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pair createPair() {
-		PairImpl pair = new PairImpl();
-		return pair;
+	public PairExpr createPairExpr() {
+		PairExprImpl pairExpr = new PairExprImpl();
+		return pairExpr;
 	}
 
 	/**

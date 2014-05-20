@@ -218,9 +218,9 @@ public class ListaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ListaPackage.PAIR: {
-				Pair pair = (Pair)theEObject;
-				T result = casePair(pair);
+			case ListaPackage.PAIR_EXPR: {
+				PairExpr pairExpr = (PairExpr)theEObject;
+				T result = casePairExpr(pairExpr);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -580,17 +580,17 @@ public class ListaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Pair</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Pair Expr</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Pair</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Pair Expr</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePair(Pair object) {
+	public T casePairExpr(PairExpr object) {
 		return null;
 	}
 

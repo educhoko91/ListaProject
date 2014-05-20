@@ -25,6 +25,7 @@ import Lista.NumberExpression;
 import Lista.Operator;
 import Lista.OutputExpression;
 import Lista.Pair;
+import Lista.PairExpr;
 import Lista.Program;
 import Lista.PutExpression;
 import Lista.RemoveExpression;
@@ -314,7 +315,7 @@ public class TypeIdentifier {
 		
 		if(exp instanceof MapExpression) {
 			MapExpression me = (MapExpression) exp;
-			for(Pair e : me.getValues()) {
+			for(PairExpr e : me.getValues()) {
 				recursiveInitMap(e.getKey(), aux, me.getKeyType());
 				recursiveInitMap(e.getValue(), aux, me.getValueType());
 			}
@@ -694,7 +695,7 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 
 		if(exp instanceof MapExpression) {
 			MapExpression me = (MapExpression) exp;
-			for(Pair e : me.getValues()) {
+			for(PairExpr e : me.getValues()) {
 				recursiveInitMapFunctionCall(e.getKey(), aux, me.getKeyType(),f,p);
 				recursiveInitMapFunctionCall(e.getValue(), aux, me.getValueType(),f,p);
 			}

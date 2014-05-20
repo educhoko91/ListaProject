@@ -21,7 +21,7 @@ import Lista.NegExpr;
 import Lista.NumberExpression;
 import Lista.Operator;
 import Lista.OutputExpression;
-import Lista.Pair;
+import Lista.PairExpr;
 import Lista.ParentesizedExp;
 import Lista.Program;
 import Lista.ProgramComponent;
@@ -205,7 +205,7 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass pairEClass = null;
+	private EClass pairExprEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -767,8 +767,8 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPair() {
-		return pairEClass;
+	public EClass getPairExpr() {
+		return pairExprEClass;
 	}
 
 	/**
@@ -776,8 +776,8 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPair_Key() {
-		return (EReference)pairEClass.getEStructuralFeatures().get(0);
+	public EReference getPairExpr_Key() {
+		return (EReference)pairExprEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -785,8 +785,8 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPair_Value() {
-		return (EReference)pairEClass.getEStructuralFeatures().get(1);
+	public EReference getPairExpr_Value() {
+		return (EReference)pairExprEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -998,9 +998,9 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 		createEAttribute(mapExpressionEClass, MAP_EXPRESSION__VALUE_TYPE);
 		createEReference(mapExpressionEClass, MAP_EXPRESSION__VALUES);
 
-		pairEClass = createEClass(PAIR);
-		createEReference(pairEClass, PAIR__KEY);
-		createEReference(pairEClass, PAIR__VALUE);
+		pairExprEClass = createEClass(PAIR_EXPR);
+		createEReference(pairExprEClass, PAIR_EXPR__KEY);
+		createEReference(pairExprEClass, PAIR_EXPR__VALUE);
 
 		putExpressionEClass = createEClass(PUT_EXPRESSION);
 		createEReference(putExpressionEClass, PUT_EXPRESSION__MAP);
@@ -1142,11 +1142,11 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 		initEAttribute(getMapExpression_Name(), ecorePackage.getEString(), "name", null, 1, 1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMapExpression_KeyType(), ecorePackage.getEString(), "keyType", null, 1, 1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMapExpression_ValueType(), ecorePackage.getEString(), "valueType", null, 1, 1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMapExpression_Values(), this.getPair(), null, "values", null, 0, -1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMapExpression_Values(), this.getPairExpr(), null, "values", null, 0, -1, MapExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(pairEClass, Pair.class, "Pair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPair_Key(), this.getExpression(), null, "key", null, 1, 1, Pair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPair_Value(), this.getExpression(), null, "value", null, 1, 1, Pair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pairExprEClass, PairExpr.class, "PairExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPairExpr_Key(), this.getExpression(), null, "key", null, 1, 1, PairExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPairExpr_Value(), this.getExpression(), null, "value", null, 1, 1, PairExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(putExpressionEClass, PutExpression.class, "PutExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPutExpression_Map(), this.getExpression(), null, "Map", null, 1, 1, PutExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -945,14 +945,14 @@ public interface ListaPackage extends EPackage {
 	int MAP_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link Lista.impl.PairImpl <em>Pair</em>}' class.
+	 * The meta object id for the '{@link Lista.impl.PairExprImpl <em>Pair Expr</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see Lista.impl.PairImpl
-	 * @see Lista.impl.ListaPackageImpl#getPair()
+	 * @see Lista.impl.PairExprImpl
+	 * @see Lista.impl.ListaPackageImpl#getPairExpr()
 	 * @generated
 	 */
-	int PAIR = 22;
+	int PAIR_EXPR = 22;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -961,7 +961,7 @@ public interface ListaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAIR__KEY = 0;
+	int PAIR_EXPR__KEY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -970,25 +970,25 @@ public interface ListaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAIR__VALUE = 1;
+	int PAIR_EXPR__VALUE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Pair</em>' class.
+	 * The number of structural features of the '<em>Pair Expr</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAIR_FEATURE_COUNT = 2;
+	int PAIR_EXPR_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Pair</em>' class.
+	 * The number of operations of the '<em>Pair Expr</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAIR_OPERATION_COUNT = 0;
+	int PAIR_EXPR_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link Lista.impl.PutExpressionImpl <em>Put Expression</em>}' class.
@@ -1688,36 +1688,36 @@ public interface ListaPackage extends EPackage {
 	EReference getMapExpression_Values();
 
 	/**
-	 * Returns the meta object for class '{@link Lista.Pair <em>Pair</em>}'.
+	 * Returns the meta object for class '{@link Lista.PairExpr <em>Pair Expr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Pair</em>'.
-	 * @see Lista.Pair
+	 * @return the meta object for class '<em>Pair Expr</em>'.
+	 * @see Lista.PairExpr
 	 * @generated
 	 */
-	EClass getPair();
+	EClass getPairExpr();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link Lista.Pair#getKey <em>Key</em>}'.
+	 * Returns the meta object for the containment reference '{@link Lista.PairExpr#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Key</em>'.
-	 * @see Lista.Pair#getKey()
-	 * @see #getPair()
+	 * @see Lista.PairExpr#getKey()
+	 * @see #getPairExpr()
 	 * @generated
 	 */
-	EReference getPair_Key();
+	EReference getPairExpr_Key();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link Lista.Pair#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link Lista.PairExpr#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see Lista.Pair#getValue()
-	 * @see #getPair()
+	 * @see Lista.PairExpr#getValue()
+	 * @see #getPairExpr()
 	 * @generated
 	 */
-	EReference getPair_Value();
+	EReference getPairExpr_Value();
 
 	/**
 	 * Returns the meta object for class '{@link Lista.PutExpression <em>Put Expression</em>}'.
@@ -2322,14 +2322,14 @@ public interface ListaPackage extends EPackage {
 		EReference MAP_EXPRESSION__VALUES = eINSTANCE.getMapExpression_Values();
 
 		/**
-		 * The meta object literal for the '{@link Lista.impl.PairImpl <em>Pair</em>}' class.
+		 * The meta object literal for the '{@link Lista.impl.PairExprImpl <em>Pair Expr</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see Lista.impl.PairImpl
-		 * @see Lista.impl.ListaPackageImpl#getPair()
+		 * @see Lista.impl.PairExprImpl
+		 * @see Lista.impl.ListaPackageImpl#getPairExpr()
 		 * @generated
 		 */
-		EClass PAIR = eINSTANCE.getPair();
+		EClass PAIR_EXPR = eINSTANCE.getPairExpr();
 
 		/**
 		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
@@ -2337,7 +2337,7 @@ public interface ListaPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PAIR__KEY = eINSTANCE.getPair_Key();
+		EReference PAIR_EXPR__KEY = eINSTANCE.getPairExpr_Key();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
@@ -2345,7 +2345,7 @@ public interface ListaPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PAIR__VALUE = eINSTANCE.getPair_Value();
+		EReference PAIR_EXPR__VALUE = eINSTANCE.getPairExpr_Value();
 
 		/**
 		 * The meta object literal for the '{@link Lista.impl.PutExpressionImpl <em>Put Expression</em>}' class.

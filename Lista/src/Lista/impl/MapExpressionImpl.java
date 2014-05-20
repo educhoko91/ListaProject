@@ -4,20 +4,14 @@ package Lista.impl;
 
 import Lista.ListaPackage;
 import Lista.MapExpression;
-import Lista.Pair;
-
+import Lista.PairExpr;
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -106,7 +100,7 @@ public class MapExpressionImpl extends ExpressionImpl implements MapExpression {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Pair> values;
+	protected EList<PairExpr> values;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,9 +189,9 @@ public class MapExpressionImpl extends ExpressionImpl implements MapExpression {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Pair> getValues() {
+	public EList<PairExpr> getValues() {
 		if (values == null) {
-			values = new EObjectContainmentEList<Pair>(Pair.class, this, ListaPackage.MAP_EXPRESSION__VALUES);
+			values = new EObjectContainmentEList<PairExpr>(PairExpr.class, this, ListaPackage.MAP_EXPRESSION__VALUES);
 		}
 		return values;
 	}
@@ -256,7 +250,7 @@ public class MapExpressionImpl extends ExpressionImpl implements MapExpression {
 				return;
 			case ListaPackage.MAP_EXPRESSION__VALUES:
 				getValues().clear();
-				getValues().addAll((Collection<? extends Pair>)newValue);
+				getValues().addAll((Collection<? extends PairExpr>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

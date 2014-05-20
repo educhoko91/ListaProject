@@ -156,8 +156,8 @@ public class ListaAdapterFactory extends AdapterFactoryImpl {
 				return createMapExpressionAdapter();
 			}
 			@Override
-			public Adapter casePair(Pair object) {
-				return createPairAdapter();
+			public Adapter casePairExpr(PairExpr object) {
+				return createPairExprAdapter();
 			}
 			@Override
 			public Adapter casePutExpression(PutExpression object) {
@@ -500,16 +500,16 @@ public class ListaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link Lista.Pair <em>Pair</em>}'.
+	 * Creates a new adapter for an object of class '{@link Lista.PairExpr <em>Pair Expr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see Lista.Pair
+	 * @see Lista.PairExpr
 	 * @generated
 	 */
-	public Adapter createPairAdapter() {
+	public Adapter createPairExprAdapter() {
 		return null;
 	}
 

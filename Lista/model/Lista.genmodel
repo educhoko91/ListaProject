@@ -85,9 +85,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lista.ecore#//MapExpression/valueType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//MapExpression/values"/>
     </genClasses>
-    <genClasses ecoreClass="Lista.ecore#//Pair">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Pair/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Pair/value"/>
+    <genClasses ecoreClass="Lista.ecore#//PairExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//PairExpr/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//PairExpr/value"/>
     </genClasses>
     <genClasses ecoreClass="Lista.ecore#//PutExpression">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lista.ecore#//PutExpression/Map"/>
