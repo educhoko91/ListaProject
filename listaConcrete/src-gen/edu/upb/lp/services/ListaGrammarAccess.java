@@ -355,14 +355,20 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftParenthesisKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
 		private final RuleCall cExpressionParserRuleCall_10_1 = (RuleCall)cGroup_10.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_10_2 = (Keyword)cGroup_10.eContents().get(2);
+		private final RuleCall cMapExpressionParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
+		private final RuleCall cPutExpressionParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
+		private final RuleCall cRemoveExpressionParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
+		private final RuleCall cGetExpressionParserRuleCall_14 = (RuleCall)cAlternatives.eContents().get(14);
 		
 		//SimpleExpression returns ListaMM::Expression:
 		//	SeqExpression | BooleanExpression | NumberExpression | StringExpression | FunctionCall | Identifier | IfExpression |
-		//	NotExpression | InputExpression | OutputExpression | "(" Expression ")";
+		//	NotExpression | InputExpression | OutputExpression | "(" Expression ")" | MapExpression | PutExpression |
+		//	RemoveExpression | GetExpression;
 		public ParserRule getRule() { return rule; }
 
 		//SeqExpression | BooleanExpression | NumberExpression | StringExpression | FunctionCall | Identifier | IfExpression |
-		//NotExpression | InputExpression | OutputExpression | "(" Expression ")"
+		//NotExpression | InputExpression | OutputExpression | "(" Expression ")" | MapExpression | PutExpression |
+		//RemoveExpression | GetExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//SeqExpression
@@ -406,6 +412,18 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 
 		//")"
 		public Keyword getRightParenthesisKeyword_10_2() { return cRightParenthesisKeyword_10_2; }
+
+		//MapExpression
+		public RuleCall getMapExpressionParserRuleCall_11() { return cMapExpressionParserRuleCall_11; }
+
+		//PutExpression
+		public RuleCall getPutExpressionParserRuleCall_12() { return cPutExpressionParserRuleCall_12; }
+
+		//RemoveExpression
+		public RuleCall getRemoveExpressionParserRuleCall_13() { return cRemoveExpressionParserRuleCall_13; }
+
+		//GetExpression
+		public RuleCall getGetExpressionParserRuleCall_14() { return cGetExpressionParserRuleCall_14; }
 	}
 
 	public class InputExpressionElements extends AbstractParserRuleElementFinder {
@@ -723,6 +741,300 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
+
+	public class MapExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MapExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cKeyTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cKeyTypeAlternatives_2_0 = (Alternatives)cKeyTypeAssignment_2.eContents().get(0);
+		private final Keyword cKeyTypeStringKeyword_2_0_0 = (Keyword)cKeyTypeAlternatives_2_0.eContents().get(0);
+		private final Keyword cKeyTypeIntKeyword_2_0_1 = (Keyword)cKeyTypeAlternatives_2_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cValueTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final Alternatives cValueTypeAlternatives_4_0 = (Alternatives)cValueTypeAssignment_4.eContents().get(0);
+		private final Keyword cValueTypeStringKeyword_4_0_0 = (Keyword)cValueTypeAlternatives_4_0.eContents().get(0);
+		private final Keyword cValueTypeIntKeyword_4_0_1 = (Keyword)cValueTypeAlternatives_4_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Assignment cValuesAssignment_8_0 = (Assignment)cGroup_8.eContents().get(0);
+		private final RuleCall cValuesPairExprParserRuleCall_8_0_0 = (RuleCall)cValuesAssignment_8_0.eContents().get(0);
+		private final Group cGroup_8_1 = (Group)cGroup_8.eContents().get(1);
+		private final Keyword cCommaKeyword_8_1_0 = (Keyword)cGroup_8_1.eContents().get(0);
+		private final Assignment cValuesAssignment_8_1_1 = (Assignment)cGroup_8_1.eContents().get(1);
+		private final RuleCall cValuesPairExprParserRuleCall_8_1_1_0 = (RuleCall)cValuesAssignment_8_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		
+		//MapExpression returns ListaMM::MapExpression:
+		//	name=ID "[" keyType=("String" | "Int") "," valueType=("String" | "Int") "]" "=" "{" (values+=PairExpr (","
+		//	values+=PairExpr)*)? "}";
+		public ParserRule getRule() { return rule; }
+
+		//name=ID "[" keyType=("String" | "Int") "," valueType=("String" | "Int") "]" "=" "{" (values+=PairExpr (","
+		//values+=PairExpr)*)? "}"
+		public Group getGroup() { return cGroup; }
+
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
+
+		//keyType=("String" | "Int")
+		public Assignment getKeyTypeAssignment_2() { return cKeyTypeAssignment_2; }
+
+		//"String" | "Int"
+		public Alternatives getKeyTypeAlternatives_2_0() { return cKeyTypeAlternatives_2_0; }
+
+		//"String"
+		public Keyword getKeyTypeStringKeyword_2_0_0() { return cKeyTypeStringKeyword_2_0_0; }
+
+		//"Int"
+		public Keyword getKeyTypeIntKeyword_2_0_1() { return cKeyTypeIntKeyword_2_0_1; }
+
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+
+		//valueType=("String" | "Int")
+		public Assignment getValueTypeAssignment_4() { return cValueTypeAssignment_4; }
+
+		//"String" | "Int"
+		public Alternatives getValueTypeAlternatives_4_0() { return cValueTypeAlternatives_4_0; }
+
+		//"String"
+		public Keyword getValueTypeStringKeyword_4_0_0() { return cValueTypeStringKeyword_4_0_0; }
+
+		//"Int"
+		public Keyword getValueTypeIntKeyword_4_0_1() { return cValueTypeIntKeyword_4_0_1; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
+
+		//(values+=PairExpr ("," values+=PairExpr)*)?
+		public Group getGroup_8() { return cGroup_8; }
+
+		//values+=PairExpr
+		public Assignment getValuesAssignment_8_0() { return cValuesAssignment_8_0; }
+
+		//PairExpr
+		public RuleCall getValuesPairExprParserRuleCall_8_0_0() { return cValuesPairExprParserRuleCall_8_0_0; }
+
+		//("," values+=PairExpr)*
+		public Group getGroup_8_1() { return cGroup_8_1; }
+
+		//","
+		public Keyword getCommaKeyword_8_1_0() { return cCommaKeyword_8_1_0; }
+
+		//values+=PairExpr
+		public Assignment getValuesAssignment_8_1_1() { return cValuesAssignment_8_1_1; }
+
+		//PairExpr
+		public RuleCall getValuesPairExprParserRuleCall_8_1_1_0() { return cValuesPairExprParserRuleCall_8_1_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+	}
+
+	public class PairExprElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PairExpr");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cKeyAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cKeyExpressionParserRuleCall_0_0 = (RuleCall)cKeyAssignment_0.eContents().get(0);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueExpressionParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//PairExpr returns ListaMM::Pair:
+		//	key=Expression "->" value=Expression;
+		public ParserRule getRule() { return rule; }
+
+		//key=Expression "->" value=Expression
+		public Group getGroup() { return cGroup; }
+
+		//key=Expression
+		public Assignment getKeyAssignment_0() { return cKeyAssignment_0; }
+
+		//Expression
+		public RuleCall getKeyExpressionParserRuleCall_0_0() { return cKeyExpressionParserRuleCall_0_0; }
+
+		//"->"
+		public Keyword getHyphenMinusGreaterThanSignKeyword_1() { return cHyphenMinusGreaterThanSignKeyword_1; }
+
+		//value=Expression
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+
+		//Expression
+		public RuleCall getValueExpressionParserRuleCall_2_0() { return cValueExpressionParserRuleCall_2_0; }
+	}
+
+	public class PutExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PutExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPutKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cMapAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cMapMapExpressionCrossReference_2_0 = (CrossReference)cMapAssignment_2.eContents().get(0);
+		private final RuleCall cMapMapExpressionIDTerminalRuleCall_2_0_1 = (RuleCall)cMapMapExpressionCrossReference_2_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cKeyExprAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cKeyExprExpressionParserRuleCall_4_0 = (RuleCall)cKeyExprAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cValExprAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cValExprExpressionParserRuleCall_6_0 = (RuleCall)cValExprAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//PutExpression returns ListaMM::PutExpression:
+		//	"put" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression "," valExpr=Expression ")";
+		public ParserRule getRule() { return rule; }
+
+		//"put" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression "," valExpr=Expression ")"
+		public Group getGroup() { return cGroup; }
+
+		//"put"
+		public Keyword getPutKeyword_0() { return cPutKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//Map=[ListaMM::MapExpression]
+		public Assignment getMapAssignment_2() { return cMapAssignment_2; }
+
+		//[ListaMM::MapExpression]
+		public CrossReference getMapMapExpressionCrossReference_2_0() { return cMapMapExpressionCrossReference_2_0; }
+
+		//ID
+		public RuleCall getMapMapExpressionIDTerminalRuleCall_2_0_1() { return cMapMapExpressionIDTerminalRuleCall_2_0_1; }
+
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+
+		//keyExpr=Expression
+		public Assignment getKeyExprAssignment_4() { return cKeyExprAssignment_4; }
+
+		//Expression
+		public RuleCall getKeyExprExpressionParserRuleCall_4_0() { return cKeyExprExpressionParserRuleCall_4_0; }
+
+		//","
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+
+		//valExpr=Expression
+		public Assignment getValExprAssignment_6() { return cValExprAssignment_6; }
+
+		//Expression
+		public RuleCall getValExprExpressionParserRuleCall_6_0() { return cValExprExpressionParserRuleCall_6_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+	}
+
+	public class GetExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GetExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGetKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cMapAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cMapMapExpressionCrossReference_2_0 = (CrossReference)cMapAssignment_2.eContents().get(0);
+		private final RuleCall cMapMapExpressionIDTerminalRuleCall_2_0_1 = (RuleCall)cMapMapExpressionCrossReference_2_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cKeyExprAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cKeyExprExpressionParserRuleCall_4_0 = (RuleCall)cKeyExprAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//GetExpression returns ListaMM::GetExpression:
+		//	"get" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression ")";
+		public ParserRule getRule() { return rule; }
+
+		//"get" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression ")"
+		public Group getGroup() { return cGroup; }
+
+		//"get"
+		public Keyword getGetKeyword_0() { return cGetKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//Map=[ListaMM::MapExpression]
+		public Assignment getMapAssignment_2() { return cMapAssignment_2; }
+
+		//[ListaMM::MapExpression]
+		public CrossReference getMapMapExpressionCrossReference_2_0() { return cMapMapExpressionCrossReference_2_0; }
+
+		//ID
+		public RuleCall getMapMapExpressionIDTerminalRuleCall_2_0_1() { return cMapMapExpressionIDTerminalRuleCall_2_0_1; }
+
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+
+		//keyExpr=Expression
+		public Assignment getKeyExprAssignment_4() { return cKeyExprAssignment_4; }
+
+		//Expression
+		public RuleCall getKeyExprExpressionParserRuleCall_4_0() { return cKeyExprExpressionParserRuleCall_4_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+	}
+
+	public class RemoveExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RemoveExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRemoveKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cMapAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cMapMapExpressionCrossReference_2_0 = (CrossReference)cMapAssignment_2.eContents().get(0);
+		private final RuleCall cMapMapExpressionIDTerminalRuleCall_2_0_1 = (RuleCall)cMapMapExpressionCrossReference_2_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cKeyExprAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cKeyExprExpressionParserRuleCall_4_0 = (RuleCall)cKeyExprAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//RemoveExpression returns ListaMM::RemoveExpression:
+		//	"remove" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression ")";
+		public ParserRule getRule() { return rule; }
+
+		//"remove" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression ")"
+		public Group getGroup() { return cGroup; }
+
+		//"remove"
+		public Keyword getRemoveKeyword_0() { return cRemoveKeyword_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+
+		//Map=[ListaMM::MapExpression]
+		public Assignment getMapAssignment_2() { return cMapAssignment_2; }
+
+		//[ListaMM::MapExpression]
+		public CrossReference getMapMapExpressionCrossReference_2_0() { return cMapMapExpressionCrossReference_2_0; }
+
+		//ID
+		public RuleCall getMapMapExpressionIDTerminalRuleCall_2_0_1() { return cMapMapExpressionIDTerminalRuleCall_2_0_1; }
+
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+
+		//keyExpr=Expression
+		public Assignment getKeyExprAssignment_4() { return cKeyExprAssignment_4; }
+
+		//Expression
+		public RuleCall getKeyExprExpressionParserRuleCall_4_0() { return cKeyExprExpressionParserRuleCall_4_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+	}
 	
 	
 	public class Level1OperatorElements extends AbstractEnumRuleElementFinder {
@@ -861,6 +1173,11 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 	private Level2OperatorElements unknownRuleLevel2Operator;
 	private Level3OperatorElements unknownRuleLevel3Operator;
 	private Level4OperatorElements unknownRuleLevel4Operator;
+	private MapExpressionElements pMapExpression;
+	private PairExprElements pPairExpr;
+	private PutExpressionElements pPutExpression;
+	private GetExpressionElements pGetExpression;
+	private RemoveExpressionElements pRemoveExpression;
 	
 	private final Grammar grammar;
 
@@ -996,7 +1313,8 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 
 	//SimpleExpression returns ListaMM::Expression:
 	//	SeqExpression | BooleanExpression | NumberExpression | StringExpression | FunctionCall | Identifier | IfExpression |
-	//	NotExpression | InputExpression | OutputExpression | "(" Expression ")";
+	//	NotExpression | InputExpression | OutputExpression | "(" Expression ")" | MapExpression | PutExpression |
+	//	RemoveExpression | GetExpression;
 	public SimpleExpressionElements getSimpleExpressionAccess() {
 		return (pSimpleExpression != null) ? pSimpleExpression : (pSimpleExpression = new SimpleExpressionElements());
 	}
@@ -1134,6 +1452,57 @@ public class ListaGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public EnumRule getLevel4OperatorRule() {
 		return getLevel4OperatorAccess().getRule();
+	}
+
+	//MapExpression returns ListaMM::MapExpression:
+	//	name=ID "[" keyType=("String" | "Int") "," valueType=("String" | "Int") "]" "=" "{" (values+=PairExpr (","
+	//	values+=PairExpr)*)? "}";
+	public MapExpressionElements getMapExpressionAccess() {
+		return (pMapExpression != null) ? pMapExpression : (pMapExpression = new MapExpressionElements());
+	}
+	
+	public ParserRule getMapExpressionRule() {
+		return getMapExpressionAccess().getRule();
+	}
+
+	//PairExpr returns ListaMM::Pair:
+	//	key=Expression "->" value=Expression;
+	public PairExprElements getPairExprAccess() {
+		return (pPairExpr != null) ? pPairExpr : (pPairExpr = new PairExprElements());
+	}
+	
+	public ParserRule getPairExprRule() {
+		return getPairExprAccess().getRule();
+	}
+
+	//PutExpression returns ListaMM::PutExpression:
+	//	"put" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression "," valExpr=Expression ")";
+	public PutExpressionElements getPutExpressionAccess() {
+		return (pPutExpression != null) ? pPutExpression : (pPutExpression = new PutExpressionElements());
+	}
+	
+	public ParserRule getPutExpressionRule() {
+		return getPutExpressionAccess().getRule();
+	}
+
+	//GetExpression returns ListaMM::GetExpression:
+	//	"get" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression ")";
+	public GetExpressionElements getGetExpressionAccess() {
+		return (pGetExpression != null) ? pGetExpression : (pGetExpression = new GetExpressionElements());
+	}
+	
+	public ParserRule getGetExpressionRule() {
+		return getGetExpressionAccess().getRule();
+	}
+
+	//RemoveExpression returns ListaMM::RemoveExpression:
+	//	"remove" "(" Map=[ListaMM::MapExpression] "," keyExpr=Expression ")";
+	public RemoveExpressionElements getRemoveExpressionAccess() {
+		return (pRemoveExpression != null) ? pRemoveExpression : (pRemoveExpression = new RemoveExpressionElements());
+	}
+	
+	public ParserRule getRemoveExpressionRule() {
+		return getRemoveExpressionAccess().getRule();
 	}
 
 	//terminal ID:

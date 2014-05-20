@@ -160,6 +160,18 @@ public class ListaAdapterFactory extends AdapterFactoryImpl {
 				return createPairAdapter();
 			}
 			@Override
+			public Adapter casePutExpression(PutExpression object) {
+				return createPutExpressionAdapter();
+			}
+			@Override
+			public Adapter caseGetExpression(GetExpression object) {
+				return createGetExpressionAdapter();
+			}
+			@Override
+			public Adapter caseRemoveExpression(RemoveExpression object) {
+				return createRemoveExpressionAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -498,6 +510,48 @@ public class ListaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPairAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link Lista.PutExpression <em>Put Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see Lista.PutExpression
+	 * @generated
+	 */
+	public Adapter createPutExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link Lista.GetExpression <em>Get Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see Lista.GetExpression
+	 * @generated
+	 */
+	public Adapter createGetExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link Lista.RemoveExpression <em>Remove Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see Lista.RemoveExpression
+	 * @generated
+	 */
+	public Adapter createRemoveExpressionAdapter() {
 		return null;
 	}
 

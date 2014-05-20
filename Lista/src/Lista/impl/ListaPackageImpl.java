@@ -10,6 +10,7 @@ import Lista.Expression;
 import Lista.Factor;
 import Lista.FunctionCall;
 import Lista.FunctionDefinition;
+import Lista.GetExpression;
 import Lista.Identifier;
 import Lista.IfExpression;
 import Lista.InputExpression;
@@ -24,6 +25,8 @@ import Lista.Pair;
 import Lista.ParentesizedExp;
 import Lista.Program;
 import Lista.ProgramComponent;
+import Lista.PutExpression;
+import Lista.RemoveExpression;
 import Lista.SeqExpression;
 import Lista.StringExpression;
 import Lista.Term;
@@ -203,6 +206,27 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * @generated
 	 */
 	private EClass pairEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass putExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass removeExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -770,6 +794,96 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPutExpression() {
+		return putExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPutExpression_Map() {
+		return (EReference)putExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPutExpression_KeyExpr() {
+		return (EReference)putExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPutExpression_ValExpr() {
+		return (EReference)putExpressionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGetExpression() {
+		return getExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGetExpression_Map() {
+		return (EReference)getExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGetExpression_KeyExpr() {
+		return (EReference)getExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRemoveExpression() {
+		return removeExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRemoveExpression_Map() {
+		return (EReference)removeExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRemoveExpression_KeyExpr() {
+		return (EReference)removeExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getOperator() {
 		return operatorEEnum;
 	}
@@ -888,6 +1002,19 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 		createEReference(pairEClass, PAIR__KEY);
 		createEReference(pairEClass, PAIR__VALUE);
 
+		putExpressionEClass = createEClass(PUT_EXPRESSION);
+		createEReference(putExpressionEClass, PUT_EXPRESSION__MAP);
+		createEReference(putExpressionEClass, PUT_EXPRESSION__KEY_EXPR);
+		createEReference(putExpressionEClass, PUT_EXPRESSION__VAL_EXPR);
+
+		getExpressionEClass = createEClass(GET_EXPRESSION);
+		createEReference(getExpressionEClass, GET_EXPRESSION__MAP);
+		createEReference(getExpressionEClass, GET_EXPRESSION__KEY_EXPR);
+
+		removeExpressionEClass = createEClass(REMOVE_EXPRESSION);
+		createEReference(removeExpressionEClass, REMOVE_EXPRESSION__MAP);
+		createEReference(removeExpressionEClass, REMOVE_EXPRESSION__KEY_EXPR);
+
 		// Create enums
 		operatorEEnum = createEEnum(OPERATOR);
 		termOperatorEEnum = createEEnum(TERM_OPERATOR);
@@ -939,6 +1066,9 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 		inputExpressionEClass.getESuperTypes().add(this.getExpression());
 		outputExpressionEClass.getESuperTypes().add(this.getExpression());
 		mapExpressionEClass.getESuperTypes().add(this.getExpression());
+		putExpressionEClass.getESuperTypes().add(this.getExpression());
+		getExpressionEClass.getESuperTypes().add(this.getExpression());
+		removeExpressionEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1017,6 +1147,19 @@ public class ListaPackageImpl extends EPackageImpl implements ListaPackage {
 		initEClass(pairEClass, Pair.class, "Pair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPair_Key(), this.getExpression(), null, "key", null, 1, 1, Pair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPair_Value(), this.getExpression(), null, "value", null, 1, 1, Pair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(putExpressionEClass, PutExpression.class, "PutExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPutExpression_Map(), this.getMapExpression(), null, "Map", null, 1, 1, PutExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPutExpression_KeyExpr(), this.getExpression(), null, "keyExpr", null, 1, 1, PutExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPutExpression_ValExpr(), this.getExpression(), null, "valExpr", null, 1, 1, PutExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(getExpressionEClass, GetExpression.class, "GetExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGetExpression_Map(), this.getMapExpression(), null, "Map", null, 1, 1, GetExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGetExpression_KeyExpr(), this.getExpression(), null, "keyExpr", null, 1, 1, GetExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(removeExpressionEClass, RemoveExpression.class, "RemoveExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRemoveExpression_Map(), this.getMapExpression(), null, "Map", null, 1, 1, RemoveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRemoveExpression_KeyExpr(), this.getExpression(), null, "keyExpr", null, 1, 1, RemoveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(operatorEEnum, Operator.class, "Operator");

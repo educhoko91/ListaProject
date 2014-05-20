@@ -5,14 +5,19 @@ import Lista.CompositeExpr;
 import Lista.Evaluation;
 import Lista.FunctionCall;
 import Lista.FunctionDefinition;
+import Lista.GetExpression;
 import Lista.Identifier;
 import Lista.IfExpression;
 import Lista.InputExpression;
 import Lista.ListaPackage;
+import Lista.MapExpression;
 import Lista.NegExpr;
 import Lista.NumberExpression;
 import Lista.OutputExpression;
+import Lista.Pair;
 import Lista.Program;
+import Lista.PutExpression;
+import Lista.RemoveExpression;
 import Lista.SeqExpression;
 import Lista.StringExpression;
 import com.google.inject.Inject;
@@ -97,6 +102,22 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 					return; 
 				}
 				else break;
+			case ListaPackage.GET_EXPRESSION:
+				if(context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getGetExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel2ExpressionRule() ||
+				   context == grammarAccess.getLevel2ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel3ExpressionRule() ||
+				   context == grammarAccess.getLevel3ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel4ExpressionRule() ||
+				   context == grammarAccess.getLevel4ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getSimpleExpressionRule()) {
+					sequence_GetExpression(context, (GetExpression) semanticObject); 
+					return; 
+				}
+				else break;
 			case ListaPackage.IDENTIFIER:
 				if(context == grammarAccess.getExpressionRule() ||
 				   context == grammarAccess.getIdentifierRule() ||
@@ -142,6 +163,22 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				   context == grammarAccess.getLevel4ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
 				   context == grammarAccess.getSimpleExpressionRule()) {
 					sequence_InputExpression(context, (InputExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case ListaPackage.MAP_EXPRESSION:
+				if(context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel2ExpressionRule() ||
+				   context == grammarAccess.getLevel2ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel3ExpressionRule() ||
+				   context == grammarAccess.getLevel3ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel4ExpressionRule() ||
+				   context == grammarAccess.getLevel4ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getMapExpressionRule() ||
+				   context == grammarAccess.getSimpleExpressionRule()) {
+					sequence_MapExpression(context, (MapExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -193,9 +230,47 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 					return; 
 				}
 				else break;
+			case ListaPackage.PAIR:
+				if(context == grammarAccess.getPairExprRule()) {
+					sequence_PairExpr(context, (Pair) semanticObject); 
+					return; 
+				}
+				else break;
 			case ListaPackage.PROGRAM:
 				if(context == grammarAccess.getProgramRule()) {
 					sequence_Program(context, (Program) semanticObject); 
+					return; 
+				}
+				else break;
+			case ListaPackage.PUT_EXPRESSION:
+				if(context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel2ExpressionRule() ||
+				   context == grammarAccess.getLevel2ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel3ExpressionRule() ||
+				   context == grammarAccess.getLevel3ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel4ExpressionRule() ||
+				   context == grammarAccess.getLevel4ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getPutExpressionRule() ||
+				   context == grammarAccess.getSimpleExpressionRule()) {
+					sequence_PutExpression(context, (PutExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case ListaPackage.REMOVE_EXPRESSION:
+				if(context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionRule() ||
+				   context == grammarAccess.getLevel1ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel2ExpressionRule() ||
+				   context == grammarAccess.getLevel2ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel3ExpressionRule() ||
+				   context == grammarAccess.getLevel3ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getLevel4ExpressionRule() ||
+				   context == grammarAccess.getLevel4ExpressionAccess().getCompositeExprSubExpressionsAction_1_0() ||
+				   context == grammarAccess.getRemoveExpressionRule() ||
+				   context == grammarAccess.getSimpleExpressionRule()) {
+					sequence_RemoveExpression(context, (RemoveExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -280,6 +355,25 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     (Map=[MapExpression|ID] keyExpr=Expression)
+	 */
+	protected void sequence_GetExpression(EObject context, GetExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.GET_EXPRESSION__MAP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.GET_EXPRESSION__MAP));
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.GET_EXPRESSION__KEY_EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.GET_EXPRESSION__KEY_EXPR));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getGetExpressionAccess().getMapMapExpressionIDTerminalRuleCall_2_0_1(), semanticObject.getMap());
+		feeder.accept(grammarAccess.getGetExpressionAccess().getKeyExprExpressionParserRuleCall_4_0(), semanticObject.getKeyExpr());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     name=ID
 	 */
 	protected void sequence_Identifier(EObject context, Identifier semanticObject) {
@@ -348,6 +442,15 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     (name=ID (keyType='String' | keyType='Int') (valueType='String' | valueType='Int') (values+=PairExpr values+=PairExpr*)?)
+	 */
+	protected void sequence_MapExpression(EObject context, MapExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     subExpr=SimpleExpression
 	 */
 	protected void sequence_NotExpression(EObject context, NegExpr semanticObject) {
@@ -396,10 +499,70 @@ public class ListaSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     (key=Expression value=Expression)
+	 */
+	protected void sequence_PairExpr(EObject context, Pair semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PAIR__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PAIR__KEY));
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PAIR__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PAIR__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPairExprAccess().getKeyExpressionParserRuleCall_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getPairExprAccess().getValueExpressionParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (functionDefinitions+=FunctionDefinition* evaluation=Evaluation)
 	 */
 	protected void sequence_Program(EObject context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (Map=[MapExpression|ID] keyExpr=Expression valExpr=Expression)
+	 */
+	protected void sequence_PutExpression(EObject context, PutExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PUT_EXPRESSION__MAP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PUT_EXPRESSION__MAP));
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PUT_EXPRESSION__KEY_EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PUT_EXPRESSION__KEY_EXPR));
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.PUT_EXPRESSION__VAL_EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.PUT_EXPRESSION__VAL_EXPR));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPutExpressionAccess().getMapMapExpressionIDTerminalRuleCall_2_0_1(), semanticObject.getMap());
+		feeder.accept(grammarAccess.getPutExpressionAccess().getKeyExprExpressionParserRuleCall_4_0(), semanticObject.getKeyExpr());
+		feeder.accept(grammarAccess.getPutExpressionAccess().getValExprExpressionParserRuleCall_6_0(), semanticObject.getValExpr());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (Map=[MapExpression|ID] keyExpr=Expression)
+	 */
+	protected void sequence_RemoveExpression(EObject context, RemoveExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.REMOVE_EXPRESSION__MAP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.REMOVE_EXPRESSION__MAP));
+			if(transientValues.isValueTransient(semanticObject, ListaPackage.Literals.REMOVE_EXPRESSION__KEY_EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ListaPackage.Literals.REMOVE_EXPRESSION__KEY_EXPR));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getRemoveExpressionAccess().getMapMapExpressionIDTerminalRuleCall_2_0_1(), semanticObject.getMap());
+		feeder.accept(grammarAccess.getRemoveExpressionAccess().getKeyExprExpressionParserRuleCall_4_0(), semanticObject.getKeyExpr());
+		feeder.finish();
 	}
 	
 	

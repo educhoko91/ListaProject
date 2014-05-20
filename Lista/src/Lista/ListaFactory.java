@@ -202,6 +202,33 @@ public interface ListaFactory extends EFactory {
 	Pair createPair();
 
 	/**
+	 * Returns a new object of class '<em>Put Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Put Expression</em>'.
+	 * @generated
+	 */
+	PutExpression createPutExpression();
+
+	/**
+	 * Returns a new object of class '<em>Get Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Expression</em>'.
+	 * @generated
+	 */
+	GetExpression createGetExpression();
+
+	/**
+	 * Returns a new object of class '<em>Remove Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Remove Expression</em>'.
+	 * @generated
+	 */
+	RemoveExpression createRemoveExpression();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

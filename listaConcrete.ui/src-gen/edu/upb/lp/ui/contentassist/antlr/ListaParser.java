@@ -39,6 +39,8 @@ public class ListaParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getSimpleExpressionAccess().getAlternatives(), "rule__SimpleExpression__Alternatives");
 					put(grammarAccess.getBooleanExpressionAccess().getAlternatives_1(), "rule__BooleanExpression__Alternatives_1");
+					put(grammarAccess.getMapExpressionAccess().getKeyTypeAlternatives_2_0(), "rule__MapExpression__KeyTypeAlternatives_2_0");
+					put(grammarAccess.getMapExpressionAccess().getValueTypeAlternatives_4_0(), "rule__MapExpression__ValueTypeAlternatives_4_0");
 					put(grammarAccess.getLevel1OperatorAccess().getAlternatives(), "rule__Level1Operator__Alternatives");
 					put(grammarAccess.getLevel2OperatorAccess().getAlternatives(), "rule__Level2Operator__Alternatives");
 					put(grammarAccess.getProgramAccess().getGroup(), "rule__Program__Group__0");
@@ -64,6 +66,13 @@ public class ListaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBooleanExpressionAccess().getGroup(), "rule__BooleanExpression__Group__0");
 					put(grammarAccess.getSeqExpressionAccess().getGroup(), "rule__SeqExpression__Group__0");
 					put(grammarAccess.getSeqExpressionAccess().getGroup_3(), "rule__SeqExpression__Group_3__0");
+					put(grammarAccess.getMapExpressionAccess().getGroup(), "rule__MapExpression__Group__0");
+					put(grammarAccess.getMapExpressionAccess().getGroup_8(), "rule__MapExpression__Group_8__0");
+					put(grammarAccess.getMapExpressionAccess().getGroup_8_1(), "rule__MapExpression__Group_8_1__0");
+					put(grammarAccess.getPairExprAccess().getGroup(), "rule__PairExpr__Group__0");
+					put(grammarAccess.getPutExpressionAccess().getGroup(), "rule__PutExpression__Group__0");
+					put(grammarAccess.getGetExpressionAccess().getGroup(), "rule__GetExpression__Group__0");
+					put(grammarAccess.getRemoveExpressionAccess().getGroup(), "rule__RemoveExpression__Group__0");
 					put(grammarAccess.getProgramAccess().getFunctionDefinitionsAssignment_0(), "rule__Program__FunctionDefinitionsAssignment_0");
 					put(grammarAccess.getProgramAccess().getEvaluationAssignment_1(), "rule__Program__EvaluationAssignment_1");
 					put(grammarAccess.getFunctionDefinitionAccess().getNameAssignment_0(), "rule__FunctionDefinition__NameAssignment_0");
@@ -94,6 +103,20 @@ public class ListaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBooleanExpressionAccess().getValueAssignment_1_0(), "rule__BooleanExpression__ValueAssignment_1_0");
 					put(grammarAccess.getSeqExpressionAccess().getSubExpressionsAssignment_2(), "rule__SeqExpression__SubExpressionsAssignment_2");
 					put(grammarAccess.getSeqExpressionAccess().getSubExpressionsAssignment_3_1(), "rule__SeqExpression__SubExpressionsAssignment_3_1");
+					put(grammarAccess.getMapExpressionAccess().getNameAssignment_0(), "rule__MapExpression__NameAssignment_0");
+					put(grammarAccess.getMapExpressionAccess().getKeyTypeAssignment_2(), "rule__MapExpression__KeyTypeAssignment_2");
+					put(grammarAccess.getMapExpressionAccess().getValueTypeAssignment_4(), "rule__MapExpression__ValueTypeAssignment_4");
+					put(grammarAccess.getMapExpressionAccess().getValuesAssignment_8_0(), "rule__MapExpression__ValuesAssignment_8_0");
+					put(grammarAccess.getMapExpressionAccess().getValuesAssignment_8_1_1(), "rule__MapExpression__ValuesAssignment_8_1_1");
+					put(grammarAccess.getPairExprAccess().getKeyAssignment_0(), "rule__PairExpr__KeyAssignment_0");
+					put(grammarAccess.getPairExprAccess().getValueAssignment_2(), "rule__PairExpr__ValueAssignment_2");
+					put(grammarAccess.getPutExpressionAccess().getMapAssignment_2(), "rule__PutExpression__MapAssignment_2");
+					put(grammarAccess.getPutExpressionAccess().getKeyExprAssignment_4(), "rule__PutExpression__KeyExprAssignment_4");
+					put(grammarAccess.getPutExpressionAccess().getValExprAssignment_6(), "rule__PutExpression__ValExprAssignment_6");
+					put(grammarAccess.getGetExpressionAccess().getMapAssignment_2(), "rule__GetExpression__MapAssignment_2");
+					put(grammarAccess.getGetExpressionAccess().getKeyExprAssignment_4(), "rule__GetExpression__KeyExprAssignment_4");
+					put(grammarAccess.getRemoveExpressionAccess().getMapAssignment_2(), "rule__RemoveExpression__MapAssignment_2");
+					put(grammarAccess.getRemoveExpressionAccess().getKeyExprAssignment_4(), "rule__RemoveExpression__KeyExprAssignment_4");
 				}
 			};
 		}

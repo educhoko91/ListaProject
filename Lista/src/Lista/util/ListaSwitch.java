@@ -224,6 +224,27 @@ public class ListaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ListaPackage.PUT_EXPRESSION: {
+				PutExpression putExpression = (PutExpression)theEObject;
+				T result = casePutExpression(putExpression);
+				if (result == null) result = caseExpression(putExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ListaPackage.GET_EXPRESSION: {
+				GetExpression getExpression = (GetExpression)theEObject;
+				T result = caseGetExpression(getExpression);
+				if (result == null) result = caseExpression(getExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ListaPackage.REMOVE_EXPRESSION: {
+				RemoveExpression removeExpression = (RemoveExpression)theEObject;
+				T result = caseRemoveExpression(removeExpression);
+				if (result == null) result = caseExpression(removeExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -570,6 +591,51 @@ public class ListaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePair(Pair object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Put Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Put Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePutExpression(PutExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Get Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Get Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGetExpression(GetExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Remove Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Remove Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRemoveExpression(RemoveExpression object) {
 		return null;
 	}
 

@@ -486,7 +486,7 @@ public interface ListaPackage extends EPackage {
 	 * @see Lista.impl.ListaPackageImpl#getOperator()
 	 * @generated
 	 */
-	int OPERATOR = 23;
+	int OPERATOR = 26;
 
 	/**
 	 * The meta object id for the '{@link Lista.impl.IdentifierImpl <em>Identifier</em>}' class.
@@ -991,6 +991,153 @@ public interface ListaPackage extends EPackage {
 	int PAIR_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link Lista.impl.PutExpressionImpl <em>Put Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.PutExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getPutExpression()
+	 * @generated
+	 */
+	int PUT_EXPRESSION = 23;
+
+	/**
+	 * The feature id for the '<em><b>Map</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUT_EXPRESSION__MAP = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Key Expr</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUT_EXPRESSION__KEY_EXPR = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Val Expr</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUT_EXPRESSION__VAL_EXPR = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Put Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUT_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Put Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUT_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.GetExpressionImpl <em>Get Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.GetExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getGetExpression()
+	 * @generated
+	 */
+	int GET_EXPRESSION = 24;
+
+	/**
+	 * The feature id for the '<em><b>Map</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_EXPRESSION__MAP = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Key Expr</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_EXPRESSION__KEY_EXPR = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Get Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Get Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link Lista.impl.RemoveExpressionImpl <em>Remove Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Lista.impl.RemoveExpressionImpl
+	 * @see Lista.impl.ListaPackageImpl#getRemoveExpression()
+	 * @generated
+	 */
+	int REMOVE_EXPRESSION = 25;
+
+	/**
+	 * The feature id for the '<em><b>Map</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_EXPRESSION__MAP = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Key Expr</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_EXPRESSION__KEY_EXPR = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Remove Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Remove Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link Lista.TermOperator <em>Term Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -998,7 +1145,7 @@ public interface ListaPackage extends EPackage {
 	 * @see Lista.impl.ListaPackageImpl#getTermOperator()
 	 * @generated
 	 */
-	int TERM_OPERATOR = 24;
+	int TERM_OPERATOR = 27;
 
 
 	/**
@@ -1573,6 +1720,113 @@ public interface ListaPackage extends EPackage {
 	EReference getPair_Value();
 
 	/**
+	 * Returns the meta object for class '{@link Lista.PutExpression <em>Put Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Put Expression</em>'.
+	 * @see Lista.PutExpression
+	 * @generated
+	 */
+	EClass getPutExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link Lista.PutExpression#getMap <em>Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Map</em>'.
+	 * @see Lista.PutExpression#getMap()
+	 * @see #getPutExpression()
+	 * @generated
+	 */
+	EReference getPutExpression_Map();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link Lista.PutExpression#getKeyExpr <em>Key Expr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key Expr</em>'.
+	 * @see Lista.PutExpression#getKeyExpr()
+	 * @see #getPutExpression()
+	 * @generated
+	 */
+	EReference getPutExpression_KeyExpr();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link Lista.PutExpression#getValExpr <em>Val Expr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Val Expr</em>'.
+	 * @see Lista.PutExpression#getValExpr()
+	 * @see #getPutExpression()
+	 * @generated
+	 */
+	EReference getPutExpression_ValExpr();
+
+	/**
+	 * Returns the meta object for class '{@link Lista.GetExpression <em>Get Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Expression</em>'.
+	 * @see Lista.GetExpression
+	 * @generated
+	 */
+	EClass getGetExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link Lista.GetExpression#getMap <em>Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Map</em>'.
+	 * @see Lista.GetExpression#getMap()
+	 * @see #getGetExpression()
+	 * @generated
+	 */
+	EReference getGetExpression_Map();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link Lista.GetExpression#getKeyExpr <em>Key Expr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key Expr</em>'.
+	 * @see Lista.GetExpression#getKeyExpr()
+	 * @see #getGetExpression()
+	 * @generated
+	 */
+	EReference getGetExpression_KeyExpr();
+
+	/**
+	 * Returns the meta object for class '{@link Lista.RemoveExpression <em>Remove Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Remove Expression</em>'.
+	 * @see Lista.RemoveExpression
+	 * @generated
+	 */
+	EClass getRemoveExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link Lista.RemoveExpression#getMap <em>Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Map</em>'.
+	 * @see Lista.RemoveExpression#getMap()
+	 * @see #getRemoveExpression()
+	 * @generated
+	 */
+	EReference getRemoveExpression_Map();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link Lista.RemoveExpression#getKeyExpr <em>Key Expr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key Expr</em>'.
+	 * @see Lista.RemoveExpression#getKeyExpr()
+	 * @see #getRemoveExpression()
+	 * @generated
+	 */
+	EReference getRemoveExpression_KeyExpr();
+
+	/**
 	 * Returns the meta object for enum '{@link Lista.Operator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2092,6 +2346,92 @@ public interface ListaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PAIR__VALUE = eINSTANCE.getPair_Value();
+
+		/**
+		 * The meta object literal for the '{@link Lista.impl.PutExpressionImpl <em>Put Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see Lista.impl.PutExpressionImpl
+		 * @see Lista.impl.ListaPackageImpl#getPutExpression()
+		 * @generated
+		 */
+		EClass PUT_EXPRESSION = eINSTANCE.getPutExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Map</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PUT_EXPRESSION__MAP = eINSTANCE.getPutExpression_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Key Expr</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PUT_EXPRESSION__KEY_EXPR = eINSTANCE.getPutExpression_KeyExpr();
+
+		/**
+		 * The meta object literal for the '<em><b>Val Expr</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PUT_EXPRESSION__VAL_EXPR = eINSTANCE.getPutExpression_ValExpr();
+
+		/**
+		 * The meta object literal for the '{@link Lista.impl.GetExpressionImpl <em>Get Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see Lista.impl.GetExpressionImpl
+		 * @see Lista.impl.ListaPackageImpl#getGetExpression()
+		 * @generated
+		 */
+		EClass GET_EXPRESSION = eINSTANCE.getGetExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Map</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GET_EXPRESSION__MAP = eINSTANCE.getGetExpression_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Key Expr</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GET_EXPRESSION__KEY_EXPR = eINSTANCE.getGetExpression_KeyExpr();
+
+		/**
+		 * The meta object literal for the '{@link Lista.impl.RemoveExpressionImpl <em>Remove Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see Lista.impl.RemoveExpressionImpl
+		 * @see Lista.impl.ListaPackageImpl#getRemoveExpression()
+		 * @generated
+		 */
+		EClass REMOVE_EXPRESSION = eINSTANCE.getRemoveExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Map</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REMOVE_EXPRESSION__MAP = eINSTANCE.getRemoveExpression_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Key Expr</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REMOVE_EXPRESSION__KEY_EXPR = eINSTANCE.getRemoveExpression_KeyExpr();
 
 		/**
 		 * The meta object literal for the '{@link Lista.Operator <em>Operator</em>}' enum.

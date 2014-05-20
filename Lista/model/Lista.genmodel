@@ -89,5 +89,18 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Pair/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//Pair/value"/>
     </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//PutExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lista.ecore#//PutExpression/Map"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//PutExpression/keyExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//PutExpression/valExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//GetExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lista.ecore#//GetExpression/Map"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//GetExpression/keyExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Lista.ecore#//RemoveExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lista.ecore#//RemoveExpression/Map"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lista.ecore#//RemoveExpression/keyExpr"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
