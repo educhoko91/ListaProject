@@ -42,6 +42,8 @@ class ListaValidator extends AbstractListaValidator {
 	public static final String INPUTTYPE = "input";
 
 	public HashMap<String, HashMap<String, String>> map;
+	
+	public HashSet<String> mapsSet ;
 
 	def initMap(Program prog) {
 		this.map = TypeIdentifier.getInstance(prog).hashMap;
@@ -248,7 +250,7 @@ class ListaValidator extends AbstractListaValidator {
 				recursiveCompisiteOperatorValuesCheck(ge.keyExpr, me.keyType);
 				return me.valueType;
 			}
-			return TypeIdentifier.NOTYPE;
+			return type;
 		}
 
 		if (expr instanceof RemoveExpression) {
@@ -265,17 +267,23 @@ class ListaValidator extends AbstractListaValidator {
 
 	@Check
 	def checkIdentifiersInEvaluation(Evaluation eva) {
-		recursiveIdentifiersInEvaluation(eva.expression);
+		mapsSet = new HashSet;
+		recursiveIdentifiersInEvaluation(eva.expression,false);
+		recursiveIdentifiersInEvaluation(eva.expression,true);
 
 	}
 
-	def recursiveIdentifiersInEvaluation(Expression expr) {
+	def recursiveIdentifiersInEvaluation(Expression expr, boolean check) {
 		if (expr instanceof Identifier) {
 			var id = expr  as Identifier
-			error(
-				"No se pudo resolver el valor de " + id.name,
-				ListaPackage.Literals.EVALUATION__EXPRESSION
-			);
+			if(check) {
+				if(!mapsSet.contains(id.name)) {
+					error(
+						"No se pudo resolver el valor de " + id.name,
+						ListaPackage.Literals.EVALUATION__EXPRESSION
+					);
+				}
+			}
 		} else if (expr instanceof NumberExpression) {
 			return null;
 		} else if (expr instanceof StringExpression) {
@@ -287,62 +295,63 @@ class ListaValidator extends AbstractListaValidator {
 				var ce = expr as CompositeExpr;
 				try {
 					var left = ce.subExpressions.get(0);
-					recursiveIdentifiersInEvaluation(left);
+					recursiveIdentifiersInEvaluation(left, check);
 					var right = ce.subExpressions.get(1);
-					recursiveIdentifiersInEvaluation(right);
+					recursiveIdentifiersInEvaluation(right, check);
 				} catch (Exception e) {
 				}
 			}
 			if (expr instanceof IfExpression) {
 				var ifexpr = expr as IfExpression;
-				recursiveIdentifiersInEvaluation(ifexpr.cond);
-				recursiveIdentifiersInEvaluation(ifexpr.alternative);
-				recursiveIdentifiersInEvaluation(ifexpr.consequent);
+				recursiveIdentifiersInEvaluation(ifexpr.cond, check);
+				recursiveIdentifiersInEvaluation(ifexpr.alternative, check);
+				recursiveIdentifiersInEvaluation(ifexpr.consequent, check);
 			}
 			if (expr instanceof SeqExpression) {
 				var secExp = expr as SeqExpression;
 				for (Expression e : secExp.subExpressions) {
-					recursiveIdentifiersInEvaluation(e);
+					recursiveIdentifiersInEvaluation(e, check);
 				}
 			}
 			if (expr instanceof OutputExpression) {
 				var out = expr as OutputExpression
-				recursiveIdentifiersInEvaluation(out.parameter);
+				recursiveIdentifiersInEvaluation(out.parameter, check);
 			}
 			if (expr instanceof NegExpr) {
 				var ne = expr as NegExpr;
-				recursiveIdentifiersInEvaluation(ne.subExpr);
+				recursiveIdentifiersInEvaluation(ne.subExpr, check);
 			}
 
 			if (expr instanceof FunctionCall) {
 				var fc = expr as FunctionCall;
 				for (Expression e : fc.arguments) {
-					recursiveIdentifiersInEvaluation(e);
+					recursiveIdentifiersInEvaluation(e, check);
 				}
 			}
 
 			if (expr instanceof MapExpression) {
 				var me = expr as MapExpression;
 				for (PairExpr p : me.values) {
-					recursiveIdentifiersInEvaluation(p.key);
-					recursiveIdentifiersInEvaluation(p.value);
+					recursiveIdentifiersInEvaluation(p.key, check);
+					recursiveIdentifiersInEvaluation(p.value, check);
 				}
+				mapsSet.add(me.name);
 			}
 
 			if (expr instanceof PutExpression) {
 				var pe = expr as PutExpression;
-				recursiveIdentifiersInEvaluation(pe.keyExpr);
-				recursiveIdentifiersInEvaluation(pe.valExpr);
+				recursiveIdentifiersInEvaluation(pe.keyExpr, check);
+				recursiveIdentifiersInEvaluation(pe.valExpr, check);
 			}
 
 			if (expr instanceof GetExpression) {
 				var ge = expr as GetExpression;
-				recursiveIdentifiersInEvaluation(ge.keyExpr);
+				recursiveIdentifiersInEvaluation(ge.keyExpr, check);
 			}
 
 			if (expr instanceof RemoveExpression) {
 				var re = expr as RemoveExpression;
-				recursiveIdentifiersInEvaluation(re.keyExpr);
+				recursiveIdentifiersInEvaluation(re.keyExpr, check);
 			}
 		}
 	}
@@ -715,13 +724,7 @@ class ListaValidator extends AbstractListaValidator {
 				}
 
 			}
-			if (pe.map instanceof Identifier) {
-				var id = pe.map as Identifier
-				warning(
-					"La llave y el valor de " + id.name + " puede que no sea de tipo " + key + " ," + value,
-					ListaPackage.Literals.PUT_EXPRESSION__MAP
-				);
-			}
+			
 
 			return TypeIdentifier.TYPEMAP;
 		}
@@ -746,8 +749,8 @@ class ListaValidator extends AbstractListaValidator {
 			if (ge.map instanceof Identifier) {
 				var id = ge.map as Identifier
 				warning(
-					"La llave de " + id.name + " puede que no sea de tipo " + key,
-					ListaPackage.Literals.GET_EXPRESSION__MAP
+					"La llave " + id.name + " puede que no sea de tipo " + key,
+					ListaPackage.Literals.GET_EXPRESSION__KEY_EXPR
 				);
 				return INPUTTYPE;
 			}
@@ -767,13 +770,6 @@ class ListaValidator extends AbstractListaValidator {
 						)
 					}	
 				}
-			}
-			if (re.map instanceof Identifier) {
-				var id = re.map as Identifier
-				warning(
-					"La llave de " + id.name + " puede que no sea de tipo " + key,
-					ListaPackage.Literals.REMOVE_EXPRESSION__MAP
-				);
 			}
 			return TypeIdentifier.TYPEMAP;
 		}
@@ -861,6 +857,25 @@ class ListaValidator extends AbstractListaValidator {
 					ListaPackage.Literals.COMPOSITE_EXPR__OPERATOR
 				)
 			}
+		}
+	}
+	
+	@Check
+	def checkPutType(PutExpression pe) {
+		if(pe.map instanceof Identifier) {
+			var id = pe.map as Identifier;
+			warning("Posible violacion de tipado, no se pudo determinar el tipo de la llave ni del valor de "+id.name,
+				ListaPackage.Literals.PUT_EXPRESSION__MAP
+			)
+		}
+	}
+	
+	@Check
+	def checkFunctionReturnType(FunctionDefinition fd) {
+		if(map.get("global").get(fd.name).equals(TypeIdentifier.NOTYPE)) {
+			error("No se pudo determonar el valor de retorno de la funcion "+fd.name,
+				ListaPackage.Literals.FUNCTION_DEFINITION__NAME
+			)
 		}
 	}
 
