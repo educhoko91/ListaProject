@@ -58,6 +58,8 @@ public class TypeIdentifier {
 			}
 			System.out.println(++cnd);
 		}
+		//nueva linea
+				recursiveInitMap(prog.getEvaluation().getExpression(), new HashMap<String,String>(), NOTYPE);
 	}
 
 	private String recursiveInitMap(Expression exp, HashMap<String, String> aux,String type) {

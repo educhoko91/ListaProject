@@ -57,15 +57,17 @@ class ListaGenerator implements IGenerator {
 	def generateCode(Program p,String name)'''
 	import java.util.*;
 		public class «name»{
-			public static void main(String[] args){
-				System.out.println(«generateExpression(p.evaluation.expression,"global")»);
-			}
+			
 		«FOR f: p.functionDefinitions»
 		
 			public static «symbolTable.get("global").get(f.name)» «f.name»(«FOR param:f.parameters SEPARATOR ','» «symbolTable.get(f.name).get(param.name)» «generateExpression(param,f.name)» «ENDFOR»){
 				return («generateExpression(f.expression,f.name)»);
 			}
 		«ENDFOR»
+		
+		public static void main(String[] args){
+				System.out.println(«generateExpression(p.evaluation.expression,"global")»);
+			}
 		
 		public static String input(String s){
 			System.out.println(s);
