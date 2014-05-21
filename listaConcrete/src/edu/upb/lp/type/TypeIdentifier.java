@@ -56,6 +56,7 @@ public class TypeIdentifier {
 		HashMap<String, HashMap<String, String>> prevMap = new HashMap<>();
 		HashMap<String, String> global = new HashMap<>();
 		map.put("global", global);
+		initGlobal(prog);
 		EList<FunctionDefinition> listFD = prog.getFunctionDefinitions();
 		int cnd = 0;
 		while(!map.equals(prevMap)) {
@@ -298,17 +299,17 @@ public class TypeIdentifier {
 			FunctionDefinition fd = fc.getFunction();
 			int i = 0;
 			for(Expression e : fc.getArguments()) {
-				recursiveInitMapFunctionCall(e, aux, type,fd.getName(), fd.getParameters().get(i).getName());
+				try {
+					recursiveInitMapFunctionCall(e, aux, type,fd.getName(), fd.getParameters().get(i).getName());
+				} catch (Exception excep) {
+					
+				}
 				i++;
 			}
-			if((map.get("global").containsKey(fd.getName()))) {
-				if(map.get("global").get(fd.getName()).equals(NOTYPE))
-					return type;
-				else
-					return map.get("global").get(fd.getName());
-			}
-			else
+			if(map.get("global").get(fd.getName()).equals(NOTYPE))
 				return type;
+			else
+				return map.get("global").get(fd.getName());
 			
 		}
 		if(exp instanceof NegExpr) {
@@ -378,7 +379,15 @@ public class TypeIdentifier {
 				FunctionDefinition fd = (FunctionDefinition) fdo;
 				if(!mapMaps.containsKey(fd.getName())) {
 					recursiveInitMap(pe.getMap(), aux, TYPEMAP);
-					System.out.println(pe.getMap());
+					if(pe.getMap() instanceof MapExpression) {
+						me = (MapExpression) pe.getMap();
+						recursiveInitMap(pe.getKeyExpr(), aux, me.getKeyType());
+						recursiveInitMap(pe.getValExpr(), aux, me.getValueType());
+					}
+					else {
+						recursiveInitMap(pe.getKeyExpr(), aux, NOTYPE);
+						recursiveInitMap(pe.getValExpr(), aux, NOTYPE);
+					}
 					return TYPEMAP;
 				}
 				else {
@@ -453,7 +462,7 @@ public class TypeIdentifier {
 	}
 	
 	
-private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, String> aux,String type, String f, String p) {
+	private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, String> aux,String type, String f, String p) {
 		
 	//f(a,b)=g(a+2,b)
 	//g(x,y)=x::y
@@ -654,7 +663,10 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 					return aux.get(iExp.getName());
 			else {
 				if(map.containsKey(f))
-					aux.put(iExp.getName(), map.get(f).get(p));
+					if(map.get(f).get(p)==null)
+						aux.put(iExp.getName(), NOTYPE);
+					else
+						aux.put(iExp.getName(), map.get(f).get(p));
 				return type;
 			}
 		}
@@ -680,7 +692,11 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 			int j = 0;
 			
 			for(Expression e : fc.getArguments()) {
-				recursiveInitMapFunctionCall(e, aux, type,fd.getName(), fd.getParameters().get(j).getName());
+				try {
+					recursiveInitMapFunctionCall(e, aux, type,fd.getName(), fd.getParameters().get(j).getName());
+				} catch (Exception excep) {
+					
+				}
 				j++;
 			}
 			//String s=recursiveInitMap(fd.getExpression(), aux, type);
@@ -758,8 +774,16 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 			if(fdo instanceof FunctionDefinition) {
 				FunctionDefinition fd = (FunctionDefinition) fdo;
 				if(!mapMaps.containsKey(fd.getName())) {
-					recursiveInitMapFunctionCall(pe.getMap(), aux, TYPEMAP,f,p);
-					System.out.println(pe.getMap());
+					recursiveInitMap(pe.getMap(), aux, TYPEMAP);
+					if(pe.getMap() instanceof MapExpression) {
+						me = (MapExpression) pe.getMap();
+						recursiveInitMap(pe.getKeyExpr(), aux, me.getKeyType());
+						recursiveInitMap(pe.getValExpr(), aux, me.getValueType());
+					}
+					else {
+						recursiveInitMap(pe.getKeyExpr(), aux, NOTYPE);
+						recursiveInitMap(pe.getValExpr(), aux, NOTYPE);
+					}
 					return TYPEMAP;
 				}
 				else {
@@ -835,17 +859,12 @@ private String recursiveInitMapFunctionCall(Expression exp, HashMap<String, Stri
 		return NOTYPE;
 	}
 	
-	
-	
-	
-	
-	
-
-	/*
-	 * private void initMap(Program prog) { EList<FunctionDefinition> listFD =
-	 * prog.getFunctionDefinitions(); for(FunctionDefinition fd: listFD) {
-	 * map.put(key, value) }
-	 */
+	private void initGlobal(Program prog) {
+		for(FunctionDefinition fd : prog.getFunctionDefinitions()) {
+			map.get("global").put(fd.getName(), NOTYPE);
+			map.put(fd.getName(), new HashMap<String, String>());
+		}
+	}
 
 	public static TypeIdentifier getInstance(Program prog) {
 		if (ti == null) {

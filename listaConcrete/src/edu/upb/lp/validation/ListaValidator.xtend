@@ -376,7 +376,7 @@ class ListaValidator extends AbstractListaValidator {
 			}
 
 		} else {
-			error("Faltan Parametos!!!", ListaPackage.Literals.FUNCTION_CALL__FUNCTION);
+			error("Cantidad Erronea de Parametros en la funcion "+fc.function.name, ListaPackage.Literals.FUNCTION_CALL__ARGUMENTS);
 		}
 	}
 
